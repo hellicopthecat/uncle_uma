@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 
-import HorseDetail from "../components/aboutHorse/HorseDetail";
-import HorseDetaiNav from "../components/aboutHorse/HorseDetailNav";
+import HorseDetail from "../components/horseInfo/HorseDetail";
+import HorseLocalNav from "../components/localNav/HorseLocalNav";
 
 export default function HorseInfo() {
   const [data, setData] = useState();
@@ -34,7 +34,7 @@ export default function HorseInfo() {
 
   return (
     <div>
-      <HorseDetaiNav
+      <HorseLocalNav
         onChangeLocation={(num) => {
           setLocationNum(num);
         }}
