@@ -47,7 +47,7 @@ export default function RacingPlan() {
       >
         <fieldset>
           <legend>계획검색</legend>
-          <select name="year" defaultValue={year}>
+          <select name="year" defaultValue={""}>
             <option value="">선택</option>
             <option value={year - 1}>{year - 1}</option>
             <option value={year}>{year}</option>
@@ -61,8 +61,8 @@ export default function RacingPlan() {
           <input
             type="date"
             name="date"
-            min={year - 1 + "-" + (month - 1) + "-" + dateNum}
-            max={year + "-" + month + "-" + dateNum}
+            min={`${year - 2}-${month}-${dateNum}`}
+            max={`${year}-${month}-${dateNum}`}
           />
           <button type="submit">검색</button>
         </fieldset>

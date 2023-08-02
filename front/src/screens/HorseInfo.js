@@ -7,11 +7,15 @@ export default function HorseInfo() {
   const [data, setData] = useState();
   const [locationNum, setLocationNum] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  let [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(null);
+  const rows = 100;
+  let endPages = Math.ceil(totalPage / rows);
 
   const BASE_URL =
     "https://apis.data.go.kr/B551015/API8_2/raceHorseInfo_2?serviceKey=";
   const API_KEY = process.env.REACT_APP_OPEN_API_ENCODING_KEY;
-  const query = `&pageNo=1&numOfRows=50&meet=${locationNum}&act_gubun=y&_type=json`;
+  const query = `&pageNo=${currentPage}&numOfRows=${rows}&meet=${locationNum}&act_gubun=y&_type=json`;
   const fetchUrl = `${BASE_URL}${API_KEY}${query}`;
 
   useEffect(() => {
@@ -20,6 +24,7 @@ export default function HorseInfo() {
       try {
         const response = await (await fetch(fetchUrl)).json();
         setData(response.response.body.items.item);
+        setTotalPage(response.response.body.totalCount);
       } catch (error) {
         console.error("Error fetching data:", error);
         setData(null);
@@ -28,9 +33,12 @@ export default function HorseInfo() {
       }
     };
     fetchData();
-  }, [fetchUrl, locationNum]);
+  }, [fetchUrl, locationNum, currentPage, totalPage, endPages]);
 
-  // console.log(data);
+  const pageNation = [];
+  for (let i = 1; i < endPages; i++) {
+    pageNation.push(i);
+  }
 
   return (
     <div>
@@ -47,6 +55,21 @@ export default function HorseInfo() {
       ) : (
         <p>데이터를 가져오는 중에 오류가 발생했습니다.</p>
       )}
+
+      <ul className="flex justify-center mt-10">
+        {pageNation.map((num) => (
+          <li
+            className="border-2 border-x-0 border-y-blue-300 cursor-pointer text-center text-blue-400 w-10 mx-2"
+            key={num}
+            data-id={num}
+            onClick={(e) => {
+              setCurrentPage(e.target.dataset.id);
+            }}
+          >
+            {num}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
