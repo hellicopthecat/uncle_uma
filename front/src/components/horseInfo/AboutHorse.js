@@ -91,7 +91,6 @@ export default function AboutHorse() {
             </li>
           </ul>
           <div className="flex  ml-5">
-            {" "}
             <div className="flex flex-col ml-5">
               <p className="text-2xl font-bold mb-3">레이팅</p>
               <p className="text-5xl ">{aboutHorse.rating}</p>
@@ -140,7 +139,9 @@ export default function AboutHorse() {
         </div>
 
         <div className="outline outline-blue-100 rounded-lg p-5 mt-5">
-          <h1 className="text-2xl font-medium mb-5">최근 데이터</h1>
+          <h1 className="text-2xl font-medium mb-5">
+            {aboutHorse.hrName} 경주 성적 정보
+          </h1>
           {!recent ? (
             <p>최근 말의 정보를 불러오고 있습니다.</p>
           ) : recent ? (

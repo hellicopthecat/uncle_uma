@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+
 export default function PlanResult({data, localNum}) {
-  console.log(data);
   let local = localNum;
-  const planResult = [];
   const [city, setCity] = useState("서울");
   useEffect(() => {
     if (local === "2") {
@@ -13,84 +13,197 @@ export default function PlanResult({data, localNum}) {
       setCity("서울");
     }
   }, [localNum]);
-  //   meet	: 시행경마장명
-  //   rank	: 등급조건
-  //   rcName	: 경주명
-  //   rcDate	: 경주일자
-  //   schStTime	: 발주예정시각
-  //   rcNo	: 경주번호
-  //   ilsu	: 경주차수
-  //   rcDist	: 경주거리
-  //   budam	: 부담구분
-  //   stRating	: 레이팅하한조건
-  //   spRating	: 레이팅상한조건
-  //   ageCond	: 연령조건
-  //   chaksun1	: 1착상금
-  //   chaksun2	: 2착상금
-  //   chaksun3	: 3착상금
-  //   chaksun4	: 4착상금
-  //   chaksun5	: 5착상금
-  //   buga1	: 1착부가상금
-  //   buga2	: 2착부가상금
-  //   buga3	: 3착부가상금
-  for (let i = 0; i < data.length; i++) {
-    planResult.push(
-      <tr>
-        <td>{i + 1}</td>
-        <td>{data[i].meet}</td>
-        <td>{data[i].rank}</td>
-        <td>{data[i].rcName}경기</td>
-        <td>{data[i].rcDate}</td>
-        <td>{data[i].schStTime}</td>
-        <td>{data[i].rcNo}</td>
-        <td>{data[i].ilsu}</td>
-        <td>{data[i].rcDist}미터</td>
-        <td>{data[i].budam}</td>
-        <td>{data[i].stRating}</td>
-        <td>{data[i].spRating}</td>
-        <td>{data[i].ageCond}</td>
-        <td>{data[i].chaksun1}</td>
-        <td>{data[i].chaksun2}</td>
-        <td>{data[i].chaksun3}</td>
-        <td>{data[i].chaksun4}</td>
-        <td>{data[i].chaksun5}</td>
-        <td>{data[i].buga1}</td>
-        <td>{data[i].buga2}</td>
-        <td>{data[i].buga3}</td>
-      </tr>
-    );
-  }
 
   return (
-    <div>
-      <h1>{city} 계획표 결과</h1>
-      <table>
+    <div className="container mx-auto">
+      <h2 className="text-xl font-bold my-4">{city} 계획표 결과</h2>
+      <table className="table-auto text-center border-collapse">
         <thead>
-          <tr>
-            <th>번호</th>
-            <th>시행경마장명</th>
-            <th>등급조건</th>
-            <th>경주명</th>
-            <th>경주일자</th>
-            <th>발주예정시각</th>
-            <th>경주번호</th>
-            <th>경주차수</th>
-            <th>경주거리</th>
-            <th>부담구분</th>
-            <th>레이팅하한조건</th>
-            <th>레이팅상한조건</th>
-            <th>연령조건</th>
-            <th>1착상금</th>
-            <th>2착상금</th>
-            <th>3착상금</th>
-            <th>4착상금</th>
-            <th>5착상금</th>
-            <th>1착부가상금</th>
-            <th>2착부가상금</th>
-            <th>3착부가상금</th>
+          <tr className="border-2 border-x-0 border-y-cyan-600 text-xs">
+            <th className="py-3 px-3">번호</th>
+            <th className="py-3 px-2">
+              시행
+              <br />
+              경마장
+            </th>
+            <th className="py-3 px-3">등급조건</th>
+            <th className="py-3 px-3">경주명</th>
+            <th className="py-3 px-3">
+              경주
+              <br />
+              번호
+            </th>
+            <th className="py-3 px-3">
+              발주예정
+              <br />
+              시각
+            </th>
+            <th className="py-3 px-3">
+              경주
+              <br />
+              일자
+            </th>
+            <th className="py-3 px-3">
+              경주
+              <br />
+              차수
+            </th>
+            <th className="py-3 px-3">
+              경주
+              <br />
+              거리
+            </th>
+            <th className="py-3 px-3">
+              부담
+              <br />
+              구분
+            </th>
+            <th className="py-3 px-3">
+              레이팅
+              <br />
+              하한조건
+            </th>
+            <th className="py-3 px-3">
+              레이팅
+              <br />
+              상한조건
+            </th>
+            <th className="py-3 px-4">
+              연령
+              <br />
+              조건
+            </th>
+            <th className="py-3 px-3">
+              1착
+              <br />
+              상금
+            </th>
+            <th className="py-3 px-3">
+              2착
+              <br />
+              상금
+            </th>
+            <th className="py-3 px-3">
+              3착
+              <br />
+              상금
+            </th>
+            <th className="py-3 px-3">
+              4착
+              <br />
+              상금
+            </th>
+            <th className="py-3 px-3">
+              5착
+              <br />
+              상금
+            </th>
+            <th className="py-3 px-3">
+              1착
+              <br />
+              부가상금
+            </th>
+            <th className="py-3 px-3">
+              2착
+              <br />
+              부가상금
+            </th>
+            <th className="py-3 px-3">
+              3착
+              <br />
+              부가상금
+            </th>
+            <th className="py-3 px-3 w-20">
+              상세 <br />
+              보기
+            </th>
           </tr>
         </thead>
-        <tbody>{planResult}</tbody>
+        <tbody>
+          {data.map((item, i) => (
+            <tr
+              key={i}
+              className={
+                i % 2 === 0
+                  ? "bg-blue-50 transition ease-in-out hover:bg-blue-200 duration-500"
+                  : "transition ease-in-out hover:bg-blue-100 duration-500"
+              }
+            >
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
+                {i + 1}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
+                {item.meet}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
+                {item.rank}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
+                {item.rcName}경기
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs font-semibold py-3 ">
+                {item.rcNo}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
+                {item.rcDate}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
+                {item.schStTime}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3 ">
+                {item.ilsu}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
+                {item.rcDist} M
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
+                {item.budam}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
+                {item.stRating}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
+                {item.spRating}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
+                {item.ageCond}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
+                {item.chaksun1}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
+                {item.chaksun2}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
+                {item.chaksun3}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
+                {item.chaksun4}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
+                {item.chaksun5}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
+                {item.buga1}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
+                {item.buga2}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
+                {item.buga3}
+              </td>
+              <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
+                <Link
+                  to={`${item.rcDate}/${item.rcNo}`}
+                  className="border-2 border-blue-300 px-1 py-1 rounded-lg"
+                  state={[item.rcNo, item.rcDate, localNum]}
+                >
+                  상세 보기
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );

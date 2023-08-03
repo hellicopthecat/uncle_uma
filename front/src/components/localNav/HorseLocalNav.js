@@ -9,7 +9,10 @@ export default function HorseDetaiNav({onChangeLocation}) {
   for (let i = 0; i < location.length; i++) {
     const loc = location[i];
     local.push(
-      <li key={loc.id}>
+      <li
+        key={loc.id}
+        className="text-lg font-semibold text-indigo-800 mr-5 cursor-pointer"
+      >
         <a
           data-id={loc.id}
           href="#none"
@@ -26,7 +29,7 @@ export default function HorseDetaiNav({onChangeLocation}) {
 
   return (
     <nav>
-      <ul>{local}</ul>
+      <ul className="flex">{local}</ul>
     </nav>
   );
 }
