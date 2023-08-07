@@ -42,18 +42,24 @@ export default function HorseInfo() {
 
   return (
     <div>
-      <HorseLocalNav
-        onChangeLocation={(num) => {
-          setLocationNum(num);
-        }}
-      />
+      <div className="container mx-auto">
+        <HorseLocalNav
+          onChangeLocation={(num) => {
+            setLocationNum(num);
+          }}
+        />
+      </div>
 
       {isLoading ? (
-        <p>말의 정보를 불러오고 있습니다.</p>
+        <div className="container mx-auto">
+          <p>말의 정보를 불러오고 있습니다.</p>
+        </div>
       ) : data ? (
         <HorseDetail data={data} />
       ) : (
-        <p>데이터를 가져오는 중에 오류가 발생했습니다.</p>
+        <div className="container mx-auto">
+          <p>데이터를 가져오는 중에 오류가 발생했습니다.</p>
+        </div>
       )}
 
       <ul className="flex justify-center mt-10">

@@ -19,7 +19,7 @@ export default function HorseDetail({data}) {
   }
 
   return (
-    <div className="border-2 border-blue-200 rounded-lg m-5 p-5">
+    <div className="container mx-auto border-2 border-blue-200 rounded-lg m-5 p-5">
       <h2 className="text-xl font-bold">경주마 상세 정보</h2>
       <ul className="grid grid-cols-10 gap-2  text-center text-sm font-semibold my-5 rounded-lg">
         {horseList}
