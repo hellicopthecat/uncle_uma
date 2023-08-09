@@ -1,12 +1,6 @@
 import {getAuth, updateProfile} from "firebase/auth";
 import {useEffect, useState} from "react";
-import {
-  getDownloadURL,
-  getMetadata,
-  getStorage,
-  ref,
-  uploadBytes,
-} from "firebase/storage";
+import {getDownloadURL, getStorage, ref, uploadBytes} from "firebase/storage";
 import {useLocation} from "react-router-dom";
 export default function EditProfile() {
   const location = useLocation();
@@ -29,6 +23,7 @@ export default function EditProfile() {
         displayName: dpName,
         photoURL: response,
       });
+      alert("수정완료");
       window.location.href = location.pathname;
     } catch (error) {
       const errCode = error.code;

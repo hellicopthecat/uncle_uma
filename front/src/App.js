@@ -12,6 +12,8 @@ import EditProfile from "./components/main/EditProfile";
 import ErrorPage from "./components/main/ErrorPage";
 import Board from "./screens/Board";
 import WriteBoard from "./components/board/WriteBoard";
+import ReadBoard from "./components/board/ReadBoard";
+import DividendRate from "./components/dividendRate/DividendRate";
 
 const App = createBrowserRouter([
   {
@@ -26,7 +28,9 @@ const App = createBrowserRouter([
       {path: "racingPlan", element: <RacingPlan />},
       {path: "racingPlan/:id/:id", element: <RacingResult />},
       {path: "board", element: <Board />},
+      {path: "board/:id", element: <ReadBoard />},
       {path: "board/write", element: <WriteBoard />},
+      {path: "dividendRate", element: <DividendRate />},
       {path: "*", element: <ErrorPage />},
     ],
   },
