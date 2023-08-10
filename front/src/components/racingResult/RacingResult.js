@@ -10,11 +10,13 @@ export default function RacingResult() {
   const [isLoading, setLoading] = useState(false);
   const [result, setResult] = useState();
   const [dLeng, setDleng] = useState();
-  const END_POINT =
+  const RESULT_END_POINT =
     "https://apis.data.go.kr/B551015/API214_1/RaceDetailResult_1?serviceKey=";
+  const RECORD_END_POINT =
+    "https://apis.data.go.kr/B551015/API4_2/raceResult_2?serviceKey=";
   const API_KEY = process.env.REACT_APP_OPEN_API_ENCODING_KEY;
   const query = `&pageNo=1&numOfRows=50&meet=${lcNum}&rc_date=${dateNum}&rc_no=${rcCnum}&_type=json`;
-  const URL = END_POINT + API_KEY + query;
+  const URL = RESULT_END_POINT + API_KEY + query;
 
   useEffect(() => {
     const fetchRCResult = async () => {

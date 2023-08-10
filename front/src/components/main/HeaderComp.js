@@ -14,15 +14,31 @@ export default function HeaderComp({props}) {
     }
   };
   return (
-    <div className=" flex justify-between items-center bg-blue-100 w-100">
-      <div>
+    <div className=" flex justify-around items-center text-white">
+      <div className="w-1/3 ml-10">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+      </div>
+      <div className="w-1/3 text-center">
         <Link to="/">
           <h1 className="text-4xl font-extrabold p-5">말랑말랑 경마</h1>
         </Link>
       </div>
-      <div className=" mr-10">
+      <div className="w-1/3">
         {props === null ? (
-          <ul className="flex justify-end w-96">
+          <ul className="flex justify-end mr-10">
             <li className=" cursor-pointer mr-5">
               <Link to="/login">로그인</Link>
             </li>

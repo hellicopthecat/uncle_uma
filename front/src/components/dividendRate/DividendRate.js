@@ -22,22 +22,71 @@ export default function DividendRate() {
   const [isLoad, setIsLoad] = useState(true);
   const [totalCount, setTotalCount] = useState(null);
 
-  const pBlock = 10;
-  //전체 블록수
-  let pCount = Math.ceil(totalCount / pRows);
-  //현재 블록번호
-  let currentBlock = Math.ceil(pNum / pBlock);
-
   const BASE_URL =
     "https://apis.data.go.kr/B551015/API160_1/integratedInfo_1?serviceKey=";
   const API_KEY = process.env.REACT_APP_OPEN_API_ENCODING_KEY;
   const query = `&pageNo=${pNum}&numOfRows=${pRows}&pool=${poolData}&rc_date=${rcDate}&rc_no=${rcNum}&meet=${localNum}&_type=json`;
   const URL = BASE_URL + API_KEY + query;
 
+  const rcNumList = [];
+  for (let i = 0; i < 16; i++) {
+    rcNumList.push(
+      <option defaultValue={i} key={i}>
+        {i}
+      </option>
+    );
+  }
+  //블럭당 페이지 수
+  const pBlock = 10;
+  //전체 페이지 수
+  let tPage = Math.ceil(totalCount / pRows);
+  // 전체 블록수
+  let tBlock = Math.ceil(tPage / pRows);
+  //현재 블록번호
+  let cBlock = Math.ceil(pNum / pBlock);
+  //블럭당 시작페이지번호
+  let s_pageNum = (cBlock - 1) * pBlock + 1;
+  if (s_pageNum <= 0) {
+    s_pageNum = 1;
+  }
+  // 블럭당 마지막 페이지번호
+  let e_pageNum = cBlock * pBlock;
+  if (e_pageNum > tPage) {
+    e_pageNum = tPage;
+  }
+  //해당 페이지 글 시작 번호
+  let d_start = (pNum - 1) * pRows;
+  //해당 페이지 글 마지막 번호
+  let d_end = (pNum - 1) * pRows;
+  if (d_end > totalCount) {
+    d_end = totalCount;
+  }
+  const pageNation = [];
+
+  for (let print_num = s_pageNum; print_num <= e_pageNum; print_num++) {
+    pageNation.push(
+      <button
+        type=""
+        className={`border border-blue-300 border-x-0 p-1 mx-5 cursor-pointer ${
+          pNum === print_num ? `text-red-500` : `text-black`
+        }`}
+        onClick={(e) => {
+          set_pNum(print_num);
+        }}
+        key={print_num}
+      >
+        {print_num > e_pageNum ? e_pageNum : print_num}
+      </button>
+    );
+  }
+
   useEffect(() => {
     const searchData = async (e) => {
       try {
         const response = await (await fetch(URL)).json();
+        if (pNum > e_pageNum) {
+          set_pNum(e_pageNum);
+        }
         setTotalCount(response.response.body.totalCount);
         setRateData(response.response.body.items.item);
       } catch (error) {
@@ -48,25 +97,7 @@ export default function DividendRate() {
     };
 
     searchData();
-  }, [URL, pNum, poolData, rcDate, rcNum, localNum, pRows, totalCount, pCount]);
-
-  const rcNumList = [];
-  for (let i = 0; i < 16; i++) {
-    rcNumList.push(
-      <option defaultValue={i} key={i}>
-        {i}
-      </option>
-    );
-  }
-  const pageNation = Array.from(
-    {length: pRows},
-    (_, index) => pNum + index + 1
-  );
-  // [];
-  // for (let i = 0; i < pCount; i++) {
-  //   pageNation.push(i);
-  // }
-
+  }, [URL, pNum, poolData, rcDate, rcNum, localNum, pRows, totalCount, tBlock]);
   return (
     <div className="container mx-auto my-5">
       <div className="flex">
@@ -86,6 +117,7 @@ export default function DividendRate() {
                 name="pool"
                 defaultValue="WIN"
                 onChange={(e) => {
+                  set_pNum(1);
                   setPoolData(e.target.value);
                 }}
                 className="border border-blue-400"
@@ -110,6 +142,7 @@ export default function DividendRate() {
                 min={`${year - 1}-${month}-${date}`}
                 max={`${year}-${month}-${date}`}
                 onChange={(e) => {
+                  set_pNum(1);
                   setRcDate(e.target.value.replace(/-/gi, ""));
                 }}
                 className="border border-blue-400"
@@ -124,6 +157,7 @@ export default function DividendRate() {
                 name="rcNum"
                 defaultValue={rcNum}
                 onChange={(e) => {
+                  set_pNum(1);
                   setRcNum(e.target.value);
                 }}
                 className="border border-blue-400"
@@ -140,6 +174,7 @@ export default function DividendRate() {
                 name="rcLocal"
                 defaultValue={1}
                 onChange={(e) => {
+                  set_pNum(1);
                   setLocationNum(e.target.value);
                 }}
                 className="border border-blue-400"
@@ -370,24 +405,20 @@ export default function DividendRate() {
         </div>
       )}
       <div className="flex justify-center mt-8">
-        <button type="click" onClick={() => pNum - 1} disabled={pNum === 1}>
-          &lt;
-        </button>
-        {pageNation.map((_, i) => (
-          <button
-            className="border border-blue-300 border-x-0 p-1 mx-5 cursor-pointer"
-            onClick={(e) => {
-              set_pNum(i + 1);
-            }}
-            key={i}
-          >
-            {i + 1}
-          </button>
-        ))}
         <button
           type="click"
-          onClick={() => pNum + 1}
-          disabled={pNum === pCount}
+          onClick={() => set_pNum(pNum - 1)}
+          disabled={pNum === 1}
+          className="border border-blue-300 border-x-0 p-1 mx-5 cursor-pointer"
+        >
+          &lt;
+        </button>
+        {pageNation}
+        <button
+          type="click"
+          onClick={() => set_pNum(pNum + 1)}
+          disabled={pNum === tPage}
+          className="border border-blue-300 border-x-0 p-1 mx-5 cursor-pointer"
         >
           &gt;
         </button>

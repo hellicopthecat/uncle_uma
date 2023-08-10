@@ -4,7 +4,7 @@ import FooterComp from "../components/main/FooterComp";
 import {useEffect, useState} from "react";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 import ContenstsNav from "../components/main/ContentsNav";
-import MainPage from "../components/main/MainPage";
+import MainPage from "./MainPage";
 export default function Home() {
   const location = useLocation();
   const [user, setUser] = useState(null);
@@ -19,15 +19,15 @@ export default function Home() {
     });
   }, [user]);
   return (
-    <div className="">
-      <header>
+    <div className="bg-sky-800">
+      <header className=" relative z-10">
         <HeaderComp props={user} />
         <ContenstsNav />
       </header>
-      <main>{location.pathname === "/" ? <MainPage /> : <Outlet />}</main>
-      <footer className="relative top-80">
-        <FooterComp />
-      </footer>
+      <main className="my-20">
+        {location.pathname === "/" ? <MainPage /> : <Outlet />}
+      </main>
+      <FooterComp />
     </div>
   );
 }
