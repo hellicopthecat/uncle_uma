@@ -40,10 +40,15 @@ export default function EditProfile() {
     }
   }, [user]);
   return (
-    <div className="container mx-auto">
-      <h2 className="text-xl font-bold text-center my-10">회원 정보 수정</h2>
+    <div className="container mx-auto ">
+      <h2 className="text-xl font-bold text-center my-10 text-white">
+        회원 정보 수정
+      </h2>
       <div className="flex justify-center ">
-        <form onSubmit={updateUser} className="border-2 p-5 rounded-md">
+        <form
+          onSubmit={updateUser}
+          className="border-2 p-5 rounded-md bg-white"
+        >
           <fieldset>
             <legend className="hidden">회원정보 수정</legend>
             <div className="flex flex-col mb-5">

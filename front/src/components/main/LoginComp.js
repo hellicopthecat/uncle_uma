@@ -76,18 +76,18 @@ export default function LoginComp() {
       const errorMsg = error.message;
       console.log(errorCode);
       console.log(errorMsg);
-      const email = error.customData.email;
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
+      // const email = error.customData.email;
+      // // The AuthCredential type that was used.
+      // const credential = GoogleAuthProvider.credentialFromError(error);
     }
   };
 
   return (
-    <div className="flex flex-col justify-center items-center my-10">
-      <h2 className="text-2xl text-center font-bold my-10">로그인</h2>
+    <div className="flex flex-col justify-center items-center py-20">
+      <h2 className="text-2xl text-center text-white font-bold my-5">로그인</h2>
       <form
         onSubmit={atv_logIn}
-        className="flex justify-center items-center border-4 border-blue-200 rounded-lg  p-10"
+        className="flex justify-center items-center border-4 border-blue-200 rounded-lg  p-10 my-10 bg-white"
       >
         <legend className="hidden">로그인</legend>
         <fieldset className="drop-shadow-md">

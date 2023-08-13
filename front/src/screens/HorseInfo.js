@@ -41,41 +41,56 @@ export default function HorseInfo() {
   }
 
   return (
-    <div>
-      <div className="container mx-auto">
-        <HorseLocalNav
-          onChangeLocation={(num) => {
-            setLocationNum(num);
-          }}
-        />
+    <div className="relative z-0">
+      <div className="absolute -top-56 z-0 brightness-50">
+        <img src="/img/main/horse_4.jpeg" alt="배경이미지" />
       </div>
-
-      {isLoading ? (
+      <div className="relative z-10 mb-10">
         <div className="container mx-auto">
-          <p>말의 정보를 불러오고 있습니다.</p>
-        </div>
-      ) : data ? (
-        <HorseDetail data={data} />
-      ) : (
-        <div className="container mx-auto">
-          <p>데이터를 가져오는 중에 오류가 발생했습니다.</p>
-        </div>
-      )}
-
-      <ul className="flex justify-center mt-10">
-        {pageNation.map((num) => (
-          <li
-            className="border-2 border-x-0 border-y-blue-300 cursor-pointer text-center text-blue-400 w-10 mx-2"
-            key={num}
-            data-id={num}
-            onClick={(e) => {
-              setCurrentPage(e.target.dataset.id);
+          <HorseLocalNav
+            onChangeLocation={(num) => {
+              setLocationNum(num);
             }}
-          >
-            {num}
-          </li>
-        ))}
-      </ul>
+          />
+        </div>
+
+        {isLoading ? (
+          <div className="flex justify-center container mx-auto bg-white/50 border border-blue-100 p-5 m-5 h-[300px] rounded-lg">
+            <div className="flex items-center justify-center text-2xl font-bold">
+              <span className="text-center text-indigo-400 bg-indigo-400 mr-3 w-3 h-6">
+                *
+              </span>
+              <p>말의 정보를 불러오고 있습니다.</p>
+            </div>
+          </div>
+        ) : data ? (
+          <HorseDetail data={data} />
+        ) : (
+          <div className="flex justify-center container mx-auto bg-white/50 border border-blue-100 p-5 m-5 h-[300px] rounded-lg">
+            <div className="flex items-center justify-center text-2xl font-bold">
+              <span className="text-center text-indigo-400 bg-indigo-400 mr-3 w-3 h-6">
+                *
+              </span>
+              <p>데이터를 가져오는 중에 오류가 발생했습니다.</p>
+            </div>
+          </div>
+        )}
+
+        <ul className="flex justify-center mt-10 mb-20">
+          {pageNation.map((num) => (
+            <li
+              className="border-2  border-blue-300 bg-white cursor-pointer text-center text-blue-400 w-[50px]  mx-2 rounded-full"
+              key={num}
+              data-id={num}
+              onClick={(e) => {
+                setCurrentPage(e.target.dataset.id);
+              }}
+            >
+              {num}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

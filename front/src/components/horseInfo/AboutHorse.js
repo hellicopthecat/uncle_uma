@@ -76,9 +76,12 @@ export default function AboutHorse() {
   ];
 
   return (
-    <div className="bg-blue-50 p-5">
-      <div className="bg-white p-5 rounded-lg">
-        <h1 className="text-3xl font-bold mb-5">경주마 상세 정보</h1>
+    <div className="container mx-auto p-5 py-20">
+      <div className="bg-white p-16 rounded-lg">
+        <div className="flex items-center mb-5">
+          <span className="text-indigo-400 bg-indigo-400 mr-3 w-2 h-5"></span>
+          <h2 className="text-3xl font-bold">경주마 상세 정보</h2>
+        </div>
         <div className="flex justify-around mb-10">
           <ul>
             <li className="mb-5">

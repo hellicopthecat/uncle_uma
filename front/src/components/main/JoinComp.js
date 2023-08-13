@@ -110,12 +110,12 @@ export default function JoinComp() {
   };
 
   return (
-    <div>
-      <h2 className="text-center text-3xl font-bold">회원가입</h2>
-      <form className="p-10" onSubmit={createUser}>
+    <div className="py-20">
+      <h2 className="text-center text-3xl font-bold text-white">회원가입</h2>
+      <form className="p-10 " onSubmit={createUser}>
         <legend className="hidden">회원가입</legend>
-        <fieldset className="flex flex-col items-center drop-shadow-md">
-          <div className="border-2 border-blue-200 p-10 rounded-md">
+        <fieldset className="flex flex-col items-center drop-shadow-md ">
+          <div className="border-2 border-blue-200 p-10 rounded-md bg-white">
             <div className="flex flex-col mb-5 w-96">
               <label className="block w-30 mb-2" htmlFor="eamil">
                 이메일

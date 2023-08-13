@@ -11,7 +11,7 @@ export default function HorseDetaiNav({onChangeLocation}) {
     local.push(
       <li
         key={loc.id}
-        className="text-lg font-semibold text-indigo-800 mr-5 cursor-pointer"
+        className="text-lg font-semibold text-white mr-5 cursor-pointer"
       >
         <a
           data-id={loc.id}

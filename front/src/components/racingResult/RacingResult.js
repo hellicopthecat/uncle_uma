@@ -12,11 +12,42 @@ export default function RacingResult() {
   const [dLeng, setDleng] = useState();
   const RESULT_END_POINT =
     "https://apis.data.go.kr/B551015/API214_1/RaceDetailResult_1?serviceKey=";
-  const RECORD_END_POINT =
-    "https://apis.data.go.kr/B551015/API4_2/raceResult_2?serviceKey=";
+  // const RECORD_END_POINT =
+  //   "https://apis.data.go.kr/B551015/API4_2/raceResult_2?serviceKey=";
   const API_KEY = process.env.REACT_APP_OPEN_API_ENCODING_KEY;
   const query = `&pageNo=1&numOfRows=50&meet=${lcNum}&rc_date=${dateNum}&rc_no=${rcCnum}&_type=json`;
   const URL = RESULT_END_POINT + API_KEY + query;
+
+  let currentDetail = 0;
+  const raceDetailCont = document.querySelectorAll(".race-detail-cont");
+  const handleLeft = () => {
+    if (currentDetail === 0) {
+      currentDetail = raceDetailCont.length;
+    } else {
+      currentDetail--;
+    }
+    raceDetailCont.forEach((each) => {
+      each.style.transition = `ease-in-out 1s`;
+      each.style.transform = `translateX(-${
+        each.clientWidth * (currentDetail - 1)
+      }px)`;
+    });
+    console.log(currentDetail);
+  };
+  const handleRight = () => {
+    if (currentDetail >= raceDetailCont.length) {
+      currentDetail = 0;
+    } else {
+      currentDetail++;
+    }
+    raceDetailCont.forEach((each) => {
+      each.style.transition = `ease-in-out 1s`;
+      each.style.transform = `translateX(-${
+        each.clientWidth * currentDetail
+      }px)`;
+    });
+    console.log(currentDetail);
+  };
 
   useEffect(() => {
     const fetchRCResult = async () => {
@@ -57,16 +88,35 @@ export default function RacingResult() {
   }
 
   return (
-    <div className="container mx-auto">
-      <h1>경기 결과</h1>
+    <div className="relative container mx-auto bg-white p-5 px-10 rounded-md">
+      <div className="flex items-center my-5">
+        <span className="block bg-blue-300 w-2 h-6 mr-2 "></span>
+        <h2 className="text-2xl font-bold">경기 결과</h2>
+      </div>
+      <div className="absolute top-1/2 flex justify-between w-full">
+        <button
+          type="click"
+          onClick={handleLeft}
+          className="relative -left-20 z-20 bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-l-lg"
+        >
+          <img src="/img/icon/left-arrow.png" alt="left-arrow" />
+        </button>
+        <button
+          type="click"
+          onClick={handleRight}
+          className="relative -right-0 z-20 bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-r-lg"
+        >
+          <img src="/img/icon/right-arrow.png" alt="right-arrow" />
+        </button>
+      </div>
       {!isLoading ? (
         <p>데이터를 불러오고 있습니다.</p>
       ) : result ? (
-        <div className="grid grid-cols-2 gap-5 ">
+        <div className=" grid grid-rows-1 grid-flow-col gap-5 overflow-hidden">
           {result.map((item, i) => (
             <div
               key={i}
-              className="grid grid-cols-2 border-2 border-blue-100 boder rounded-md"
+              className="race-detail-cont grid grid-cols-1 border-2 border-blue-100 boder rounded-md w-[735px]"
             >
               <div className="grid grid-cols-1">
                 <div className="flex justify-around items-top border-2 border-t-0 border-x-0 border-b-blue-100 mt-5">
@@ -80,7 +130,7 @@ export default function RacingResult() {
                   </div>
                   <div>
                     <div>
-                      <span className="text-sm font-medium mr-3">마번</span>
+                      <span className="text-sm font-medium">마번</span>
                       <h2 className="text-xl font-bold">{item.hrNo}</h2>
                     </div>
                     <div className="mt-3">

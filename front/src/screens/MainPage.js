@@ -3,23 +3,23 @@ import {Link} from "react-router-dom";
 
 export default function MainPage() {
   const year = new Date().getFullYear();
-  const month =
-    new Date().getMonth() + 1 < 10
-      ? "0" + (new Date().getMonth() + 1)
-      : new Date().getMonth() + 1;
-  const date =
-    new Date().getDate() < 10
-      ? "0" + new Date().getDate()
-      : new Date().getDate();
-  const nowDate = year + month + date;
-  const lastDate = `${year}${month < 10 ? "0" + (month - 1) : month - 1}05`;
+  // const month =
+  //   new Date().getMonth() + 1 < 10
+  //     ? "0" + (new Date().getMonth() + 1)
+  //     : new Date().getMonth() + 1;
+  // const date =
+  //   new Date().getDate() < 10
+  //     ? "0" + new Date().getDate()
+  //     : new Date().getDate();
+  // const nowDate = year + month + date;
+  // const lastDate = `${year}${month < 10 ? "0" + (month - 1) : month - 1}05`;
   const [data, set_data] = useState(null);
   const [localNum, setLocalNum] = useState(1);
   const [isLoading, setLoading] = useState(false);
   const END_POINT =
     "https://apis.data.go.kr/B551015/API3_1/raceInfo_1?serviceKey=";
   const API_KEY = process.env.REACT_APP_OPEN_API_ENCODING_KEY;
-  const query = `&pageNo=1&numOfRows=100&meet=${localNum}&rc_month=${year}${month}&_type=json`;
+  const query = `&pageNo=1&numOfRows=10&meet=${localNum}&rc_year=${year}&_type=json`;
   const URL = END_POINT + API_KEY + query;
 
   let currentSum = 0;
@@ -31,15 +31,12 @@ export default function MainPage() {
     } else {
       currentSum--;
     }
-
     raceSum.forEach((each, i) => {
       each.style.transition = `ease-in-out 1s`;
       each.style.transform = `translateX(-${
         each.clientWidth * (currentSum - 1)
       }px)`;
     });
-
-    console.log(currentSum);
   };
 
   const handleRight = () => {
@@ -48,13 +45,10 @@ export default function MainPage() {
     } else {
       currentSum++;
     }
-
     raceSum.forEach((each, i) => {
       each.style.transition = `ease-in-out 1s`;
       each.style.transform = `translateX(-${each.clientWidth * currentSum}px)`;
     });
-
-    console.log(currentSum);
   };
 
   useEffect(() => {
@@ -76,17 +70,17 @@ export default function MainPage() {
   }, [URL, localNum, currentSum]);
 
   return (
-    <div className="relative h-full">
+    <div className="relative h-full mb-10">
       <div className="fixed top-0 z-0 brightness-50">
         <img src="/img/main/main_1.jpg" alt="" width={3500} />
       </div>
-      <div className="container mx-auto relative z-10 bg-white/75 border-2 border-sky-600  my-20 rounded-lg w-10/12">
+      <div className="container mx-auto relative z-10 bg-white/50 border border-white/10 my-10 rounded-lg w-10/12">
         <div className="flex m-5 mb-0">
           <button
             onClick={() => {
               setLocalNum(1);
             }}
-            className={`border-2 border-sky-500 bg-white cursor-pointer px-5 rounded-t-lg`}
+            className={`text-lg border bg-white cursor-pointer px-5 py-1 mr-1 rounded-t-lg`}
           >
             서울
           </button>
@@ -94,7 +88,7 @@ export default function MainPage() {
             onClick={() => {
               setLocalNum(2);
             }}
-            className={`border-2 border-sky-500 bg-white cursor-pointer px-5 rounded-t-lg`}
+            className={`text-lg border bg-white cursor-pointer px-5 py-1 mr-1 rounded-t-lg`}
           >
             제주
           </button>
@@ -102,13 +96,13 @@ export default function MainPage() {
             onClick={() => {
               setLocalNum(3);
             }}
-            className={`border-2 border-sky-500 bg-white cursor-pointer px-5 rounded-t-lg`}
+            className={`text-lg border bg-white cursor-pointer px-5 py-1 mr-1 rounded-t-lg`}
           >
             부산
           </button>
         </div>
         {!isLoading ? (
-          <div className="border-2 border-sky-400 bg-white p-5 m-5 mt-0 rounded-b-md rounded-r-md">
+          <div className=" bg-white p-5 m-5 mt-0 rounded-b-md rounded-r-md">
             <div className="flex items-center">
               <span className="block w-2 h-4 bg-blue-400 text-blue-400 mr-2">
                 *
@@ -117,7 +111,7 @@ export default function MainPage() {
             </div>
           </div>
         ) : data === null ? (
-          <div className="border-2 border-sky-400 bg-white p-5 m-5 mt-0 rounded-b-md rounded-r-md">
+          <div className=" bg-white p-5 m-5 mt-0 rounded-b-md rounded-r-md">
             <div className="flex items-center">
               <span className="block w-2 h-4 bg-blue-400 text-blue-400 mr-2">
                 *
@@ -126,7 +120,7 @@ export default function MainPage() {
             </div>
           </div>
         ) : (
-          <div className="border-2 border-sky-400 bg-white p-5 m-5 mt-0 rounded-b-md rounded-r-md">
+          <div className=" bg-white p-5 m-5 mt-0 rounded-b-md rounded-r-md">
             {data === undefined ? (
               <div>
                 <div className="flex items-center">
@@ -141,237 +135,249 @@ export default function MainPage() {
               </div>
             ) : (
               <div>
-                <div className="flex flex-col relative">
-                  <div className="flex items-center mb-5">
-                    <span className="block w-2 h-4 bg-blue-400 text-blue-400 mr-2">
+                <div className="flex flex-col relative my-5">
+                  <div className="flex items-center border border-x-0 border-t-0 border-blue-100 pb-3 mx-16 text-2xl mb-5">
+                    <span className="block w-2 h-5 bg-blue-400 text-blue-400 mr-2">
                       *
                     </span>
                     <h2>최근경주개요</h2>
                   </div>
-                  <div className="flex justify-between absolute w-full top-20">
+                  <div className="flex justify-between absolute w-full top-56">
                     <button
                       type="click"
                       onClick={handleLeft}
-                      className="relative -left-32 z-20 bg-gray-400/75 hover:bg-gray-500/75 w-20 h-96 rounded-l-lg"
+                      className="relative -left-2 z-20 bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-l-lg"
                     >
-                      &lt;
+                      <img src="/img/icon/left-arrow.png" alt="left-arrow" />
                     </button>
                     <button
                       type="click"
                       onClick={handleRight}
-                      className="relative -right-32 z-20 bg-gray-400/75 hover:bg-gray-500/75 w-20 h-96 rounded-r-lg"
+                      className="relative -right-2 z-20 bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-r-lg"
                     >
-                      &gt;
+                      <img src="/img/icon/right-arrow.png" alt="right-arrow" />
                     </button>
                   </div>
-                  <div className="grid grid-rows-1 grid-flow-col gap-5 overflow-hidden">
+                  <div className="grid grid-rows-1 grid-flow-col gap-5 overflow-hidden mx-16">
                     {data.map((item, i) => (
                       <div key={i}>
-                        <div className="race-summary border-8 border-blue-300 rounded-md text-center w-96">
-                          <div className="grid grid-rows-1 gap-2 justify-center">
-                            <div className="border flex justify-around text-sm">
-                              <p>
-                                경마장 <br />
-                                <span className="text-md font-semibold">
-                                  {item.meet}
-                                </span>
-                              </p>
-                              <p>
-                                경주일자 <br />
-                                <span className="text-md font-semibold">
-                                  {item.rcDate}
-                                </span>
-                              </p>
-                              <p>
-                                경주번호 <br />
-                                <span className="text-md font-semibold">
-                                  {item.rcNo}
-                                </span>
-                              </p>
-                              <p>
-                                경주차수 <br />
-                                <span className="text-md font-semibold">
-                                  {item.ilsu}
-                                </span>
-                              </p>
-                              <p>
-                                경주거리 <br />
-                                <span className="text-md font-semibold">
-                                  {item.rcDist} M
-                                </span>
-                              </p>
+                        <div className="race-summary border-8 border-blue-300 rounded-md text-center w-[42rem] ">
+                          <div className="grid grid-rows-1 grid-flow-col items-center gap-5 m-3 ">
+                            <div className="grid grid-cols-12  h-full">
+                              <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-b-0 border-blue-200">
+                                <div className="col-span-5 row-span-2 m-1 my-2">
+                                  <p className="text-sm">경주일자</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.rcDate}
+                                  </span>
+                                </div>
+                                <div className="col-span-4 m-1 my-2">
+                                  <p className="text-sm">경마장</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.meet}
+                                  </span>
+                                </div>
+                                <div className="col-span-3 m-1 my-2">
+                                  <p className="text-sm">경주번호</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.rcNo}
+                                  </span>
+                                </div>
+                                <div className="col-span-4 m-1 my-2">
+                                  <p className="text-sm">경주차수</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.ilsu}
+                                  </span>
+                                </div>
+                                <div className="col-span-3 m-1 my-2">
+                                  <p className="text-sm">경주거리</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.rcDist} M
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-b-0 border-blue-200">
+                                <div className="col-span-3 m-1 my-2">
+                                  <p className="text-sm">등급조건</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.rank}
+                                  </span>
+                                </div>
+                                <div className="col-span-3 m-1 my-2">
+                                  <p className="text-sm">부담구분</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.budam}
+                                  </span>
+                                </div>
+                                <div className="col-span-3 m-1 my-2">
+                                  <p className="text-sm">연령조건</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.ageCond}
+                                  </span>
+                                </div>
+                                <div className="col-span-3 m-1 my-2">
+                                  <p className="text-sm">경주명</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.rcName}
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-b-0 border-blue-200">
+                                <div className="col-span-4 m-1 my-2">
+                                  <p className="text-sm">주로상태</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.track === undefined
+                                      ? "업데이트중"
+                                      : item.track}
+                                  </span>
+                                </div>
+                                <div className="col-span-4 m-1 my-2">
+                                  <p className="text-sm">함수율</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.waterRate} %
+                                  </span>
+                                </div>
+                                <div className="col-span-4 m-1 my-2">
+                                  <p className="text-sm">날씨</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.weather === undefined
+                                      ? "업데이트중"
+                                      : item.weather}
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-b-0 border-blue-200">
+                                <div className="col-span-4 m-1 my-2">
+                                  <p className="text-sm">1착상금</p>
+                                  <span className="text-sm font-semibold">
+                                    {String(item.chaksun1).slice(0, -4)} 만원
+                                  </span>
+                                </div>
+                                <div className="col-span-4 m-1 my-2">
+                                  <p className="text-sm">2착상금</p>
+                                  <span className="text-sm font-semibold">
+                                    {String(item.chaksun2).slice(0, -4)} 만원
+                                  </span>
+                                </div>
+                                <div className="col-span-4 m-1 my-2">
+                                  <p className="text-sm">3착상금</p>
+                                  <span className="text-sm font-semibold">
+                                    {String(item.chaksun3).slice(0, -4)} 만원
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-b-0 border-blue-200">
+                                <div className="col-span-6 m-1 my-2">
+                                  <p className="text-sm">4착상금</p>
+                                  <span className="text-sm font-semibold">
+                                    {String(item.chaksun4).slice(0, -4)} 만원
+                                  </span>
+                                </div>
+                                <div className="col-span-6 m-1 my-2">
+                                  <p className="text-sm">5착상금</p>
+                                  <span className="text-sm font-semibold">
+                                    {String(item.chaksun5).slice(0, -4)} 만원
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-blue-200">
+                                <div className="col-span-4 m-1 my-2">
+                                  <p className="text-sm">1착부가상금</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.buga1}
+                                  </span>
+                                </div>
+                                <div className="col-span-4 m-1 my-2">
+                                  <p className="text-sm">2착부가상금</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.buga2}
+                                  </span>
+                                </div>
+                                <div className="col-span-4 m-1 my-2">
+                                  <p className="text-sm">3착부가상금</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.buga3}
+                                  </span>
+                                </div>
+                              </div>
                             </div>
-                            <div className="border flex justify-around text-sm">
-                              <p>
-                                등급조건 <br />
-                                <span className="text-md font-semibold">
-                                  {item.rank}
-                                </span>
-                              </p>
-                              <p>
-                                부담구분 <br />
-                                <span className="text-md font-semibold">
-                                  {item.budam}
-                                </span>
-                              </p>
-                              <p>
-                                경주명 <br />
-                                <span className="text-md font-semibold">
-                                  {item.rcName}
-                                </span>
-                              </p>
-                              <p>
-                                함수율 <br />
-                                <span className="text-md font-semibold">
-                                  {item.waterRate} %
-                                </span>
-                              </p>
-                              <p>
-                                주로상태 <br />
-                                <span className="text-md font-semibold">
-                                  {item.track}
-                                </span>
-                              </p>
-                              <p>
-                                연령조건 <br />
-                                <span className="text-md font-semibold">
-                                  {item.ageCond}
-                                </span>
-                              </p>
-                              <p>
-                                날씨 <br />
-                                <span className="text-md font-semibold">
-                                  {item.weather}
-                                </span>
-                              </p>
-                            </div>
-                            <div className="border flex justify-around text-sm">
-                              <p>
-                                1착상금 <br />
-                                <span className="text-md font-semibold">
-                                  {String(item.chaksun1).slice(0, -4)} 만원
-                                </span>
-                              </p>
-                              <p>
-                                2착상금 <br />
-                                <span className="text-md font-semibold">
-                                  {String(item.chaksun2).slice(0, -4)} 만원
-                                </span>
-                              </p>
-                              <p>
-                                3착상금 <br />
-                                <span className="text-md font-semibold">
-                                  {String(item.chaksun3).slice(0, -4)} 만원
-                                </span>
-                              </p>
-                              <p>
-                                4착상금 <br />
-                                <span className="text-md font-semibold">
-                                  {String(item.chaksun4).slice(0, -4)} 만원
-                                </span>
-                              </p>
-                              <p>
-                                5착상금 <br />
-                                <span className="text-md font-semibold">
-                                  {String(item.chaksun5).slice(0, -4)} 만원
-                                </span>
-                              </p>
-                            </div>
-                            <div className="border flex justify-around text-sm">
-                              <p>
-                                1착부가상금 <br />
-                                <span className="text-md font-semibold">
-                                  {item.buga1}
-                                </span>
-                              </p>
-                              <p>
-                                2착부가상금 <br />
-                                <span className="text-md font-semibold">
-                                  {item.buga2}
-                                </span>
-                              </p>
-                              <p>
-                                3착부가상금 <br />
-                                <span className="text-md font-semibold">
-                                  {item.buga3}
-                                </span>
-                              </p>
-                            </div>
-                            <div className="border flex justify-around text-sm">
-                              <p>
-                                단승식 매출액 <br />
-                                <span className="text-md font-semibold">
-                                  {item.winAmt.toLocaleString()} 원
-                                </span>
-                              </p>
-                              <p>
-                                연승식 매출액 <br />
-                                <span className="text-md font-semibold">
-                                  {item.plcAmt.toLocaleString()} 원
-                                </span>
-                              </p>
-                              <p>
-                                복승식 매출액 <br />
-                                <span className="text-md font-semibold">
-                                  {item.qnlAmt.toLocaleString()} 원
-                                </span>
-                              </p>
-                            </div>
-                            <div className="border flex justify-around text-sm">
-                              <p>
-                                복연승식
-                                <br />
-                                매출액 <br />
-                                <span className="text-md font-semibold">
-                                  {item.exaAmt.toLocaleString()} 원
-                                </span>
-                              </p>
-                              <p>
-                                쌍승식
-                                <br />
-                                매출액 <br />
-                                <span className="text-md font-semibold">
-                                  {item.qplAmt.toLocaleString()} 원
-                                </span>
-                              </p>
-                              <p>
-                                삼복승식
-                                <br />
-                                매출액 <br />
-                                <span className="text-md font-semibold">
-                                  {item.tlaAmt.toLocaleString()} 원
-                                </span>
-                              </p>
-                              <p>
-                                삼쌍승식
-                                <br />
-                                매출액 <br />
-                                <span className="text-md font-semibold">
-                                  {item.triAmt.toLocaleString()} 원
-                                </span>
-                              </p>
-                            </div>
-                            <div className="border flex justify-around text-sm">
-                              <p>
-                                합계 매출액 <br />
-                                <span className="text-md font-semibold">
-                                  {item.totalAmt.toLocaleString()} 원
-                                </span>
-                              </p>
-                            </div>
-                            <div className="border flex justify-around text-sm">
-                              <p>
-                                레이팅하한조건 <br />
-                                <span className="text-md font-semibold">
-                                  {item.stRating}
-                                </span>
-                              </p>
-                              <p>
-                                레이팅상한조건 <br />
-                                <span className="text-md font-semibold">
-                                  {item.spRating}
-                                </span>
-                              </p>
+
+                            <div className="grid grid-cols-12 items-center h-full">
+                              <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-b-0 border-blue-200 h-full">
+                                <div className="col-span-6">
+                                  <p className="text-xs">단승식 매출액 </p>
+                                  <span className="text-sm font-semibold">
+                                    {item.winAmt.toLocaleString()} 원
+                                  </span>
+                                </div>
+                                <div className="col-span-6">
+                                  <p className="text-xs">연승식 매출액 </p>
+                                  <span className="text-sm font-semibold">
+                                    {item.plcAmt.toLocaleString()} 원
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-b-0 border-blue-200 h-full">
+                                <div className="col-span-6">
+                                  <p className="text-xs">복승식 매출액 </p>
+                                  <span className="text-sm font-semibold">
+                                    {item.qnlAmt.toLocaleString()} 원
+                                  </span>
+                                </div>
+                                <div className="col-span-6">
+                                  <p className="text-xs">복연승식 매출액</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.exaAmt.toLocaleString()} 원
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-b-0 border-blue-200 h-full">
+                                <div className="col-span-6">
+                                  <p className="text-xs">쌍승식 매출액</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.qplAmt.toLocaleString()} 원
+                                  </span>
+                                </div>
+                                <div className="col-span-6">
+                                  <p className="text-xs">삼복승식 매출액</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.tlaAmt.toLocaleString()} 원
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-b-0 border-blue-200 h-full">
+                                <div className="col-span-6">
+                                  <p className="text-xs">삼쌍승식 매출액</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.triAmt.toLocaleString()} 원
+                                  </span>
+                                </div>
+                                <div className="col-span-6">
+                                  <p className="text-xs">합계 매출액</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.totalAmt.toLocaleString()} 원
+                                  </span>
+                                </div>
+                              </div>
+                              <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-blue-200 h-full">
+                                <div className="col-span-6">
+                                  <p className="text-xs">레이팅하한조건</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.stRating}
+                                  </span>
+                                </div>
+                                <div className="col-span-6">
+                                  <p className="text-xs">레이팅상한조건</p>
+                                  <span className="text-sm font-semibold">
+                                    {item.spRating}
+                                  </span>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -386,7 +392,7 @@ export default function MainPage() {
       </div>
       <div className="container mx-auto relative z-10">
         <ul className="flex justify-center">
-          <li className="flex flex-col items-center border border-blue-300 bg-white w-72 mx-auto p-5 rounded-lg">
+          <li className="park-card flex flex-col items-center border border-blue-300 bg-white w-72 mx-auto p-5 rounded-lg">
             <h2 className="text-2xl font-bold my-5">서울경마</h2>
             <div className="w-44 overflow-hidden rounded-full my-5">
               <img src="/img/main/horse_1.png" alt="" />
@@ -400,7 +406,7 @@ export default function MainPage() {
               </button>
             </Link>
           </li>
-          <li className="flex flex-col items-center border border-blue-300 bg-white w-72 mx-auto p-5 rounded-lg">
+          <li className="park-card flex flex-col items-center border border-blue-300 bg-white w-72 mx-auto p-5 rounded-lg">
             <h2 className="text-2xl font-bold my-5">제주경마</h2>
             <div className="w-44 overflow-hidden rounded-full my-5">
               <img src="/img/main/horse_2.png" alt="" />
@@ -414,7 +420,7 @@ export default function MainPage() {
               </button>
             </Link>
           </li>
-          <li className="flex flex-col items-center border border-blue-300 bg-white w-72 mx-auto p-5 rounded-lg">
+          <li className="park-card flex flex-col items-center border border-blue-300 bg-white w-72 mx-auto p-5 rounded-lg">
             <h2 className="text-2xl font-bold my-5">부산경남경마</h2>
             <div className="w-44 overflow-hidden rounded-full my-5">
               <img src="/img/main/horse_3.png" alt="" />

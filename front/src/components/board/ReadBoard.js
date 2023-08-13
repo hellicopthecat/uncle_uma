@@ -40,7 +40,7 @@ export default function ReadBoard() {
   useEffect(() => {}, [auth, db, boardRef]);
 
   return (
-    <div className="container mx-auto border">
+    <div className="container mx-auto border bg-white rounded-lg">
       <div className="grid grid-cols-5 p-16">
         {!editCont ? (
           <h2 className="col-span-5 text-xl font-semibold border-2 border-x-0 border-t-0 border-blue-100 pb-3 mb-5">

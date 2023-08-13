@@ -56,86 +56,100 @@ export default function RacingPlan() {
     pageNation.push(i);
   }
   return (
-    <div className="container mx-auto">
-      <HorseLocalNav
-        onChangeLocation={(num) => {
-          setLocationNum(num);
-        }}
-      />
-      <h2 className="text-xl font-bold my-10">전국 경마공원 경주계획표</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setNowYear(e.target.year.value);
-          setNowMonth(e.target.month.value.replace(/-/g, ""));
-          setNowDate(e.target.date.value.replace(/-/g, ""));
-        }}
-      >
-        <fieldset className="flex justify-center items-center ">
-          <legend className="hidden">경주계획검색</legend>
-          <h3 className="font-semibold mr-5">경주 계획 검색</h3>
-          <label htmlFor="year">연도</label>
-          <select
-            id="year"
-            name="year"
-            defaultValue={""}
-            className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
-          >
-            <option value="">선택</option>
-            <option value={year - 1}>{year - 1}</option>
-            <option value={year}>{year}</option>
-          </select>
-          <label htmlFor="month">년 / 월</label>
-          <input
-            id="month"
-            type="month"
-            name="month"
-            min={`${year - 1}-${month}`}
-            max={`${year}-${month}`}
-            className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
-          />
-          <label htmlFor="date">년 / 월 / 일</label>
-          <input
-            id="date"
-            type="date"
-            name="date"
-            min={`${year - 2}-${month}-${dateNum}`}
-            max={`${year}-${month}-${dateNum}`}
-            className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
-          />
-          <button
-            type="submit"
-            className="bg-blue-100 py-1 px-4 transition ease-in-out  hover:bg-blue-300 duration-300 rounded-md"
-          >
-            검색
-          </button>
-        </fieldset>
-      </form>
-      {isLoading ? (
-        <p>경기일정을 불러오고 있습니다</p>
-      ) : data ? (
-        <div>
-          <PlanResult data={data} localNum={locationNum} />
-          <div className="my-2">
-            <ul className="flex justify-center">
-              {pageNation.map((num) => (
-                <li
-                  data-id={num}
-                  key={num}
-                  className="border-2 border-x-0 border-y-blue-200 mx-1 px-2 cursor-pointer"
-                  onClick={(e) => {
-                    setCurrentPage(e.target.dataset.id);
-                  }}
-                >
-                  {num}
-                </li>
-              ))}
-            </ul>
+    <div className="bg-horse bg-[center_top_-65rem] bg-no-repeat ">
+      <div className="container mx-auto">
+        <h2 className="text-white text-2xl font-bold my-10">
+          전국 경마공원 경주계획표
+        </h2>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            setNowYear(e.target.year.value);
+            setNowMonth(e.target.month.value.replace(/-/g, ""));
+            setNowDate(e.target.date.value.replace(/-/g, ""));
+          }}
+        >
+          <fieldset className="flex justify-center items-center ">
+            <legend className="hidden">경주계획검색</legend>
+            <h3 className="font-semibold text-white mr-5">경주 계획 검색</h3>
+            <label className="text-white" htmlFor="year">
+              연도
+            </label>
+            <select
+              id="year"
+              name="year"
+              defaultValue={""}
+              className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
+            >
+              <option value="">선택</option>
+              <option value={year - 1}>{year - 1}</option>
+              <option value={year}>{year}</option>
+            </select>
+            <label className="text-white" htmlFor="month">
+              년 / 월
+            </label>
+            <input
+              id="month"
+              type="month"
+              name="month"
+              min={`${year - 1}-${month}`}
+              max={`${year}-${month}`}
+              className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
+            />
+            <label className="text-white" htmlFor="date">
+              년 / 월 / 일
+            </label>
+            <input
+              id="date"
+              type="date"
+              name="date"
+              min={`${year - 2}-${month}-${dateNum}`}
+              max={`${year}-${month}-${dateNum}`}
+              className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
+            />
+            <button
+              type="submit"
+              className="bg-blue-100 py-1 px-4 transition ease-in-out  hover:bg-blue-300 duration-300 rounded-md"
+            >
+              검색
+            </button>
+          </fieldset>
+        </form>
+        <HorseLocalNav
+          onChangeLocation={(num) => {
+            setLocationNum(num);
+          }}
+        />
+        {isLoading ? (
+          <div className="flex justify-center items-center bg-white/50 h-[300px] text-2xl font-bold">
+            <p>경기일정을 불러오고 있습니다</p>
           </div>
-        </div>
-      ) : (
-        <p>데이터를 불러오는데 실패하였습니다. 새로고침 해주세요</p>
-      )}
+        ) : data ? (
+          <div className="flex flex-col items-center pb-20">
+            <PlanResult data={data} localNum={locationNum} />
+            <div className="my-10">
+              <ul className="flex justify-center">
+                {pageNation.map((num) => (
+                  <li
+                    data-id={num}
+                    key={num}
+                    className="border-2 border-blue-200 mx-1 cursor-pointer text-white text-center rounded-full w-[30px]"
+                    onClick={(e) => {
+                      setCurrentPage(e.target.dataset.id);
+                    }}
+                  >
+                    {num}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ) : (
+          <div className="flex justify-center items-center bg-white/50 h-[300px] text-2xl font-bold">
+            <p>데이터를 불러오는데 실패하였습니다. 새로고침 해주세요</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

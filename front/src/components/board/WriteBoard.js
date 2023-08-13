@@ -42,7 +42,7 @@ export default function WriteBoard() {
     }
   };
   return (
-    <div className="container mx-auto border">
+    <div className="container mx-auto border bg-white rounded-lg">
       <div className="grid grid-cols-5 p-16">
         <h2 className="col-span-5 text-xl font-semibold border-2 border-x-0 border-t-0 border-blue-100 pb-3 mb-10">
           <span className="bg-blue-400 text-blue-400 mr-5">*</span>글쓰기

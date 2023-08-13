@@ -1,0 +1,20 @@
+html,
+body {
+  height: 100%;
+}
+main {
+  min-height: calc(100% - 300px);
+}
+.park-card:hover {
+  animation: cardRotate infinite ease-in-out 3s;
+}
+
+@keyframes cardRotate {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
+}

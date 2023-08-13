@@ -99,7 +99,7 @@ export default function DividendRate() {
     searchData();
   }, [URL, pNum, poolData, rcDate, rcNum, localNum, pRows, totalCount, tBlock]);
   return (
-    <div className="container mx-auto my-5">
+    <div className="container mx-auto bg-white p-10 my-5 rounded-lg">
       <div className="flex">
         <span className="w-2 h-8 bg-blue-200  text-blue-200 mr-3">*</span>
         <h2 className="text-2xl font-semibold mb-5">배당률 검색</h2>

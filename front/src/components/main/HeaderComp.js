@@ -16,20 +16,22 @@ export default function HeaderComp({props}) {
   return (
     <div className=" flex justify-around items-center text-white">
       <div className="w-1/3 ml-10">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
+        <button type="click">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+        </button>
       </div>
       <div className="w-1/3 text-center">
         <Link to="/">
@@ -47,7 +49,7 @@ export default function HeaderComp({props}) {
             </li>
           </ul>
         ) : (
-          <ul className="flex justify-end items-center">
+          <ul className="flex justify-end items-center mr-10">
             {props.photoURL === null ? (
               <li className=" mr-2">
                 <svg

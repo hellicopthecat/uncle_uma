@@ -12,14 +12,14 @@ export default function PlanResult({data, localNum}) {
     } else {
       setCity("서울");
     }
-  }, [localNum]);
+  }, [localNum, local]);
 
   return (
-    <div className="container mx-auto">
-      <h2 className="text-xl font-bold my-4">{city} 계획표 결과</h2>
+    <div className="container mx-auto flex flex-col">
+      <h2 className="text-xl font-bold my-4 text-white">{city} 계획표 결과</h2>
       <table className="table-auto text-center border-collapse">
         <thead>
-          <tr className="border-2 border-x-0 border-y-cyan-600 text-xs">
+          <tr className="border-2 border-x-0 border-y-cyan-600 bg-blue-200 text-xs">
             <th className="py-3 px-3">번호</th>
             <th className="py-3 px-2">
               시행
@@ -125,8 +125,8 @@ export default function PlanResult({data, localNum}) {
               key={i}
               className={
                 i % 2 === 0
-                  ? "bg-blue-50 transition ease-in-out hover:bg-blue-200 duration-500"
-                  : "transition ease-in-out hover:bg-blue-100 duration-500"
+                  ? "bg-blue-50 transition ease-in-out hover:bg-blue-300 duration-500"
+                  : "transition ease-in-out bg-blue-200 hover:bg-blue-400 duration-500"
               }
             >
               <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
@@ -195,7 +195,7 @@ export default function PlanResult({data, localNum}) {
               <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
                 <Link
                   to={`${item.rcDate}/${item.rcNo}`}
-                  className="border-2 border-blue-300 px-1 py-1 rounded-lg"
+                  className="border-2 border-indigo-300 px-1 py-1 rounded-lg"
                   state={[item.rcNo, item.rcDate, localNum]}
                 >
                   상세 보기

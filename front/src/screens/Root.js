@@ -19,15 +19,17 @@ export default function Home() {
     });
   }, [user]);
   return (
-    <div className="bg-sky-800">
-      <header className=" relative z-10">
+    <div className="relative bg-sky-800 h-[100vh]">
+      <header className="relative z-10">
         <HeaderComp props={user} />
         <ContenstsNav />
       </header>
-      <main className="my-20">
+      <main className="relative bg-sky-800 ">
         {location.pathname === "/" ? <MainPage /> : <Outlet />}
       </main>
-      <FooterComp />
+      <footer className="relative w-full text-white ">
+        <FooterComp />
+      </footer>
     </div>
   );
 }
