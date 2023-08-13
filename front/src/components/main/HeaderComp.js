@@ -69,13 +69,15 @@ export default function HeaderComp({props}) {
               </li>
             ) : (
               <li className=" mr-2">
-                <img
-                  src={props.photoURL}
-                  alt="프로필이미지"
-                  width={30}
-                  height={30}
-                  className="border-2 border-indigo-300 rounded-full"
-                />
+                <Link to={"editUser/" + props.uid}>
+                  <img
+                    src={props.photoURL}
+                    alt="프로필이미지"
+                    width={30}
+                    height={30}
+                    className="border-2 border-indigo-300 rounded-full"
+                  />
+                </Link>
               </li>
             )}
             <li className=" cursor-pointer mr-5">

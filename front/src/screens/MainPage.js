@@ -70,11 +70,11 @@ export default function MainPage() {
   }, [URL, localNum, currentSum]);
 
   return (
-    <div className="relative h-full mb-10">
+    <div className="relative h-full mb-36">
       <div className="fixed top-0 z-0 brightness-50">
         <img src="/img/main/main_1.jpg" alt="" width={3500} />
       </div>
-      <div className="container mx-auto relative z-10 bg-white/50 border border-white/10 my-10 rounded-lg w-10/12">
+      <div className="container mx-auto relative z-10 bg-white/50 border border-white/10 my-20 rounded-lg w-10/12">
         <div className="flex m-5 mb-0">
           <button
             onClick={() => {
