@@ -14,6 +14,7 @@ import Board from "./screens/Board";
 import WriteBoard from "./components/board/WriteBoard";
 import ReadBoard from "./components/board/ReadBoard";
 import DividendRate from "./components/dividendRate/DividendRate";
+import ChatComp from "./components/chat/ChatComp";
 
 const App = createBrowserRouter([
   {
@@ -31,6 +32,7 @@ const App = createBrowserRouter([
       {path: "board/:id", element: <ReadBoard />},
       {path: "board/write", element: <WriteBoard />},
       {path: "dividendRate", element: <DividendRate />},
+      {path: "chat", element: <ChatComp />},
       {path: "*", element: <ErrorPage />},
     ],
   },

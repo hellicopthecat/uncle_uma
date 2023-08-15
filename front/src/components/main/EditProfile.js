@@ -10,9 +10,6 @@ export default function EditProfile() {
   const [pURL, setPhotoURL] = useState();
   const storage = getStorage();
   const imgRef = ref(storage, "image/" + pURL?.name);
-  console.log(imgRef.fullPath);
-  console.log(imgRef.name);
-  console.log(imgRef.bucket);
 
   const updateUser = async (e) => {
     e.preventDefault();
@@ -40,7 +37,7 @@ export default function EditProfile() {
     }
   }, [user]);
   return (
-    <div className="container mx-auto ">
+    <div className="container mx-auto py-20">
       <h2 className="text-xl font-bold text-center my-10 text-white">
         회원 정보 수정
       </h2>
@@ -84,10 +81,16 @@ export default function EditProfile() {
             </div>
 
             <div className="flex justify-around my-5">
-              <button type="submit" className="border-2 px-5 py-1 rounded-lg">
+              <button
+                type="submit"
+                className="border-2 px-5 py-1 rounded-lg hover:transition hover:ease-in-out hover:bg-blue-300 duration-300"
+              >
                 확인
               </button>
-              <button type="click" className="border-2 px-5 py-1 rounded-lg">
+              <button
+                type="click"
+                className="border-2 px-5 py-1 rounded-lg hover:transition hover:ease-in-out hover:bg-blue-300 duration-300"
+              >
                 취소
               </button>
             </div>

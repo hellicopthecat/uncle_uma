@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 import ContenstsNav from "../components/main/ContentsNav";
 import MainPage from "./MainPage";
+import ScreenBlock from "./ScreenBlock";
 export default function Home() {
   const location = useLocation();
   const [user, setUser] = useState(null);
@@ -19,17 +20,18 @@ export default function Home() {
     });
   }, [user]);
   return (
-    <div className="relative bg-sky-800 h-[100vh]">
+    <div className="relative bg-sky-800 h-full">
       <header className="relative z-10">
         <HeaderComp props={user} />
-        <ContenstsNav />
+        <ContenstsNav props={user} />
       </header>
       <main className="relative bg-sky-800 ">
-        {location.pathname === "/" ? <MainPage /> : <Outlet />}
+        {location.pathname === "/" ? <MainPage /> : <Outlet props={user} />}
       </main>
       <footer className="relative w-full text-white ">
         <FooterComp />
       </footer>
+      <ScreenBlock />
     </div>
   );
 }

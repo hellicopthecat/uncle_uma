@@ -40,8 +40,8 @@ export default function ReadBoard() {
   useEffect(() => {}, [auth, db, boardRef]);
 
   return (
-    <div className="container mx-auto border bg-white rounded-lg">
-      <div className="grid grid-cols-5 p-16">
+    <div className="container mx-auto py-20">
+      <div className="grid grid-cols-5 bg-white p-16 rounded-lg">
         {!editCont ? (
           <h2 className="col-span-5 text-xl font-semibold border-2 border-x-0 border-t-0 border-blue-100 pb-3 mb-5">
             <span className="w-2 bg-blue-400 text-blue-400 mr-5">*</span>{" "}
@@ -87,8 +87,7 @@ export default function ReadBoard() {
             </p>
           ) : (
             <textarea
-              className="border border-blue-100 p-5 pb-10"
-              cols={100}
+              className="border border-blue-100 p-5 pb-10 w-full"
               rows={5}
               value={editDesc}
               onChange={(e) => {

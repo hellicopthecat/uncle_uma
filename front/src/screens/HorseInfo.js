@@ -41,10 +41,7 @@ export default function HorseInfo() {
   }
 
   return (
-    <div className="relative z-0">
-      <div className="absolute -top-56 z-0 brightness-50">
-        <img src="/img/main/horse_4.jpeg" alt="배경이미지" />
-      </div>
+    <div className="relative z-0 bg-horse_4 bg-no-repeat bg-cover bg-origin-border py-20">
       <div className="relative z-10 mb-10">
         <div className="container mx-auto">
           <HorseLocalNav
@@ -79,7 +76,11 @@ export default function HorseInfo() {
         <ul className="flex justify-center mt-10 mb-20">
           {pageNation.map((num) => (
             <li
-              className="border-2  border-blue-300 bg-white cursor-pointer text-center text-blue-400 w-[50px]  mx-2 rounded-full"
+              className={`border-2   bg-white cursor-pointer text-center w-[50px]  mx-2 rounded-full ${
+                Number(currentPage) === num
+                  ? `border-red-500  text-red-400`
+                  : "border-blue-300  text-blue-400"
+              }`}
               key={num}
               data-id={num}
               onClick={(e) => {

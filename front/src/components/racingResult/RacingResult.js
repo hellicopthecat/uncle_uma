@@ -88,7 +88,7 @@ export default function RacingResult() {
   }
 
   return (
-    <div className="relative container mx-auto bg-white p-5 px-10 rounded-md">
+    <div className="relative container mx-auto bg-white p-20 my-20 rounded-md">
       <div className="flex items-center my-5">
         <span className="block bg-blue-300 w-2 h-6 mr-2 "></span>
         <h2 className="text-2xl font-bold">경기 결과</h2>
@@ -104,7 +104,7 @@ export default function RacingResult() {
         <button
           type="click"
           onClick={handleRight}
-          className="relative -right-0 z-20 bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-r-lg"
+          className="relative right-20 z-20 bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-r-lg"
         >
           <img src="/img/icon/right-arrow.png" alt="right-arrow" />
         </button>
@@ -164,7 +164,7 @@ export default function RacingResult() {
                 </div>
               </div>
 
-              <div className=" border-2 border-t-0 border-r-0 border-l-blue-100 border-b-blue-100">
+              <div className="flex flex-col justify-around border-2 border-t-0 border-r-0 border-l-blue-100 border-b-blue-100">
                 <div className="grid grid-cols-1 text-center text-xs border-2 border-t-0 border-x-0 border-b-blue-100 p-2">
                   <div className="grid grid-cols-4 mb-2">
                     <div>

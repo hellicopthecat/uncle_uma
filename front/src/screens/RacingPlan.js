@@ -56,7 +56,7 @@ export default function RacingPlan() {
     pageNation.push(i);
   }
   return (
-    <div className="bg-horse bg-[center_top_-65rem] bg-no-repeat ">
+    <div className="bg-horse bg-no-repeat bg-cover py-20">
       <div className="container mx-auto">
         <h2 className="text-white text-2xl font-bold my-10">
           전국 경마공원 경주계획표
@@ -69,47 +69,55 @@ export default function RacingPlan() {
             setNowDate(e.target.date.value.replace(/-/g, ""));
           }}
         >
-          <fieldset className="flex justify-center items-center ">
+          <fieldset className="flex md:flex-row md:justify-center md:items-center sm:flex-col sm:justify-start sm:items-start">
             <legend className="hidden">경주계획검색</legend>
-            <h3 className="font-semibold text-white mr-5">경주 계획 검색</h3>
-            <label className="text-white" htmlFor="year">
-              연도
-            </label>
-            <select
-              id="year"
-              name="year"
-              defaultValue={""}
-              className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
-            >
-              <option value="">선택</option>
-              <option value={year - 1}>{year - 1}</option>
-              <option value={year}>{year}</option>
-            </select>
-            <label className="text-white" htmlFor="month">
-              년 / 월
-            </label>
-            <input
-              id="month"
-              type="month"
-              name="month"
-              min={`${year - 1}-${month}`}
-              max={`${year}-${month}`}
-              className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
-            />
-            <label className="text-white" htmlFor="date">
-              년 / 월 / 일
-            </label>
-            <input
-              id="date"
-              type="date"
-              name="date"
-              min={`${year - 2}-${month}-${dateNum}`}
-              max={`${year}-${month}-${dateNum}`}
-              className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
-            />
+            <h3 className="font-semibold text-white whitespace-nowrap mr-5">
+              경주 계획 검색
+            </h3>
+            <div className="flex items-center sm:my-2">
+              <label className="text-white whitespace-nowrap" htmlFor="year">
+                연도
+              </label>
+              <select
+                id="year"
+                name="year"
+                defaultValue={""}
+                className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
+              >
+                <option value="">선택</option>
+                <option value={year - 1}>{year - 1}</option>
+                <option value={year}>{year}</option>
+              </select>
+            </div>
+            <div className="flex items-center sm:my-2">
+              <label className="text-white whitespace-nowrap" htmlFor="month">
+                년 / 월
+              </label>
+              <input
+                id="month"
+                type="month"
+                name="month"
+                min={`${year - 1}-${month}`}
+                max={`${year}-${month}`}
+                className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
+              />
+            </div>
+            <div className="flex items-center sm:my-2">
+              <label className="text-white whitespace-nowrap" htmlFor="date">
+                년 / 월 / 일
+              </label>
+              <input
+                id="date"
+                type="date"
+                name="date"
+                min={`${year - 2}-${month}-${dateNum}`}
+                max={`${year}-${month}-${dateNum}`}
+                className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
+              />
+            </div>
             <button
               type="submit"
-              className="bg-blue-100 py-1 px-4 transition ease-in-out  hover:bg-blue-300 duration-300 rounded-md"
+              className="bg-blue-100 py-1 px-4 transition ease-in-out  hover:bg-blue-300 duration-300 rounded-md whitespace-nowrap"
             >
               검색
             </button>
@@ -133,7 +141,11 @@ export default function RacingPlan() {
                   <li
                     data-id={num}
                     key={num}
-                    className="border-2 border-blue-200 mx-1 cursor-pointer text-white text-center rounded-full w-[30px]"
+                    className={`border-2 mx-1 cursor-pointer text-center bg-white rounded-full w-[30px] ${
+                      Number(currentPage) === num
+                        ? `border-red-600 text-red-500`
+                        : `border-blue-600  text-blue-500`
+                    }`}
                     onClick={(e) => {
                       setCurrentPage(e.target.dataset.id);
                     }}
@@ -143,6 +155,10 @@ export default function RacingPlan() {
                 ))}
               </ul>
             </div>
+          </div>
+        ) : data === undefined ? (
+          <div className="flex justify-center items-center bg-white/50 h-[300px] text-2xl font-bold">
+            <p>당일 경기가 진행되지 않았습니다.</p>
           </div>
         ) : (
           <div className="flex justify-center items-center bg-white/50 h-[300px] text-2xl font-bold">

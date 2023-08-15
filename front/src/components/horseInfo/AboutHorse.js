@@ -82,7 +82,7 @@ export default function AboutHorse() {
           <span className="text-indigo-400 bg-indigo-400 mr-3 w-2 h-5"></span>
           <h2 className="text-3xl font-bold">경주마 상세 정보</h2>
         </div>
-        <div className="flex justify-around mb-10">
+        <div className="flex justify-around items-center border-2 border-blue-100 mb-10 py-10 rounded-lg xl:flex-row lg:flex-row md:flex-col sm:flex-col flex-col">
           <ul>
             <li className="mb-5">
               <p className="text-lg font-semibold mb-5">말 이름</p>
@@ -93,7 +93,7 @@ export default function AboutHorse() {
               <h3 className="text-3xl font-bold">{aboutHorse.hrNo}</h3>
             </li>
           </ul>
-          <div className="flex  ml-5">
+          <div className="flex xl:flex-row lg:flex-row md:flex-col sm:flex-col flex-col lg:ml-5">
             <div className="flex flex-col ml-5">
               <p className="text-2xl font-bold mb-3">레이팅</p>
               <p className="text-5xl ">{aboutHorse.rating}</p>
@@ -107,14 +107,16 @@ export default function AboutHorse() {
                 </small>
               </div>
             </div>
-            <BarChart width={200} height={250} data={ratingData}>
-              <CartesianGrid strokeDasharray="0 140" />
-              <XAxis dataKey="hrName" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="data" fill="#8884d8" />
-            </BarChart>
+            <div className="mt-5">
+              <BarChart width={200} height={250} data={ratingData}>
+                <CartesianGrid strokeDasharray="0 140" />
+                <XAxis dataKey="hrName" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="data" fill="#8884d8" />
+              </BarChart>
+            </div>
           </div>
         </div>
 
@@ -156,7 +158,8 @@ export default function AboutHorse() {
         <div className="grid grid-row-4 text-center outline outline-blue-100 rounded-2xl p-5 my-5">
           <div className="grid grid-cols-2  gap-5 my-5">
             <p className="border-2 border-x-0 border-t-0 border-b-blue-300 pb-5">
-              통산착순상금
+              통산 <br />
+              착순상금
             </p>
             <p className="border-2 border-x-0 border-t-0 border-b-blue-300 pb-5">
               말도입가
@@ -167,28 +170,29 @@ export default function AboutHorse() {
 
           <div className="grid grid-cols-8 gap-2 border-2 border-x-0 border-b-0 border-t-sky-900/50 text-xs pt-5 my-5">
             <p className="border-2 border-x-0 border-t-0 border-b-blue-300 pb-5">
-              통산 1착회수
+              통산 <br /> 1착회수
             </p>
             <p className="border-2 border-x-0 border-t-0 border-b-blue-300 pb-5">
-              최근 1년 1착회수
+              최근 1년 <br /> 1착회수
             </p>
             <p className="border-2 border-x-0 border-t-0 border-b-blue-300 pb-5">
-              통산 2착회수
+              통산 <br /> 2착회수
             </p>
             <p className="border-2 border-x-0 border-t-0 border-b-blue-300 pb-5">
-              최근 1년 2착회수
+              최근 1년 <br /> 2착회수
             </p>
             <p className="border-2 border-x-0 border-t-0 border-b-blue-300 pb-5">
-              통산 3착회수
+              통산 <br /> 3착회수
             </p>
             <p className="border-2 border-x-0 border-t-0 border-b-blue-300 pb-5">
-              최근 1년 3착회수
+              최근 1년 <br /> 3착회수
             </p>
             <p className="border-2 border-x-0 border-t-0 border-b-blue-300 pb-5">
-              통산총출주회수
+              통산 <br />
+              총출주회수
             </p>
             <p className="border-2 border-x-0 border-t-0 border-b-blue-300 pb-5">
-              최근 1년 총 출주 회수
+              최근 1년 <br /> 총 출주 회수
             </p>
             <p className="text-xl font-semibold">{aboutHorse.ord1CntT} 회</p>
             <p className="text-xl font-semibold">{aboutHorse.ord1CntY} 회</p>

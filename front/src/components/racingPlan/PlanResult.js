@@ -15,7 +15,7 @@ export default function PlanResult({data, localNum}) {
   }, [localNum, local]);
 
   return (
-    <div className="container mx-auto flex flex-col">
+    <div className="container mx-auto flex flex-col md:items-stretch sm:items-center">
       <h2 className="text-xl font-bold my-4 text-white">{city} 계획표 결과</h2>
       <table className="table-auto text-center border-collapse">
         <thead>
@@ -169,19 +169,19 @@ export default function PlanResult({data, localNum}) {
                 {item.ageCond}
               </td>
               <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
-                {item.chaksun1}
+                {String(item.chaksun1).slice(0, -4)}만원
               </td>
               <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
-                {item.chaksun2}
+                {String(item.chaksun2).slice(0, -4)}만원
               </td>
               <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
-                {item.chaksun3}
+                {String(item.chaksun3).slice(0, -4)}만원
               </td>
               <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
-                {item.chaksun4}
+                {String(item.chaksun4).slice(0, -4)}만원
               </td>
               <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
-                {item.chaksun5}
+                {String(item.chaksun5).slice(0, -4)}만원
               </td>
               <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-sm py-3">
                 {item.buga1}
@@ -195,7 +195,7 @@ export default function PlanResult({data, localNum}) {
               <td className="border-2 border-x-0 border-t-0 border-b-sky-600/50 text-xs py-3">
                 <Link
                   to={`${item.rcDate}/${item.rcNo}`}
-                  className="border-2 border-indigo-300 px-1 py-1 rounded-lg"
+                  className="border-2 border-indigo-300 px-1 py-1 rounded-lg whitespace-nowrap"
                   state={[item.rcNo, item.rcDate, localNum]}
                 >
                   상세 보기

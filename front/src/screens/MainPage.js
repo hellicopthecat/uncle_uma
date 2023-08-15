@@ -70,17 +70,14 @@ export default function MainPage() {
   }, [URL, localNum, currentSum]);
 
   return (
-    <div className="relative h-full mb-36">
-      <div className="fixed top-0 z-0 brightness-50">
-        <img src="/img/main/main_1.jpg" alt="" width={3500} />
-      </div>
-      <div className="container mx-auto relative z-10 bg-white/50 border border-white/10 my-20 rounded-lg w-10/12">
-        <div className="flex m-5 mb-0">
+    <div className="relative flex flex-col items-center bg-main_1 bg-no-repeat bg-cover h-full p-20">
+      <div className="container sm:mx-auto relative z-10 bg-white/50 border border-white/10 mb-20  rounded-lg sm:w-10/12 w-[500px]">
+        <div className="flex md:flex-row flex-col m-5 mb-0">
           <button
             onClick={() => {
               setLocalNum(1);
             }}
-            className={`text-lg border bg-white cursor-pointer px-5 py-1 mr-1 rounded-t-lg`}
+            className={`text-lg whitespace-nowrap border bg-white cursor-pointer px-5 py-1 lg:mr-1 md:mr-1 sm:mr-1 rounded-t-lg`}
           >
             서울
           </button>
@@ -88,7 +85,7 @@ export default function MainPage() {
             onClick={() => {
               setLocalNum(2);
             }}
-            className={`text-lg border bg-white cursor-pointer px-5 py-1 mr-1 rounded-t-lg`}
+            className={`text-lg whitespace-nowrap border bg-white cursor-pointer px-5 py-1 lg:mr-1 md:mr-1 sm:mr-1 rounded-t-lg`}
           >
             제주
           </button>
@@ -96,22 +93,20 @@ export default function MainPage() {
             onClick={() => {
               setLocalNum(3);
             }}
-            className={`text-lg border bg-white cursor-pointer px-5 py-1 mr-1 rounded-t-lg`}
+            className={`text-lg whitespace-nowrap border bg-white cursor-pointer px-5 py-1 lg:mr-1 md:mr-1 sm:mr-1 rounded-t-lg`}
           >
             부산
           </button>
         </div>
         {!isLoading ? (
-          <div className=" bg-white p-5 m-5 mt-0 rounded-b-md rounded-r-md">
-            <div className="flex items-center">
-              <span className="block w-2 h-4 bg-blue-400 text-blue-400 mr-2">
-                *
-              </span>
+          <div className=" bg-white p-5 m-5 mt-0 rounded-b-md md:rounded-r-md">
+            <div className="flex items-center sm:text-2xl border border-x-0 border-t-0 border-blue-100 pb-3 sm:mx-16 mb-5 ">
+              <span className="block w-2 h-4 bg-blue-400 text-blue-400 mr-2"></span>
               <p>로딩중</p>
             </div>
           </div>
         ) : data === null ? (
-          <div className=" bg-white p-5 m-5 mt-0 rounded-b-md rounded-r-md">
+          <div className=" bg-white p-5 m-5 mt-0 rounded-b-md md:rounded-r-md">
             <div className="flex items-center">
               <span className="block w-2 h-4 bg-blue-400 text-blue-400 mr-2">
                 *
@@ -120,26 +115,22 @@ export default function MainPage() {
             </div>
           </div>
         ) : (
-          <div className=" bg-white p-5 m-5 mt-0 rounded-b-md rounded-r-md">
+          <div className=" bg-white p-5 m-5 mt-0 rounded-b-md md:rounded-r-md">
             {data === undefined ? (
               <div>
-                <div className="flex items-center">
-                  <span className="block w-2 h-4 bg-blue-400 text-blue-400 mr-2">
-                    *
-                  </span>
-                  <span className="text-lg font-medium">
+                <div className="flex items-center sm:text-2xl border border-x-0 border-t-0 border-blue-100 pb-3 sm:mx-16 mb-5 ">
+                  <span className="block w-2 h-4 bg-blue-400 text-blue-400 mr-2"></span>
+                  <p className="text-lg font-medium">
                     최근경기데이터가 업로드되지 않았거나 경기가 이뤄지지
                     않았습니다.
-                  </span>
+                  </p>
                 </div>
               </div>
             ) : (
               <div>
                 <div className="flex flex-col relative my-5">
-                  <div className="flex items-center border border-x-0 border-t-0 border-blue-100 pb-3 mx-16 text-2xl mb-5">
-                    <span className="block w-2 h-5 bg-blue-400 text-blue-400 mr-2">
-                      *
-                    </span>
+                  <div className="flex items-center sm:text-2xl border border-x-0 border-t-0 border-blue-100 pb-3 sm:mx-16 mb-5 ">
+                    <span className="block w-2 h-5 bg-blue-400 text-blue-400 mr-2"></span>
                     <h2>최근경주개요</h2>
                   </div>
                   <div className="flex justify-between absolute w-full top-56">
@@ -158,11 +149,11 @@ export default function MainPage() {
                       <img src="/img/icon/right-arrow.png" alt="right-arrow" />
                     </button>
                   </div>
-                  <div className="grid grid-rows-1 grid-flow-col gap-5 overflow-hidden mx-16">
+                  <div className="grid grid-rows-1 grid-flow-col gap-5 overflow-hidden mx-16 ">
                     {data.map((item, i) => (
                       <div key={i}>
-                        <div className="race-summary border-8 border-blue-300 rounded-md text-center w-[42rem] ">
-                          <div className="grid grid-rows-1 grid-flow-col items-center gap-5 m-3 ">
+                        <div className="race-summary border-8 border-blue-300 rounded-md text-center sm:w-[42rem] w-96 ">
+                          <div className="grid grid-rows-1 sm:grid-flow-col grid-flow-row items-center gap-5 m-3 ">
                             <div className="grid grid-cols-12  h-full">
                               <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-b-0 border-blue-200">
                                 <div className="col-span-5 row-span-2 m-1 my-2">
@@ -391,10 +382,12 @@ export default function MainPage() {
         )}
       </div>
       <div className="container mx-auto relative z-10">
-        <ul className="flex justify-center">
-          <li className="park-card flex flex-col items-center border border-blue-300 bg-white w-72 mx-auto p-5 rounded-lg">
-            <h2 className="text-2xl font-bold my-5">서울경마</h2>
-            <div className="w-44 overflow-hidden rounded-full my-5">
+        <ul className="flex justify-around lg:flex-row md:flex-row sm:flex-col sm:items-center flex-col">
+          <li className="park-card flex flex-col items-center border border-blue-300 bg-white lg:w-80 md:w-72 sm:w-96 w-36 sm:m-2 m-2 mx-auto p-5 rounded-lg">
+            <h2 className="lg:text-2xl md:text-base sm:text-sm text-xs lg:font-bold md:font-normal sm:font-light lg:my-5 md:my-3 sm:my-1 my-1">
+              서울경마
+            </h2>
+            <div className="lg:w-44 md:w-36 sm:w-28 w-20 overflow-hidden rounded-full lg:my-5 md:my-3 sm:my-1">
               <img src="/img/main/horse_1.png" alt="" />
             </div>
             <Link to="">
@@ -406,9 +399,11 @@ export default function MainPage() {
               </button>
             </Link>
           </li>
-          <li className="park-card flex flex-col items-center border border-blue-300 bg-white w-72 mx-auto p-5 rounded-lg">
-            <h2 className="text-2xl font-bold my-5">제주경마</h2>
-            <div className="w-44 overflow-hidden rounded-full my-5">
+          <li className="park-card flex flex-col items-center border border-blue-300 bg-white lg:w-80 md:w-72 sm:w-96 w-36 sm:m-2 m-2 mx-auto p-5 rounded-lg">
+            <h2 className="lg:text-2xl md:text-base sm:text-sm text-xs lg:font-bold md:font-normal sm:font-light lg:my-5 md:my-3 sm:my-1 my-1">
+              제주경마
+            </h2>
+            <div className="lg:w-44 md:w-36 sm:w-28 w-20 overflow-hidden rounded-full lg:my-5 md:my-3 sm:my-1">
               <img src="/img/main/horse_2.png" alt="" />
             </div>
             <Link to="">
@@ -420,9 +415,11 @@ export default function MainPage() {
               </button>
             </Link>
           </li>
-          <li className="park-card flex flex-col items-center border border-blue-300 bg-white w-72 mx-auto p-5 rounded-lg">
-            <h2 className="text-2xl font-bold my-5">부산경남경마</h2>
-            <div className="w-44 overflow-hidden rounded-full my-5">
+          <li className="park-card flex flex-col items-center border border-blue-300 bg-white lg:w-80 md:w-72 sm:w-96 w-36 sm:m-2 m-2 mx-auto p-5 rounded-lg">
+            <h2 className="lg:text-2xl md:text-base sm:text-sm text-xs lg:font-bold md:font-normal sm:font-light lg:my-5 md:my-3 sm:my-1 my-1">
+              부산경남경마
+            </h2>
+            <div className="lg:w-44 md:w-36 sm:w-28 w-20 overflow-hidden rounded-full lg:my-5 md:my-3 sm:my-1">
               <img src="/img/main/horse_3.png" alt="" />
             </div>
             <Link to="">

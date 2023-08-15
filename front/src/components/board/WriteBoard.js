@@ -42,19 +42,20 @@ export default function WriteBoard() {
     }
   };
   return (
-    <div className="container mx-auto border bg-white rounded-lg">
-      <div className="grid grid-cols-5 p-16">
+    <div className="container mx-auto py-20">
+      <div className="grid grid-cols-5 bg-white p-16 rounded-lg">
         <h2 className="col-span-5 text-xl font-semibold border-2 border-x-0 border-t-0 border-blue-100 pb-3 mb-10">
           <span className="bg-blue-400 text-blue-400 mr-5">*</span>글쓰기
         </h2>
         <div className="col-span-5">
-          <form className=" relative flex justify-center" onSubmit={addArticle}>
-            <fieldset>
+          <form className="relative flex justify-center" onSubmit={addArticle}>
+            <fieldset className="container mx-auto">
               <legend className="hidden">글쓰기</legend>
-              <div className="flex flex-col">
-                <label htmlFor="title" className="mb-5">
-                  <span className="bg-blue-200 text-blue-200 mr-2">*</span>제목
-                </label>
+              <div className="flex flex-col mx-auto">
+                <div className="flex items-center mb-5">
+                  <span className="block w-2 h-5 bg-blue-200 text-blue-200 mr-2"></span>
+                  <label htmlFor="title">제목</label>
+                </div>
                 <input
                   id="title"
                   type="text"
@@ -63,13 +64,14 @@ export default function WriteBoard() {
                   onChange={(e) => {
                     setBTitle(e.target.value);
                   }}
-                  className="border border-blue-200 rounded-lg p-2 pl-5"
+                  className="mx-auto border border-blue-200 md:w-3/4 sm:w-3/4 rounded-lg p-2 pl-5"
                 />
               </div>
-              <div className="flex flex-col py-5">
-                <label htmlFor="contentsText" className="mb-5">
-                  <span className="bg-blue-200 text-blue-200 mr-2">*</span> 본문
-                </label>
+              <div className="flex flex-col  mx-auto py-5">
+                <div className="flex items-center mb-5">
+                  <span className="block w-2 h-5 bg-blue-200 text-blue-200 mr-2"></span>
+                  <label htmlFor="contentsText">본문</label>
+                </div>
                 <textarea
                   id="contentsText"
                   name="contentsText"
@@ -79,10 +81,10 @@ export default function WriteBoard() {
                   onChange={(e) => {
                     setBContext(e.target.value);
                   }}
-                  className="border border-blue-200 rounded-lg p-5"
+                  className="mx-auto border border-blue-200 md:w-3/4 sm:w-3/4 rounded-lg p-5"
                 ></textarea>
               </div>
-              <div className="absolute right-36">
+              <div className="absolute lg:right-44 md:right-20 sm:right-16">
                 <button
                   type="submit"
                   className="border border-blue-200 bg-indigo-100/75 rounded-lg px-3 py-1 ml-5"

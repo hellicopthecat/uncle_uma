@@ -15,7 +15,6 @@ export default function LoginComp() {
 
   const [mailCk, setMailCk] = useState(0);
   const [pwCk, setPwCk] = useState(0);
-  const [atvLogiBtn, setAtvLoginBtn] = useState(0);
 
   useEffect(() => {
     const emailRegExp =

@@ -9,7 +9,7 @@ export default function HorseDetail({data}) {
     horseList.push(
       <li
         key={horseData[i].hrNo}
-        className=" border-2 border-blue-100 bg-white p-3 rounded-md"
+        className=" border-2 border-blue-100 bg-white p-3 rounded-md hover:transition hover:ease-in-out hover:scale-125 hover:text-red-600 hover:bg-gray-300 hover:text-lg duration-300"
       >
         <Link to={`/horseDetail/${horseData[i].hrNo}`} state={horseData[i]}>
           <h2>{horseData[i].hrName}</h2>

@@ -29,7 +29,7 @@ export default function HorseDetaiNav({onChangeLocation}) {
 
   return (
     <nav>
-      <ul className="flex">{local}</ul>
+      <ul className="flex my-5">{local}</ul>
     </nav>
   );
 }

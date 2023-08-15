@@ -80,36 +80,44 @@ export default function DividendRate() {
     );
   }
 
-  useEffect(() => {
-    const searchData = async (e) => {
-      try {
-        const response = await (await fetch(URL)).json();
-        if (pNum > e_pageNum) {
-          set_pNum(e_pageNum);
-        }
-        setTotalCount(response.response.body.totalCount);
-        setRateData(response.response.body.items.item);
-      } catch (error) {
-        console.log(error);
-        setRateData(null);
-        setIsLoad(false);
+  const searchData = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await (await fetch(URL)).json();
+      if (pNum > e_pageNum) {
+        set_pNum(e_pageNum);
       }
-    };
-
-    searchData();
-  }, [URL, pNum, poolData, rcDate, rcNum, localNum, pRows, totalCount, tBlock]);
+      setTotalCount(response.response.body.totalCount);
+      setRateData(response.response.body.items.item);
+    } catch (error) {
+      console.log(error);
+      setRateData(null);
+      setIsLoad(false);
+    }
+  };
+  useEffect(() => {}, [
+    URL,
+    pNum,
+    poolData,
+    rcDate,
+    rcNum,
+    localNum,
+    pRows,
+    totalCount,
+    tBlock,
+  ]);
   return (
-    <div className="container mx-auto bg-white p-10 my-5 rounded-lg">
+    <div className="container mx-auto bg-white p-10  my-10 rounded-lg">
       <div className="flex">
         <span className="w-2 h-8 bg-blue-200  text-blue-200 mr-3">*</span>
         <h2 className="text-2xl font-semibold mb-5">배당률 검색</h2>
       </div>
-      <div className="flex justify-center border border-x-0 border-t-0 border-blue-200 pb-2 mb-5">
-        <form>
-          <fieldset className="flex justify-between items-center">
+      <div className="flex lg:justify-center border border-x-0 border-t-0 border-blue-200 pb-2 mb-5 ">
+        <form onSubmit={searchData}>
+          <fieldset className="flex lg:items-center lg:flex-row md:flex-col md:items-start sm:flex-col justify-between ">
             <legend className="hidden">배당률 검색</legend>
-            <div className="mx-10">
-              <label htmlFor="pool" className="mr-5">
+            <div className="flex items-center mx-3 md:my-2 sm:my-1">
+              <label htmlFor="pool" className=" whitespace-nowrap mr-5">
                 승식구분
               </label>
               <select
@@ -131,8 +139,8 @@ export default function DividendRate() {
                 <option value={"TRI"}>삼쌍승식</option>
               </select>
             </div>
-            <div className="mx-10">
-              <label htmlFor="d_date" className="mr-5">
+            <div className="flex items-center mx-3 md:my-2 sm:my-1">
+              <label htmlFor="d_date" className=" whitespace-nowrap mr-5">
                 날짜
               </label>
               <input
@@ -148,8 +156,8 @@ export default function DividendRate() {
                 className="border border-blue-400"
               />
             </div>
-            <div className="mx-10">
-              <label htmlFor="rcNum" className="mr-5">
+            <div className="flex items-center mx-3 md:my-2 sm:my-1">
+              <label htmlFor="rcNum" className=" whitespace-nowrap mr-5">
                 경주번호
               </label>
               <select
@@ -165,8 +173,8 @@ export default function DividendRate() {
                 {rcNumList}
               </select>
             </div>
-            <div className="mx-10">
-              <label htmlFor="rcLocal" className="mr-5">
+            <div className="flex items-center mx-3 md:my-2 sm:my-1">
+              <label htmlFor="rcLocal" className=" whitespace-nowrap mr-5">
                 경기 지역
               </label>
               <select
@@ -184,8 +192,8 @@ export default function DividendRate() {
                 <option value="3">부산</option>
               </select>
             </div>
-            <div className="mx-10">
-              <label htmlFor="pRow" className="mr-5">
+            <div className="flex items-center mx-3 md:my-2 sm:my-1">
+              <label htmlFor="pRow" className=" whitespace-nowrap mr-5">
                 개수
               </label>
               <select
@@ -204,6 +212,12 @@ export default function DividendRate() {
                 <option value="30">30</option>
               </select>
             </div>
+            <button
+              type="submit"
+              className="bg-blue-200 rounded-lg px-3 py-1 whitespace-nowrap"
+            >
+              검색
+            </button>
           </fieldset>
         </form>
       </div>
@@ -211,7 +225,9 @@ export default function DividendRate() {
       {rateData === undefined ? (
         <p>
           날짜를 입력해주세요.
-          <br /> 최근 경기 데이터는 아직 업로드가 되지 않을 수 있습니다.
+          <br />
+          평일에는 경기가 없습니다. 최근 경기 데이터는 아직 업로드가 되지 않을
+          수 있습니다.
         </p>
       ) : !isLoad || rateData === null ? (
         <p>

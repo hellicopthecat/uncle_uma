@@ -15,7 +15,7 @@ export default function HeaderComp({props}) {
   };
   return (
     <div className=" flex justify-around items-center text-white">
-      <div className="w-1/3 ml-10">
+      <div className="w-1/3 md:ml-10 ml-5">
         <button type="click">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -33,25 +33,25 @@ export default function HeaderComp({props}) {
           </svg>
         </button>
       </div>
-      <div className="w-1/3 text-center">
+      <div className="w-1/3 min-w-max text-center">
         <Link to="/">
-          <h1 className="text-4xl font-extrabold p-5">말랑말랑 경마</h1>
+          <h1 className="text-4xl font-extrabold p-5">말랑말랑 레이스</h1>
         </Link>
       </div>
-      <div className="w-1/3">
+      <div className="w-1/3 min-w-max md:mr-10 mr-5">
         {props === null ? (
-          <ul className="flex justify-end mr-10">
-            <li className=" cursor-pointer mr-5">
+          <ul className="flex justify-end items-center">
+            <li className=" cursor-pointer ml-10">
               <Link to="/login">로그인</Link>
             </li>
-            <li className=" cursor-pointer mr-5">
+            <li className=" cursor-pointer ml-10">
               <Link to="/join">회원가입</Link>
             </li>
           </ul>
         ) : (
-          <ul className="flex justify-end items-center mr-10">
+          <ul className="flex justify-end items-center">
             {props.photoURL === null ? (
-              <li className=" mr-2">
+              <li className=" ml-10">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -68,7 +68,7 @@ export default function HeaderComp({props}) {
                 </svg>
               </li>
             ) : (
-              <li className=" mr-2">
+              <li className=" ml-10">
                 <Link to={"editUser/" + props.uid}>
                   <img
                     src={props.photoURL}
@@ -80,7 +80,7 @@ export default function HeaderComp({props}) {
                 </Link>
               </li>
             )}
-            <li className=" cursor-pointer mr-5">
+            <li className=" cursor-pointer ml-10">
               {props.displayName === null ? (
                 <Link to={"editUser/" + props.uid}>
                   <h1 className="text-sm">{props.email}님의 프로필</h1>
@@ -91,7 +91,7 @@ export default function HeaderComp({props}) {
                 </Link>
               )}
             </li>
-            <li className="cursor-pointer mr-5">
+            <li className="cursor-pointer ml-10">
               <h1 onClick={handleLogOut}>로그아웃</h1>
             </li>
           </ul>
