@@ -1,5 +1,8 @@
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+// import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 
 export default function MainPage() {
   const year = new Date().getFullYear();
@@ -31,7 +34,7 @@ export default function MainPage() {
     } else {
       currentSum--;
     }
-    raceSum.forEach((each, i) => {
+    raceSum.forEach((each) => {
       each.style.transition = `ease-in-out 1s`;
       each.style.transform = `translateX(-${
         each.clientWidth * (currentSum - 1)
@@ -45,11 +48,20 @@ export default function MainPage() {
     } else {
       currentSum++;
     }
-    raceSum.forEach((each, i) => {
+    raceSum.forEach((each) => {
       each.style.transition = `ease-in-out 1s`;
       each.style.transform = `translateX(-${each.clientWidth * currentSum}px)`;
     });
   };
+
+  // const settings = {
+  //   arrow: true,
+  //   dots: true,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 1,
+  //   slidesToScroll: 1,
+  // };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,7 +83,7 @@ export default function MainPage() {
 
   return (
     <div className="relative flex flex-col items-center bg-main_1 bg-no-repeat bg-cover h-full p-20">
-      <div className="container sm:mx-auto relative z-10 bg-white/50 border border-white/10 mb-20  rounded-lg sm:w-10/12 w-[500px]">
+      <div className="container sm:mx-auto relative z-10 bg-white/50 border border-white/10 mb-20  rounded-lg lg:w-full sm:w-10/12  ">
         <div className="flex md:flex-row flex-col m-5 mb-0">
           <button
             onClick={() => {
@@ -152,7 +164,7 @@ export default function MainPage() {
                   <div className="grid grid-rows-1 grid-flow-col gap-5 overflow-hidden mx-16 ">
                     {data.map((item, i) => (
                       <div key={i}>
-                        <div className="race-summary border-8 border-blue-300 rounded-md text-center sm:w-[42rem] w-96 ">
+                        <div className="race-summary border-8 border-blue-300 rounded-md text-center  sm:w-[42rem] w-full ">
                           <div className="grid grid-rows-1 sm:grid-flow-col grid-flow-row items-center gap-5 m-3 ">
                             <div className="grid grid-cols-12  h-full">
                               <div className="col-span-12 grid grid-cols-12 items-center border border-x-0 border-b-0 border-blue-200">

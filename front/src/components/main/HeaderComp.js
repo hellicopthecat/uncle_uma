@@ -1,14 +1,15 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {getAuth, signOut} from "firebase/auth";
 import {useEffect} from "react";
 
 export default function HeaderComp({props}) {
+  const navigate = useNavigate();
   useEffect(() => {}, [props]);
   const handleLogOut = () => {
     const auth = getAuth();
     try {
       signOut(auth);
-      window.location.href = "/";
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

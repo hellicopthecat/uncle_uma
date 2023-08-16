@@ -1,9 +1,9 @@
 import {getAuth, updateProfile} from "firebase/auth";
 import {useEffect, useState} from "react";
 import {getDownloadURL, getStorage, ref, uploadBytes} from "firebase/storage";
-import {useLocation} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 export default function EditProfile() {
-  const location = useLocation();
+  const navigate = useNavigate();
   const auth = getAuth();
   const user = auth.currentUser;
   const [dpName, setDisplayName] = useState("");
@@ -21,7 +21,7 @@ export default function EditProfile() {
         photoURL: response,
       });
       alert("수정완료");
-      window.location.href = location.pathname;
+      navigate("/");
     } catch (error) {
       const errCode = error.code;
       const errMsg = error.message;

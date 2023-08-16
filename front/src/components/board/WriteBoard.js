@@ -1,9 +1,11 @@
 import {getAuth} from "firebase/auth";
 import {getFirestore, addDoc, collection} from "firebase/firestore";
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 export default function WriteBoard() {
   const db = getFirestore();
   const auth = getAuth();
+  const navigate = useNavigate();
   const cUser = auth.currentUser;
   const [bTitle, setBTitle] = useState();
   const [bContext, setBContext] = useState();
@@ -25,7 +27,6 @@ export default function WriteBoard() {
 
   const addArticle = async (e) => {
     e.preventDefault();
-
     try {
       await addDoc(collection(db, "board"), {
         edit: false,
@@ -36,7 +37,7 @@ export default function WriteBoard() {
         title: bTitle,
         textContent: bContext,
       });
-      window.location.href = "/board";
+      navigate("/board");
     } catch (error) {
       console.log(error);
     }
@@ -95,7 +96,7 @@ export default function WriteBoard() {
                   type="click"
                   className="border border-blue-200 bg-indigo-100/75 rounded-lg px-3 py-1 ml-5"
                   onClick={() => {
-                    window.location.pathname = "/board";
+                    navigate("/board");
                   }}
                 >
                   취소

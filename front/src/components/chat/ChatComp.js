@@ -1,8 +1,10 @@
 import {useEffect, useRef, useState} from "react";
 import {io} from "socket.io-client";
 import {getAuth} from "firebase/auth";
+import {useNavigate} from "react-router-dom";
 export default function ChatComp() {
   const auth = getAuth();
+  const navigate = useNavigate();
   const currentUser = auth.currentUser;
   const createRoom = useRef(null);
   const chatRoom = useRef(null);
@@ -24,7 +26,7 @@ export default function ChatComp() {
 
   const disConnect = () => {
     socket.disconnect();
-    window.location.reload("/chat");
+    navigate("/chat");
   };
 
   const sendMsg = () => {
@@ -44,13 +46,13 @@ export default function ChatComp() {
     }
     if (socket) {
       const handleWelcome = () => {
-        set_preMsg((msg) => [...msg, `${`너`}님이 대화방에 들어왔습니다.`]);
+        set_preMsg((msg) => [...msg, `${`00`}님이 대화방에 들어왔습니다.`]);
       };
       const handleSendMsg = (val) => {
         setChatText((prevMsg) => [...prevMsg, val]);
       };
       const handleBye = () => {
-        set_preMsg((msg) => [...msg, `${`너`}님이 대화방을 나갔습니다.`]);
+        set_preMsg((msg) => [...msg, `${`00`}님이 대화방을 나갔습니다.`]);
       };
 
       socket.on("welcome", handleWelcome);

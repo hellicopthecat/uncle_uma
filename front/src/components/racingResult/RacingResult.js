@@ -32,7 +32,6 @@ export default function RacingResult() {
         each.clientWidth * (currentDetail - 1)
       }px)`;
     });
-    console.log(currentDetail);
   };
   const handleRight = () => {
     if (currentDetail >= raceDetailCont.length) {
@@ -46,7 +45,6 @@ export default function RacingResult() {
         each.clientWidth * currentDetail
       }px)`;
     });
-    console.log(currentDetail);
   };
 
   useEffect(() => {
@@ -66,7 +64,7 @@ export default function RacingResult() {
       }
     };
     fetchRCResult();
-  }, [location, URL]);
+  }, [location, URL, currentDetail]);
 
   const dataChacksun = [];
   const dataBuga = [];

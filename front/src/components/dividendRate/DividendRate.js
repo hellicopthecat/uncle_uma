@@ -14,7 +14,7 @@ export default function DividendRate() {
 
   const [pNum, set_pNum] = useState(1);
   const [pRows, set_pRows] = useState("10");
-  const [poolData, setPoolData] = useState("WIN");
+  const [poolData, setPoolData] = useState("");
   const [rcDate, setRcDate] = useState(DATE);
   const [rcNum, setRcNum] = useState(1);
   const [localNum, setLocationNum] = useState(1);
@@ -95,7 +95,23 @@ export default function DividendRate() {
       setIsLoad(false);
     }
   };
-  useEffect(() => {}, [
+  useEffect(() => {
+    const searchData = async (e) => {
+      try {
+        const response = await (await fetch(URL)).json();
+        if (pNum > e_pageNum) {
+          set_pNum(e_pageNum);
+        }
+        setTotalCount(response.response.body.totalCount);
+        setRateData(response.response.body.items.item);
+      } catch (error) {
+        console.log(error);
+        setRateData(null);
+        setIsLoad(false);
+      }
+    };
+    searchData();
+  }, [
     URL,
     pNum,
     poolData,
@@ -105,7 +121,9 @@ export default function DividendRate() {
     pRows,
     totalCount,
     tBlock,
+    e_pageNum,
   ]);
+  console.log(poolData);
   return (
     <div className="container mx-auto bg-white p-10  my-10 rounded-lg">
       <div className="flex">
@@ -116,29 +134,7 @@ export default function DividendRate() {
         <form onSubmit={searchData}>
           <fieldset className="flex lg:items-center lg:flex-row md:flex-col md:items-start sm:flex-col justify-between ">
             <legend className="hidden">배당률 검색</legend>
-            <div className="flex items-center mx-3 md:my-2 sm:my-1">
-              <label htmlFor="pool" className=" whitespace-nowrap mr-5">
-                승식구분
-              </label>
-              <select
-                id="pool"
-                name="pool"
-                defaultValue="WIN"
-                onChange={(e) => {
-                  set_pNum(1);
-                  setPoolData(e.target.value);
-                }}
-                className="border border-blue-400"
-              >
-                <option value={"WIN"}>단승식</option>
-                <option value={"PLC"}>연승식</option>
-                <option value={"QNL"}>복승식</option>
-                <option value={"EXA"}>쌍승식</option>
-                <option value={"QPL"}>복연승식</option>
-                <option value={"TLA"}>삼복승식</option>
-                <option value={"TRI"}>삼쌍승식</option>
-              </select>
-            </div>
+
             <div className="flex items-center mx-3 md:my-2 sm:my-1">
               <label htmlFor="d_date" className=" whitespace-nowrap mr-5">
                 날짜
@@ -155,6 +151,30 @@ export default function DividendRate() {
                 }}
                 className="border border-blue-400"
               />
+            </div>
+            <div className="flex items-center mx-3 md:my-2 sm:my-1">
+              <label htmlFor="pool" className=" whitespace-nowrap mr-5">
+                승식구분
+              </label>
+              <select
+                id="pool"
+                name="pool"
+                defaultValue=""
+                onChange={(e) => {
+                  set_pNum(1);
+                  setPoolData(e.target.value);
+                }}
+                className="border border-blue-400"
+              >
+                <option value={""}>선택</option>
+                <option value={"WIN"}>단승식</option>
+                <option value={"PLC"}>연승식</option>
+                <option value={"QNL"}>복승식</option>
+                <option value={"EXA"}>쌍승식</option>
+                <option value={"QPL"}>복연승식</option>
+                <option value={"TLA"}>삼복승식</option>
+                <option value={"TRI"}>삼쌍승식</option>
+              </select>
             </div>
             <div className="flex items-center mx-3 md:my-2 sm:my-1">
               <label htmlFor="rcNum" className=" whitespace-nowrap mr-5">
@@ -222,9 +242,9 @@ export default function DividendRate() {
         </form>
       </div>
 
-      {rateData === undefined ? (
+      {rateData === undefined || poolData === "" ? (
         <p>
-          날짜를 입력해주세요.
+          날짜 및 기타 사항을 입력해주세요.
           <br />
           평일에는 경기가 없습니다. 최근 경기 데이터는 아직 업로드가 되지 않을
           수 있습니다.
