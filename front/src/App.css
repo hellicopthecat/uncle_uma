@@ -7,7 +7,7 @@ main {
   min-height: calc(100% - 300px);
 }
 .park-card:hover {
-  animation: cardRotate infinite ease-in-out 3s;
+  animation: cardRotate infinite ease-in-out 3s forwards;
 }
 
 #screen-block {
@@ -24,17 +24,21 @@ main {
   font-size: 40px;
   text-align: center;
 }
-@media screen and (min-width: 700px) {
-  #screen-block {
-    display: none;
-  }
-}
 @keyframes cardRotate {
   0% {
     transform: rotateY(0deg);
   }
+  0% {
+    transform: rotateY(360deg);
+  }
 
   100% {
-    transform: rotateY(360deg);
+    transform: rotateY(0deg);
+  }
+}
+
+@media screen and (min-width: 700px) {
+  #screen-block {
+    display: none;
   }
 }

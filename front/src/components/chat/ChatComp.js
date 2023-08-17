@@ -69,7 +69,7 @@ export default function ChatComp() {
   }, [room, chat]);
 
   return (
-    <div className="py-20">
+    <div className="py-20 h-[60vh]">
       <div
         ref={createRoom}
         className="container mx-auto bg-white p-10 my-20 rounded-md "

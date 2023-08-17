@@ -2,8 +2,8 @@ import {Link} from "react-router-dom";
 
 export default function FooterComp() {
   return (
-    <div className="flex flex-col justify-around items-center bg-sky-950 w-full h-[400px] py-10">
-      <ul className="flex justify-around items-center w-full">
+    <div className="flex flex-col justify-center items-center bg-sky-950 w-full h-[250px] ">
+      <ul className="flex justify-around items-center w-96 mb-5">
         <li>
           <Link to="/">HOME</Link>
         </li>

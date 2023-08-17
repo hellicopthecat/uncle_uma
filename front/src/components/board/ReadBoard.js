@@ -102,7 +102,7 @@ export default function ReadBoard() {
           <div className="col-span-5 flex justify-end py-5">
             {!editCont ? (
               <button
-                type="click"
+                type="button"
                 className="border border-blue-400 bg-indigo-100 rounded-lg px-3 py-1 ml-3"
                 onClick={() => {
                   setEditCont(true);
@@ -113,7 +113,7 @@ export default function ReadBoard() {
             ) : (
               <>
                 <button
-                  type="click"
+                  type="button"
                   onClick={async () => {
                     await updateContents();
                     setEditCont(false);
@@ -123,7 +123,7 @@ export default function ReadBoard() {
                   확인
                 </button>
                 <button
-                  type="click"
+                  type="button"
                   onClick={() => {
                     setEditCont(false);
                   }}
@@ -134,7 +134,7 @@ export default function ReadBoard() {
               </>
             )}
             <button
-              type="click"
+              type="button"
               className="border border-blue-400 bg-indigo-100 rounded-lg px-3 py-1 ml-3"
               onClick={deleteContents}
             >

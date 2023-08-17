@@ -76,7 +76,7 @@ export default function AboutHorse() {
   ];
 
   return (
-    <div className="container mx-auto p-5 py-20">
+    <div className="container mx-auto  py-20">
       <div className="bg-white p-16 rounded-lg">
         <div className="flex items-center mb-5">
           <span className="text-indigo-400 bg-indigo-400 mr-3 w-2 h-5"></span>

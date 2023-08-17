@@ -126,11 +126,11 @@ export default function DividendRate() {
   console.log(poolData);
   return (
     <div className="container mx-auto bg-white p-10  my-10 rounded-lg">
-      <div className="flex">
+      <div className="flex mx-24 my-10">
         <span className="w-2 h-8 bg-blue-200  text-blue-200 mr-3">*</span>
         <h2 className="text-2xl font-semibold mb-5">배당률 검색</h2>
       </div>
-      <div className="flex lg:justify-center border border-x-0 border-t-0 border-blue-200 pb-2 mb-5 ">
+      <div className="flex lg:justify-center border border-x-0 border-t-0 border-blue-200 pb-2 mx-24 mb-5 ">
         <form onSubmit={searchData}>
           <fieldset className="flex lg:items-center lg:flex-row md:flex-col md:items-start sm:flex-col justify-between ">
             <legend className="hidden">배당률 검색</legend>
@@ -243,20 +243,20 @@ export default function DividendRate() {
       </div>
 
       {rateData === undefined || poolData === "" ? (
-        <p>
+        <p className="mx-24">
           날짜 및 기타 사항을 입력해주세요.
           <br />
           평일에는 경기가 없습니다. 최근 경기 데이터는 아직 업로드가 되지 않을
           수 있습니다.
         </p>
       ) : !isLoad || rateData === null ? (
-        <p>
+        <p className="mx-24">
           데이터를 불러오는데 오류가 발생했습니다.
           <br />
           새로고침 버튼을 눌러주세요.
         </p>
       ) : (
-        <div className="grid lg:grid-cols-5 md:grid-cols-2 gap-5 p-5">
+        <div className="grid lg:grid-cols-5 md:grid-cols-2 gap-5 p-5 mx-24">
           {poolData === "WIN" ? (
             <div className="lg:col-span-5 md:col-span-2 flex">
               <span className="w-2 h-8 bg-indigo-300  text-indigo-300 mr-3">

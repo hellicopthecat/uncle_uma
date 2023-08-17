@@ -37,7 +37,7 @@ export default function EditProfile() {
     }
   }, [user]);
   return (
-    <div className="container mx-auto py-20">
+    <div className="container mx-auto py-20 ">
       <h2 className="text-xl font-bold text-center my-10 text-white">
         회원 정보 수정
       </h2>
