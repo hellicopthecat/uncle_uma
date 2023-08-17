@@ -23,8 +23,8 @@ export default function Board() {
   }, [db]);
 
   return (
-    <div className="relative container mx-auto flex flex-col bg-white  p-10 pb-36 my-10 rounded-lg">
-      <div className="flex mx-24 my-10">
+    <div className="relative container mx-auto flex flex-col bg-white  p-10 py-20 my-10 rounded-lg">
+      <div className="flex mx-24 mb-10">
         <span className="w-2 text-center bg-blue-400 text-blue-400 mr-3">
           *
         </span>
@@ -67,7 +67,7 @@ export default function Board() {
         </div>
       </div>
       {currentUser ? (
-        <div className="flex absolute bottom-20 -right-44 w-96 my-5">
+        <div className="flex absolute bottom-0 -right-44 w-96 my-5">
           <Link
             className="border border-blue-200 px-2 py-1 rounded-md"
             to="write"

@@ -127,7 +127,7 @@ export default function MainPage() {
                   <div
                     key={i}
                     ref={raceSum}
-                    className="border-8  border-blue-300 rounded-md text-center sm:w-[42rem] w-full "
+                    className="border-8  border-blue-300 rounded-md text-center lg:w-[53.4rem]  md:w-[30rem] w-full "
                     style={{
                       transform: `translateX(${slide}px)`,
                       transition: "1s ease-in-out",

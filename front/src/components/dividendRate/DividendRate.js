@@ -125,7 +125,7 @@ export default function DividendRate() {
   ]);
   console.log(poolData);
   return (
-    <div className="container mx-auto bg-white p-10  my-10 rounded-lg">
+    <div className="container mx-auto bg-white p-10 my-20 rounded-lg">
       <div className="flex mx-24 my-10">
         <span className="w-2 h-8 bg-blue-200  text-blue-200 mr-3">*</span>
         <h2 className="text-2xl font-semibold mb-5">배당률 검색</h2>

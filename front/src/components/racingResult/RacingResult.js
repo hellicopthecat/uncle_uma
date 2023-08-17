@@ -319,196 +319,198 @@ export default function RacingResult() {
                   </div>
                 </div>
               </div>
-
-              <div className=" col-span-12 border-2  border-t-0 border-x-0 border-b-blue-100 text-sm text-center  p-3">
-                <div className="grid grid-cols-4  border-2 border-t-0 border-x-0 border-b-blue-100 mb-2 ">
-                  <div className="mb-2">
-                    <h4>서울1코너통과누적기록</h4>
-                    <p>{item.se_1cAccTime}</p>
+              {item.meet === "서울" ? (
+                <div className=" col-span-12 border-2  border-t-0 border-x-0 border-b-blue-100 text-sm text-center  p-3">
+                  <div className="grid grid-cols-4  border-2 border-t-0 border-x-0 border-b-blue-100 mb-2 ">
+                    <div className="mb-2">
+                      <h4>서울1코너통과누적기록</h4>
+                      <p>{item.se_1cAccTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>서울2코너통과누적기록</h4>
+                      <p>{item.se_2cAccTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>서울3코너통과누적기록</h4>
+                      <p>{item.se_3cAccTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>서울4코너통과누적기록</h4>
+                      <p>{item.se_4cAccTime}</p>
+                    </div>
+                    <div>
+                      <h4>서울S1F통과누적기록</h4>
+                      <p>{item.seS1fAccTime}</p>
+                    </div>
+                    <div>
+                      <h4>서울G1F통과누적기록</h4>
+                      <p>{item.seG1fAccTime}</p>
+                    </div>
+                    <div>
+                      <h4>서울G3F통과누적기록</h4>
+                      <p>{item.seG3fAccTime}</p>
+                    </div>
                   </div>
-                  <div className="mb-2">
-                    <h4>서울2코너통과누적기록</h4>
-                    <p>{item.se_2cAccTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>서울3코너통과누적기록</h4>
-                    <p>{item.se_3cAccTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>서울4코너통과누적기록</h4>
-                    <p>{item.se_4cAccTime}</p>
-                  </div>
-                  <div>
-                    <h4>서울S1F통과누적기록</h4>
-                    <p>{item.seS1fAccTime}</p>
-                  </div>
-                  <div>
-                    <h4>서울G1F통과누적기록</h4>
-                    <p>{item.seG1fAccTime}</p>
-                  </div>
-                  <div>
-                    <h4>서울G3F통과누적기록</h4>
-                    <p>{item.seG3fAccTime}</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-4 mt-2">
-                  <div>
-                    <h4>서울,제주G1F구간통과순위(서울,제주공통)</h4>
-                    <p>{item.sjG1fOrd}</p>
-                  </div>
-                  <div>
-                    <h4>서울,제주G3F구간통과순위(서울,제주공통)</h4>
-                    <p>{item.sjG3fOrd}</p>
-                  </div>
-                  <div>
-                    <h4>서울,제주S1F구간통과순위(서울,제주공통)</h4>
-                    <p>{item.sjS1fOrd}</p>
-                  </div>
-                  <div>
-                    <h4>서울,제주1코너구간통과순위(서울,제주공통)</h4>
-                    <p>{item.sj_1cOrd}</p>
-                  </div>
-                  <div>
-                    <h4>서울,제주2코너구간통과순위(서울,제주공통)</h4>
-                    <p>{item.sj_2cOrd}</p>
-                  </div>
-                  <div>
-                    <h4>서울,제주3코너구간통과순위(서울,제주공통)</h4>
-                    <p>{item.sj_3cOrd}</p>
-                  </div>
-                  <div>
-                    <h4>서울,제주4코너구간통과순위(서울,제주공통)</h4>
-                    <p>{item.sj_4cOrd}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className=" col-span-12 text-center text-sm border-2 border-t-0 border-x-0 border-b-blue-100 p-3">
-                <div className="grid grid-cols-4  border-2 border-t-0 border-x-0 border-b-blue-100 pb-2 mb-2">
-                  <div className="mb-2">
-                    <h4>부경1F-G통과기록</h4>
-                    <p>{item.bu_1fGTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경2F-G통과기록</h4>
-                    <p>{item.bu_2fGTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경3F-G통과기록</h4>
-                    <p>{item.bu_3fGTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경4-2F통과기록</h4>
-                    <p>{item.bu_4_2fTime}</p>
-                  </div>
-                  <div>
-                    <h4>부경6-4F통과기록</h4>
-                    <p>{item.bu_6_4fTime}</p>
-                  </div>
-                  <div>
-                    <h4>부경8-6F통과기록</h4>
-                    <p>{item.bu_8_6fTime}</p>
-                  </div>
-                  <div>
-                    <h4>부경10-8F통과기록</h4>
-                    <p>{item.bu_10_8fTime}</p>
+                  <div className="grid grid-cols-4 mt-2">
+                    <div>
+                      <h4>서울,제주G1F구간통과순위(서울,제주공통)</h4>
+                      <p>{item.sjG1fOrd}</p>
+                    </div>
+                    <div>
+                      <h4>서울,제주G3F구간통과순위(서울,제주공통)</h4>
+                      <p>{item.sjG3fOrd}</p>
+                    </div>
+                    <div>
+                      <h4>서울,제주S1F구간통과순위(서울,제주공통)</h4>
+                      <p>{item.sjS1fOrd}</p>
+                    </div>
+                    <div>
+                      <h4>서울,제주1코너구간통과순위(서울,제주공통)</h4>
+                      <p>{item.sj_1cOrd}</p>
+                    </div>
+                    <div>
+                      <h4>서울,제주2코너구간통과순위(서울,제주공통)</h4>
+                      <p>{item.sj_2cOrd}</p>
+                    </div>
+                    <div>
+                      <h4>서울,제주3코너구간통과순위(서울,제주공통)</h4>
+                      <p>{item.sj_3cOrd}</p>
+                    </div>
+                    <div>
+                      <h4>서울,제주4코너구간통과순위(서울,제주공통)</h4>
+                      <p>{item.sj_4cOrd}</p>
+                    </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-5">
-                  <div className="mb-2">
-                    <h4>부경G1F통과순위</h4>
-                    <p>{item.buG1fOrd}</p>
+              ) : item.meet === "부경" ? (
+                <div className=" col-span-12 text-center text-sm border-2 border-t-0 border-x-0 border-b-blue-100 p-3">
+                  <div className="grid grid-cols-4  border-2 border-t-0 border-x-0 border-b-blue-100 pb-2 mb-2">
+                    <div className="mb-2">
+                      <h4>부경1F-G통과기록</h4>
+                      <p>{item.bu_1fGTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경2F-G통과기록</h4>
+                      <p>{item.bu_2fGTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경3F-G통과기록</h4>
+                      <p>{item.bu_3fGTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경4-2F통과기록</h4>
+                      <p>{item.bu_4_2fTime}</p>
+                    </div>
+                    <div>
+                      <h4>부경6-4F통과기록</h4>
+                      <p>{item.bu_6_4fTime}</p>
+                    </div>
+                    <div>
+                      <h4>부경8-6F통과기록</h4>
+                      <p>{item.bu_8_6fTime}</p>
+                    </div>
+                    <div>
+                      <h4>부경10-8F통과기록</h4>
+                      <p>{item.bu_10_8fTime}</p>
+                    </div>
                   </div>
-                  <div className="mb-2">
-                    <h4>부경G1F통과누적기록</h4>
-                    <p>{item.buG1fAccTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경G2F통과순위</h4>
-                    <p>{item.buG2fOrd}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경G2F통과누적기록</h4>
-                    <p>{item.buG2fAccTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경G3F통과순위</h4>
-                    <p>{item.buG3fOrd}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경G3F통과누적기록</h4>
-                    <p>{item.buG3fAccTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경G4F통과순위</h4>
-                    <p>{item.buG4fOrd}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경G4F통과누적기록</h4>
-                    <p>{item.buG4fAccTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경G6F통과순위</h4>
-                    <p>{item.buG6fOrd}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경G6F통과누적기록</h4>
-                    <p>{item.buG6fAccTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경G8F통과순위</h4>
-                    <p>{item.buG8fOrd}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경G8F통과누적기록</h4>
-                    <p>{item.buG8fAccTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경S1F통과순위</h4>
-                    <p>{item.buS1fOrd}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경S1F통과기록</h4>
-                    <p>{item.buS1fTime}</p>
-                  </div>
-                  <div className="mb-2">
-                    <h4>부경S1F통과누적기록</h4>
-                    <p>{item.buS1fAccTime}</p>
+                  <div className="grid grid-cols-5">
+                    <div className="mb-2">
+                      <h4>부경G1F통과순위</h4>
+                      <p>{item.buG1fOrd}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경G1F통과누적기록</h4>
+                      <p>{item.buG1fAccTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경G2F통과순위</h4>
+                      <p>{item.buG2fOrd}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경G2F통과누적기록</h4>
+                      <p>{item.buG2fAccTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경G3F통과순위</h4>
+                      <p>{item.buG3fOrd}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경G3F통과누적기록</h4>
+                      <p>{item.buG3fAccTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경G4F통과순위</h4>
+                      <p>{item.buG4fOrd}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경G4F통과누적기록</h4>
+                      <p>{item.buG4fAccTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경G6F통과순위</h4>
+                      <p>{item.buG6fOrd}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경G6F통과누적기록</h4>
+                      <p>{item.buG6fAccTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경G8F통과순위</h4>
+                      <p>{item.buG8fOrd}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경G8F통과누적기록</h4>
+                      <p>{item.buG8fAccTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경S1F통과순위</h4>
+                      <p>{item.buS1fOrd}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경S1F통과기록</h4>
+                      <p>{item.buS1fTime}</p>
+                    </div>
+                    <div className="mb-2">
+                      <h4>부경S1F통과누적기록</h4>
+                      <p>{item.buS1fAccTime}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className=" col-span-12 text-center text-sm border-2 border-t-0 border-x-0 border-b-blue-100 p-3">
-                <div className="grid grid-cols-4  mb-2">
-                  <div>
-                    <h4>제주1코너통과기록</h4>
-                    <p>{item.je_1cTime}</p>
-                  </div>
-                  <div>
-                    <h4>제주2코너통과기록</h4>
-                    <p>{item.je_2cTime}</p>
-                  </div>
-                  <div>
-                    <h4>제주3코너통과기록</h4>
-                    <p>{item.je_3cTime}</p>
-                  </div>
-                  <div>
-                    <h4>제주4코너통과기록</h4>
-                    <p>{item.je_4cTime}</p>
-                  </div>
-                  <div>
-                    <h4>제주G-1F통과기록</h4>
-                    <p>{item.jeG1fTime}</p>
-                  </div>
-                  <div>
-                    <h4>제주G-3F통과기록</h4>
-                    <p>{item.jeG3fTime}</p>
-                  </div>
-                  <div>
-                    <h4>제주S-1F통과기록</h4>
-                    <p>{item.jeS1fTime}</p>
+              ) : item.meet === "제주" ? (
+                <div className=" col-span-12 text-center text-sm border-2 border-t-0 border-x-0 border-b-blue-100 p-3">
+                  <div className="grid grid-cols-4  mb-2">
+                    <div>
+                      <h4>제주1코너통과기록</h4>
+                      <p>{item.je_1cTime}</p>
+                    </div>
+                    <div>
+                      <h4>제주2코너통과기록</h4>
+                      <p>{item.je_2cTime}</p>
+                    </div>
+                    <div>
+                      <h4>제주3코너통과기록</h4>
+                      <p>{item.je_3cTime}</p>
+                    </div>
+                    <div>
+                      <h4>제주4코너통과기록</h4>
+                      <p>{item.je_4cTime}</p>
+                    </div>
+                    <div>
+                      <h4>제주G-1F통과기록</h4>
+                      <p>{item.jeG1fTime}</p>
+                    </div>
+                    <div>
+                      <h4>제주G-3F통과기록</h4>
+                      <p>{item.jeG3fTime}</p>
+                    </div>
+                    <div>
+                      <h4>제주S-1F통과기록</h4>
+                      <p>{item.jeS1fTime}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : null}
             </div>
           ))}
         </div>
