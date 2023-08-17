@@ -19,14 +19,18 @@ export default function RacingResult() {
   const query = `&pageNo=1&numOfRows=50&meet=${lcNum}&rc_date=${dateNum}&rc_no=${rcCnum}&_type=json`;
   const URL = RESULT_END_POINT + API_KEY + query;
 
-  const handleRight = () => {
+  const handleLeft = () => {
     if (slide < 0) {
       set_slide(slide + raceSum.current.clientWidth);
+    } else {
+      set_slide(-(raceSum.current.clientWidth * (result.length - 1)));
     }
   };
-  const handleLeft = () => {
+  const handleRight = () => {
     if (slide > -raceSum.current.clientWidth * (result.length - 1)) {
       set_slide(slide - raceSum.current.clientWidth);
+    } else {
+      set_slide(0);
     }
   };
 

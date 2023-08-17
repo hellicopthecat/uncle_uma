@@ -14,14 +14,18 @@ export default function MainPage() {
   const query = `&pageNo=1&numOfRows=10&meet=${localNum}&rc_year=${year}&_type=json`;
   const URL = END_POINT + API_KEY + query;
 
-  const handleRight = () => {
+  const handleLeft = () => {
     if (slide < 0) {
       set_slide(slide + raceSum.current.clientWidth);
+    } else {
+      set_slide(-(raceSum.current.clientWidth * (data.length - 1)));
     }
   };
-  const handleLeft = () => {
+  const handleRight = () => {
     if (slide > -raceSum.current.clientWidth * (data.length - 1)) {
       set_slide(slide - raceSum.current.clientWidth);
+    } else {
+      set_slide(0);
     }
   };
 
