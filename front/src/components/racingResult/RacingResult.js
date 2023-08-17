@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useLocation} from "react-router-dom";
 import {BarChart, CartesianGrid, XAxis, Tooltip, Legend, Bar} from "recharts";
 export default function RacingResult() {
@@ -6,7 +6,8 @@ export default function RacingResult() {
   const rcCnum = location.state[0];
   const dateNum = location.state[1];
   const lcNum = location.state[2];
-
+  const [slide, set_slide] = useState(0);
+  const raceSum = useRef(null);
   const [isLoading, setLoading] = useState(false);
   const [result, setResult] = useState();
   const [dLeng, setDleng] = useState();
@@ -18,33 +19,15 @@ export default function RacingResult() {
   const query = `&pageNo=1&numOfRows=50&meet=${lcNum}&rc_date=${dateNum}&rc_no=${rcCnum}&_type=json`;
   const URL = RESULT_END_POINT + API_KEY + query;
 
-  let currentDetail = 0;
-  const raceDetailCont = document.querySelectorAll(".race-detail-cont");
-  const handleLeft = () => {
-    if (currentDetail === 0) {
-      currentDetail = raceDetailCont.length;
-    } else {
-      currentDetail--;
-    }
-    raceDetailCont.forEach((each) => {
-      each.style.transition = `ease-in-out 1s`;
-      each.style.transform = `translateX(-${
-        each.clientWidth * (currentDetail - 1)
-      }px)`;
-    });
-  };
   const handleRight = () => {
-    if (currentDetail >= raceDetailCont.length) {
-      currentDetail = 0;
-    } else {
-      currentDetail++;
+    if (slide < 0) {
+      set_slide(slide + raceSum.current.clientWidth);
     }
-    raceDetailCont.forEach((each) => {
-      each.style.transition = `ease-in-out 1s`;
-      each.style.transform = `translateX(-${
-        each.clientWidth * currentDetail
-      }px)`;
-    });
+  };
+  const handleLeft = () => {
+    if (slide > -raceSum.current.clientWidth * (result.length - 1)) {
+      set_slide(slide - raceSum.current.clientWidth);
+    }
   };
 
   useEffect(() => {
@@ -64,7 +47,7 @@ export default function RacingResult() {
       }
     };
     fetchRCResult();
-  }, [location, URL, currentDetail]);
+  }, [URL, location]);
 
   const dataChacksun = [];
   const dataBuga = [];
@@ -114,7 +97,12 @@ export default function RacingResult() {
           {result.map((item, i) => (
             <div
               key={i}
-              className="race-detail-cont grid grid-cols-1 border-2 border-blue-100 boder rounded-md w-[735px]"
+              ref={raceSum}
+              className="grid grid-cols-1 border-2 border-blue-100 boder rounded-md w-[735px]"
+              style={{
+                transform: `translateX(${slide}px)`,
+                transition: "1s ease-in-out",
+              }}
             >
               <div className="grid grid-cols-1">
                 <div className="flex justify-around items-top border-2 border-t-0 border-x-0 border-b-blue-100 mt-5">
