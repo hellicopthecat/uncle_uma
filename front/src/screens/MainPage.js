@@ -283,13 +283,19 @@ export default function MainPage() {
                           <div className="col-span-6">
                             <p className="text-xs">단승식 매출액 </p>
                             <span className="text-sm font-semibold">
-                              {item.winAmt.toLocaleString()} 원
+                              {item && item.winAmt !== undefined
+                                ? item.winAmt.toLocaleString("ko-KR")
+                                : "0"}
+                              원
                             </span>
                           </div>
                           <div className="col-span-6">
                             <p className="text-xs">연승식 매출액 </p>
                             <span className="text-sm font-semibold">
-                              {item.plcAmt.toLocaleString()} 원
+                              {item && item.plcAmt !== undefined
+                                ? item.plcAmt.toLocaleString("ko-KR")
+                                : "0"}
+                              원
                             </span>
                           </div>
                         </div>
@@ -297,13 +303,19 @@ export default function MainPage() {
                           <div className="col-span-6">
                             <p className="text-xs">복승식 매출액 </p>
                             <span className="text-sm font-semibold">
-                              {item.qnlAmt.toLocaleString()} 원
+                              {item && item.qnlAmt !== undefined
+                                ? item.qnlAmt.toLocaleString("ko-KR")
+                                : "0"}
+                              원
                             </span>
                           </div>
                           <div className="col-span-6">
                             <p className="text-xs">복연승식 매출액</p>
                             <span className="text-sm font-semibold">
-                              {item.exaAmt.toLocaleString()} 원
+                              {item && item.exaAmt !== undefined
+                                ? item.exaAmt.toLocaleString("ko-KR")
+                                : "0"}
+                              원
                             </span>
                           </div>
                         </div>
@@ -311,13 +323,19 @@ export default function MainPage() {
                           <div className="col-span-6">
                             <p className="text-xs">쌍승식 매출액</p>
                             <span className="text-sm font-semibold">
-                              {item.qplAmt.toLocaleString()} 원
+                              {item && item.qplAmt !== undefined
+                                ? item.qplAmt.toLocaleString("ko-KR")
+                                : "0"}
+                              원
                             </span>
                           </div>
                           <div className="col-span-6">
                             <p className="text-xs">삼복승식 매출액</p>
                             <span className="text-sm font-semibold">
-                              {item.tlaAmt.toLocaleString()} 원
+                              {item && item.tlaAmt !== undefined
+                                ? item.tlaAmt.toLocaleString("ko-KR")
+                                : "0"}
+                              원
                             </span>
                           </div>
                         </div>
@@ -325,13 +343,19 @@ export default function MainPage() {
                           <div className="col-span-6">
                             <p className="text-xs">삼쌍승식 매출액</p>
                             <span className="text-sm font-semibold">
-                              {item.triAmt.toLocaleString()} 원
+                              {item && item.triAmt !== undefined
+                                ? item.triAmt.toLocaleString("ko-KR")
+                                : "0"}
+                              원
                             </span>
                           </div>
                           <div className="col-span-6">
                             <p className="text-xs">합계 매출액</p>
                             <span className="text-sm font-semibold">
-                              {item.totalAmt.toLocaleString()} 원
+                              {item && item.totalAmt !== undefined
+                                ? item.totalAmt.toLocaleString("ko-KR")
+                                : "0"}
+                              원
                             </span>
                           </div>
                         </div>
