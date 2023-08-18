@@ -48,7 +48,7 @@ export default function MainPage() {
   return (
     <div className="relative flex flex-col items-center bg-main_1 bg-no-repeat bg-cover h-full p-20">
       <div className="container sm:mx-auto relative z-10 bg-white/50 border border-white/10 mb-20  rounded-lg lg:w-full sm:w-10/12  ">
-        <div className="flex md:flex-row flex-col m-5 mb-0">
+        <div className="flex md:flex-row flex-col mx-16 mt-5 mb-0">
           <button
             onClick={() => {
               setLocalNum(1);
