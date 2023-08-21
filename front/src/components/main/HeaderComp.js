@@ -1,14 +1,21 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate, useLocation} from "react-router-dom";
 import {getAuth, signOut} from "firebase/auth";
 import {useEffect} from "react";
 
 export default function HeaderComp({props}) {
+  const navigate = useNavigate();
+  const location = useLocation();
   useEffect(() => {}, [props]);
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
     const auth = getAuth();
     try {
-      signOut(auth);
-      window.location.reload("/");
+      await signOut(auth);
+      if (location.pathname !== "/") {
+        navigate("/");
+        window.location.reload("/");
+      } else {
+        window.location.reload("/");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -16,7 +23,7 @@ export default function HeaderComp({props}) {
   return (
     <div className=" flex justify-around items-center text-white">
       <div className="w-1/3 md:ml-10 ml-5">
-        <button type="click">
+        <button type="button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

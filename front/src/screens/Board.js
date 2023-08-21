@@ -30,7 +30,7 @@ export default function Board() {
         </span>
         <h2 className="text-2xl font-bold">자유 게시판</h2>
       </div>
-      <div className="flex justify-center border border-blue-200 py-10 mx-24 rounded-md ">
+      <div className="flex justify-center border border-blue-200 py-10 mx-24 my-10 rounded-md ">
         <div className="grid grid-rows-1 w-full mx-10">
           <ul className="flex justify-around text-center bg-blue-200 py-4">
             <li className="whitespace-nowrap">번호</li>
