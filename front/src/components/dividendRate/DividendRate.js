@@ -111,18 +111,7 @@ export default function DividendRate() {
       }
     };
     searchData();
-  }, [
-    URL,
-    pNum,
-    poolData,
-    rcDate,
-    rcNum,
-    localNum,
-    pRows,
-    totalCount,
-    tBlock,
-    e_pageNum,
-  ]);
+  }, [URL, pNum, pRows, totalCount, tBlock, e_pageNum]);
   console.log(poolData);
   return (
     <div className="container mx-auto bg-white p-10 my-20 rounded-lg">
@@ -159,7 +148,7 @@ export default function DividendRate() {
               <select
                 id="pool"
                 name="pool"
-                defaultValue=""
+                defaultValue={poolData}
                 onChange={(e) => {
                   set_pNum(1);
                   setPoolData(e.target.value);
@@ -249,12 +238,8 @@ export default function DividendRate() {
           평일에는 경기가 없습니다. 최근 경기 데이터는 아직 업로드가 되지 않을
           수 있습니다.
         </p>
-      ) : !isLoad || rateData === null ? (
-        <p className="mx-24">
-          데이터를 불러오는데 오류가 발생했습니다.
-          <br />
-          새로고침 버튼을 눌러주세요.
-        </p>
+      ) : !isLoad && rateData === null ? (
+        <p className="mx-24">검색 버튼을 눌러주세요.</p>
       ) : (
         <div className="grid lg:grid-cols-5 md:grid-cols-2 gap-5 p-5 mx-24">
           {poolData === "WIN" ? (

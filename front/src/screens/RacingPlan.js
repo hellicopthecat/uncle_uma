@@ -14,6 +14,8 @@ export default function RacingPlan() {
   const [nowMonth, setNowMonth] = useState("");
   const [nowDate, setNowDate] = useState("");
   const [isLoading, setLoading] = useState(true);
+  const [monVal, setMonVal] = useState("");
+  const [dateVal, setDateVal] = useState("");
 
   let [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState();
@@ -100,6 +102,9 @@ export default function RacingPlan() {
                 min={`${year - 1}-${month}`}
                 max={`${year}-${month}`}
                 className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
+                onChange={(event) => setMonVal(event.target.value)}
+                disabled={dateVal ? true : false}
+                defaultValue={monVal}
               />
             </div>
             <div className="flex items-center sm:my-2">
@@ -113,6 +118,9 @@ export default function RacingPlan() {
                 min={`${year - 2}-${month}-${dateNum}`}
                 max={`${year}-${month}-${dateNum}`}
                 className="border-2 mx-2 transition ease-in-out focus-within:bg-blue-300 duration-300"
+                onChange={(event) => setDateVal(event.target.value)}
+                disabled={monVal ? true : false}
+                defaultValue={dateVal}
               />
             </div>
             <button
