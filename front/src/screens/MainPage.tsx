@@ -1,5 +1,4 @@
 import {useEffect, useRef, useState} from "react";
-
 import RacingPlace from "../components/main/RacingPlace";
 
 export default function MainPage() {
@@ -11,7 +10,7 @@ export default function MainPage() {
   const [isLoading, setLoading] = useState(false);
   const END_POINT =
     "https://apis.data.go.kr/B551015/API3_1/raceInfo_1?serviceKey=";
-  const API_KEY = process.env.REACT_APP_OPEN_API_ENCODING_KEY;
+  const API_KEY = import.meta.env.VITE_APP_OPEN_API_ENCODING_KEY;
   const query = `&pageNo=1&numOfRows=10&meet=${localNum}&rc_year=${year}&_type=json`;
   const URL = END_POINT + API_KEY + query;
 
@@ -35,6 +34,7 @@ export default function MainPage() {
       setLoading(true);
       try {
         const response = await (await fetch(URL)).json();
+        console.log(response);
         const loadData = response.response.body.items.item;
         set_data(loadData);
       } catch (error) {

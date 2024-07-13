@@ -1,7 +1,6 @@
-import {createBrowserRouter} from "react-router-dom";
-import "./App.css";
 import "./firebase";
-import Root from "./screens/Root";
+import {createBrowserRouter} from "react-router-dom";
+import Home from "./screens/Home";
 import AboutHorse from "./components/horseInfo/AboutHorse";
 import HorseInfo from "./screens/HorseInfo";
 import RacingPlan from "./screens/RacingPlan";
@@ -16,11 +15,12 @@ import ReadBoard from "./components/board/ReadBoard";
 import DividendRate from "./components/dividendRate/DividendRate";
 import ChatComp from "./components/chat/ChatComp";
 
-const App = createBrowserRouter([
+const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: <Home />,
     children: [
+      {path: "/", element: <Home />},
       {path: "join", element: <JoinComp />},
       {path: "login", element: <LoginComp />},
       {path: "editUser/:id", element: <EditProfile />},
@@ -38,4 +38,4 @@ const App = createBrowserRouter([
   },
 ]);
 
-export default App;
+export default router;
