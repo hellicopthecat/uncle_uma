@@ -8,9 +8,9 @@ export default function HeaderComp() {
   //hooks
   const {user} = useUser();
   return (
-    <header className="absolute z-50 w-full flex justify-between items-center text-white p-5">
+    <header className="absolute z-50 w-full flex justify-between items-center p-5">
       <Link to="/">
-        <SharedTxt txtType="h1" txt="말랑말랑 경마" />
+        <SharedTxt txtType="h1" txt="말랑말랑 경마" className="text-white" />
       </Link>
       {!user ? <BeforeLogin /> : <AfterLogin />}
     </header>

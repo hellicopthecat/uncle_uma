@@ -1,12 +1,11 @@
 import "./firebase";
 import {createBrowserRouter} from "react-router-dom";
-import Home from "./screens/Home";
 import AboutHorse from "./components/horseInfo/AboutHorse";
 import HorseInfo from "./screens/HorseInfo";
 import RacingPlan from "./screens/RacingPlan";
 import RacingResult from "./components/racingResult/RacingResult";
 import JoinComp from "./components/main/JoinComp";
-import LoginComp from "./components/main/LoginComp";
+import Login from "./screens/beforeLogin/Login";
 import EditProfile from "./components/main/EditProfile";
 import ErrorPage from "./components/main/ErrorPage";
 import Board from "./screens/Board";
@@ -14,15 +13,16 @@ import WriteBoard from "./components/board/WriteBoard";
 import ReadBoard from "./components/board/ReadBoard";
 import DividendRate from "./components/dividendRate/DividendRate";
 import ChatComp from "./components/chat/ChatComp";
+import App from "./App";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <App />,
     children: [
-      {path: "/", element: <Home />},
+      {path: "/", element: <App />},
+      {path: "login", element: <Login />},
       {path: "join", element: <JoinComp />},
-      {path: "login", element: <LoginComp />},
       {path: "editUser/:id", element: <EditProfile />},
       {path: "horseDetail", element: <HorseInfo />},
       {path: "horseDetail/:id", element: <AboutHorse />},
