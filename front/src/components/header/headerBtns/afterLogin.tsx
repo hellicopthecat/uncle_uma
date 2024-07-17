@@ -1,6 +1,8 @@
 import {Link, useLocation} from "react-router-dom";
 import useUser from "../../../hooks/useUser";
 import {getAuth, signOut} from "firebase/auth";
+import Usersvg from "../../svg/Usersvg";
+import SharedTxt from "../../shared/sharedTxt";
 
 export default function AfterLogin() {
   const {user} = useUser();
@@ -20,26 +22,13 @@ export default function AfterLogin() {
     }
   };
   return (
-    <ul className="flex justify-end items-center">
+    <ul className="flex justify-end items-center gap-10 ">
       {!user?.photoURL ? (
-        <li className=" ml-10">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-          </svg>
+        <li>
+          <Usersvg />
         </li>
       ) : (
-        <li className=" ml-10">
+        <li>
           <Link to={"editUser/" + user.uid}>
             <img
               src={user.photoURL}
@@ -51,19 +40,33 @@ export default function AfterLogin() {
           </Link>
         </li>
       )}
-      <li className=" ml-10">
+      <li>
         {user?.displayName ? (
           <Link to={"editUser/" + user.uid}>
-            <h1 className="text-sm">{user.displayName}</h1>
+            <SharedTxt
+              txtType="span"
+              txt={user.displayName}
+              className="text-white font-semibold text-xl"
+            />
           </Link>
         ) : (
           <Link to={"editUser/" + user?.uid}>
-            <h1 className="text-sm">{user?.uid}</h1>
+            <SharedTxt
+              txtType="span"
+              txt={user?.uid + ""}
+              className="text-white font-semibold text-xl"
+            />
           </Link>
         )}
       </li>
-      <li className=" ml-10">
-        <h1 onClick={handleLogOut}>로그아웃</h1>
+      <li>
+        <button type="button" onClick={handleLogOut}>
+          <SharedTxt
+            txtType="span"
+            txt="로그아웃"
+            className="text-white font-semibold text-xl"
+          />
+        </button>
       </li>
     </ul>
   );

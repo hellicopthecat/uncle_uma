@@ -3,7 +3,7 @@ import SharedTxt from "../shared/sharedTxt";
 
 export default function FooterComp() {
   return (
-    <footer className="flex flex-col justify-center items-center gap-5 bg-sky-950 h-32">
+    <footer className="flex flex-col justify-center items-center gap-5 bg-sky-950 h-[300px]">
       <ul className="flex justify-around items-center w-96">
         <li>
           <Link to="/">

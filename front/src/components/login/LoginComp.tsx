@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import SharedTxt from "../shared/sharedTxt";
 import {useForm} from "react-hook-form";
 import {ILoginInputTypes} from "../../type/inputTypes";
@@ -10,7 +10,6 @@ export default function LoginComp() {
   const emailRegExp =
     /^[0-9a-zA-Z]([-_]?[0-9a-zA-Z])*@[a-zA-Z]*\.[a-zA-Z]{2,4}$/i;
   //hooks
-  const navigate = useNavigate();
   const {handleLogin, error: loginErr} = useLoginHooks();
   const {handleGoogleLogin, error: googleLoginErr} = useGoogleLoginHooks();
   const {
@@ -26,13 +25,11 @@ export default function LoginComp() {
       password: "",
     },
   });
-
   //fn
   const onSubmitLogin = () => {
     const {email, password} = getValues();
     handleLogin({email, password});
   };
-
   //video
   const video1 = "/video/1.mp4";
   const video2 = "/video/2.mp4";
@@ -47,7 +44,6 @@ export default function LoginComp() {
       }
     });
   }, [videoSrc]);
-
   useEffect(() => {
     if (loginErr || googleLoginErr) {
       setError("root", {message: loginErr || googleLoginErr});
@@ -64,7 +60,6 @@ export default function LoginComp() {
           className="relative -top-36"
         ></video>
       </div>
-
       <form
         onSubmit={handleSubmit(onSubmitLogin)}
         className="flex flex-col justify-center items-center p-10 bg-white w-full"
@@ -91,7 +86,7 @@ export default function LoginComp() {
                 type="text"
                 name="email"
                 placeholder="이메일을 입력해주세요"
-                className="border-2 border-blue-100 transition ease-in-out focus:border-indigo-300 duration-300 rounded-lg pl-2 h-14 w-96 mb-1"
+                className="border-2 border-blue-100 transition ease-in-out focus:border-indigo-300 duration-300 rounded-lg pl-2 h-10 w-96 mb-1"
               />
               {errors.email && (
                 <small className="text-red-400/90 ml-1">
@@ -111,7 +106,7 @@ export default function LoginComp() {
                 type="password"
                 name="password"
                 placeholder="비밀번호를 입력해주세요"
-                className="border-2 border-blue-100 transition ease-in-out focus:border-indigo-300 duration-300 rounded-lg pl-2 h-14 w-96"
+                className="border-2 border-blue-100 transition ease-in-out focus:border-indigo-300 duration-300 rounded-lg pl-2 h-10 w-96"
               />
               {errors.password && (
                 <small className="text-red-400/90 ml-1">
@@ -125,20 +120,20 @@ export default function LoginComp() {
           <button
             type="submit"
             onSubmit={handleSubmit(onSubmitLogin)}
-            className=" disabled:bg-gray-300 bg-blue-300  hover:bg-blue-200  py-3 rounded-lg transition ease-in-out duration-300"
+            className=" disabled:bg-gray-300 bg-blue-300  hover:bg-blue-200  shadow-md h-10 rounded-lg transition ease-in-out duration-300"
           >
             로그인
           </button>
           <button
             type="button"
-            className=" bg-blue-300  hover:bg-blue-200  py-3 rounded-lg transition ease-in-out duration-300"
+            className=" bg-blue-300  hover:bg-blue-200  shadow-md h-10 rounded-lg transition ease-in-out duration-300"
             onClick={() => handleGoogleLogin()}
           >
             구글로그인
           </button>
           <Link
             to={"/join"}
-            className="flex justify-center bg-blue-300  hover:bg-blue-200  py-3 rounded-lg transition ease-in-out duration-300"
+            className="flex justify-center items-center bg-blue-300  hover:bg-blue-200  shadow-md h-10 rounded-lg transition ease-in-out duration-300"
           >
             <SharedTxt txtType="p" txt="회원가입" />
           </Link>

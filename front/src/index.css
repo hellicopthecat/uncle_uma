@@ -9,7 +9,7 @@ body {
 }
 @layer base {
   body {
-    @apply bg-sky-950;
+    @apply bg-neutral-100;
   }
 }
 @layer utilities {

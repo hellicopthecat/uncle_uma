@@ -29,7 +29,7 @@ export default function MainPage() {
     refetch();
   }, [localNum]);
   return (
-    <SharedSection className="flex flex-col gap-20 bg-main_1 bg-cover bg-no-repeat h-full  py-32 ">
+    <SharedSection className="flex flex-col gap-20 h-full  py-32 ">
       <div className=" flex flex-col ">
         <div className="bg-white">
           <LocalBtn />

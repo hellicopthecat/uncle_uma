@@ -29,7 +29,7 @@ export default function HomeSlideBtn({
   };
 
   return (
-    <div className="absolute z-50 flex justify-between w-[60%] ">
+    <div className="absolute z-40 flex justify-between w-[60%] ">
       <button
         type="button"
         onClick={handleLeft}

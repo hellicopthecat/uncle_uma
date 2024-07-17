@@ -12,12 +12,10 @@ export default function App() {
   const homePage = location.pathname === HOME;
   const authPage = location.pathname === (JOIN || LOGIN);
   return (
-    <div className="flex flex-col bg-sky-800 overflow-x-hidden h-full">
+    <div className="relative flex flex-col h-full">
       <HeaderComp />
       {!authPage && <GlobalNavigation />}
-      <main className=" bg-sky-800  h-full">
-        {homePage ? <MainPage /> : <Outlet />}
-      </main>
+      <main className="h-full">{homePage ? <MainPage /> : <Outlet />}</main>
       <FooterComp />
       {/* <ScreenBlock /> */}
     </div>

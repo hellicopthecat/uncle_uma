@@ -4,7 +4,6 @@ import AboutHorse from "./components/horseInfo/AboutHorse";
 import HorseInfo from "./screens/HorseInfo";
 import RacingPlan from "./screens/RacingPlan";
 import RacingResult from "./components/racingResult/RacingResult";
-import JoinComp from "./components/main/JoinComp";
 import Login from "./screens/beforeLogin/Login";
 import EditProfile from "./components/main/EditProfile";
 import ErrorPage from "./components/main/ErrorPage";
@@ -14,6 +13,7 @@ import ReadBoard from "./components/board/ReadBoard";
 import DividendRate from "./components/dividendRate/DividendRate";
 import ChatComp from "./components/chat/ChatComp";
 import App from "./App";
+import Join from "./screens/beforeLogin/Join";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {path: "/", element: <App />},
       {path: "login", element: <Login />},
-      {path: "join", element: <JoinComp />},
+      {path: "join", element: <Join />},
       {path: "editUser/:id", element: <EditProfile />},
       {path: "horseDetail", element: <HorseInfo />},
       {path: "horseDetail/:id", element: <AboutHorse />},

@@ -8,6 +8,11 @@ module.exports = {
         horse_4: "url('/img/main/horse_4.jpeg')",
         horse: "url('/img/main/horse_5.jpeg')",
       },
+      colors: {
+        seoul: "#255097",
+        busan: "#BD1C13",
+        jeju: "#509619",
+      },
     },
   },
   plugins: [],
