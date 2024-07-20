@@ -12,6 +12,7 @@ import SharedTxt from "../../components/shared/sharedTxt";
 import HomeSlideBtn from "../../components/home/HomeSlideBtn";
 import RaceOutline from "../../components/home/RaceOutline/RaceOutline";
 import RacingPlace from "../../components/home/RacingPlace";
+import Homeheader from "../../components/home/Homeheader/Homeheader";
 
 export default function MainPage() {
   //states
@@ -29,64 +30,60 @@ export default function MainPage() {
     refetch();
   }, [localNum]);
   return (
-    <SharedSection className="flex flex-col gap-20 h-full  py-32 ">
-      <div className=" flex flex-col ">
-        <div className="bg-white">
-          <LocalBtn />
-          <div className="flex flex-col gap-5 py-5">
-            <div className="flex items-center p-4">
+    <SharedSection className="flex flex-col gap-20 h-full bg-main_3 bg-cover bg-no-repeat filter pb-32">
+      <Homeheader />
+      <div className="bg-white">
+        <LocalBtn />
+        <div className="flex flex-col gap-5 py-5">
+          <div className="flex items-center p-4">
+            <SharedTxt
+              txtType="span"
+              txt=""
+              className="block w-2 h-10 bg-blue-400 mr-2"
+            />
+            <SharedTxt txtType="h2" txt="최근경주개요" />
+          </div>
+          {isLoading ? (
+            <div className="flex justify-center items-center gap-5">
               <SharedTxt
                 txtType="span"
                 txt=""
-                className="block w-2 h-10 bg-blue-400 mr-2"
+                className="animate-spin block w-2 h-5 bg-yellow-400"
               />
-              <SharedTxt txtType="h2" txt="최근경주개요" />
+              <SharedTxt txtType="h4" txt="최근 10경기를 불러오는 중입니다." />
+              <SharedTxt
+                txtType="span"
+                txt=""
+                className="animate-spin block w-2 h-5 bg-yellow-400"
+              />
             </div>
-            {isLoading ? (
-              <div className="flex justify-center items-center gap-5">
-                <SharedTxt
-                  txtType="span"
-                  txt=""
-                  className="animate-spin block w-2 h-5 bg-yellow-400"
-                />
-                <SharedTxt
-                  txtType="h4"
-                  txt="최근 10경기를 불러오는 중입니다."
-                />
-                <SharedTxt
-                  txtType="span"
-                  txt=""
-                  className="animate-spin block w-2 h-5 bg-yellow-400"
-                />
+          ) : data ? (
+            <div className="relative flex justify-center items-center">
+              <HomeSlideBtn
+                raceSum={raceSum}
+                dataLength={data.response.body.items.item.length}
+              />
+              <div className="flex  w-[937px] overflow-x-hidden">
+                {data.response.body.items.item.map((item, i) => (
+                  <RaceOutline key={i} refName={raceSum} item={item} />
+                ))}
               </div>
-            ) : data ? (
-              <div className="relative flex justify-center items-center">
-                <HomeSlideBtn
-                  raceSum={raceSum}
-                  dataLength={data.response.body.items.item.length}
-                />
-                <div className="flex  w-[1000px] overflow-x-hidden">
-                  {data.response.body.items.item.map((item, i) => (
-                    <RaceOutline key={i} refName={raceSum} item={item} />
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div className="flex justify-center items-center gap-5 ">
-                <SharedTxt
-                  txtType="span"
-                  txt=""
-                  className="block w-2 h-4 bg-red-400"
-                />
-                <SharedTxt
-                  txtType="h4"
-                  txt="최근경기데이터가 업로드되지 않았거나 경기가 이뤄지지
+            </div>
+          ) : (
+            <div className="flex justify-center items-center gap-5 ">
+              <SharedTxt
+                txtType="span"
+                txt=""
+                className="block w-2 h-4 bg-red-400"
+              />
+              <SharedTxt
+                txtType="h4"
+                txt="최근경기데이터가 업로드되지 않았거나 경기가 이뤄지지
               않았습니다."
-                  className=""
-                />
-              </div>
-            )}
-          </div>
+                className=""
+              />
+            </div>
+          )}
         </div>
       </div>
       <RacingPlace />

@@ -26,9 +26,9 @@ function LinkStyle({
 }
 export default function RacingPlace() {
   return (
-    <ul className="flex justify-around">
+    <ul className="flex gap-10 justify-center">
       <LinkStyle href={"/"} className="hover:bg-seoul group ">
-        <div className="group-hover:park-card rounded-full overflow-hidden w-60">
+        <div className="group-hover:park-card rounded-full overflow-hidden size-36">
           <img src="/img/main/horse_1.png" alt="서울경마 아이콘" />
         </div>
         <div className="flex flex-col gap-1 items-center">
@@ -45,7 +45,7 @@ export default function RacingPlace() {
         </div>
       </LinkStyle>
       <LinkStyle href={"/"} className="hover:bg-jeju group">
-        <div className="group-hover:park-card  rounded-full overflow-hidden w-60">
+        <div className="group-hover:park-card  rounded-full overflow-hidden size-36">
           <img src="/img/main/horse_2.png" alt="제주경마 아이콘" />
         </div>
 
@@ -63,7 +63,7 @@ export default function RacingPlace() {
         </div>
       </LinkStyle>
       <LinkStyle href={"/"} className="hover:bg-busan group">
-        <div className="group-hover:park-card  rounded-full overflow-hidden w-60">
+        <div className="group-hover:park-card  rounded-full overflow-hidden size-36">
           <img src="/img/main/horse_3.png" alt="부산경남경마 아이콘" />
         </div>
 

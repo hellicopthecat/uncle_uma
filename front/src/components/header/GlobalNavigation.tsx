@@ -74,7 +74,7 @@ export default function GlobalNavigation() {
       </nav>
       <button
         type="button"
-        className="absolute top-[40%] z-40 right-20 bg-gray-500/20 hover:bg-gray-500/75 p-5 rounded-full transition-all ease-in-out duration-300"
+        className="absolute top-[40%] z-40 right-20 bg-gray-300 action:bg-gray-100/20 p-5 rounded-full transition-all ease-in-out duration-300"
         onClick={() => setShow(true)}
         style={{transform: show ? `translateX(200%)` : `translateX(0%)`}}
       >
