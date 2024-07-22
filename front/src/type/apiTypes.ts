@@ -4,7 +4,7 @@ interface IHeaderObj {
 }
 interface IBodyObj {
   items: {
-    item: Array<IOutlineRace>;
+    item: Array<IOutlineRace | IHorseInfo>;
   };
   numOfRows: number;
   pageNo: number;
@@ -48,4 +48,33 @@ export interface IOutlineRace {
   waterRate: number;
   weather: string;
   winAmt: number;
+}
+
+export interface IHorseInfo {
+  birthday: number;
+  chaksunT: number;
+  faHrName: string;
+  faHrNo: string;
+  hrLastAmt: string;
+  hrName: string;
+  hrNo: string;
+  meet: string;
+  moHrName: string;
+  moHrNo: string;
+  name: string;
+  ord1CntT: number;
+  ord1CntY: number;
+  ord2CntT: number;
+  ord2CntY: number;
+  ord3CntT: number;
+  ord3CntY: number;
+  owName: string;
+  owNo: number;
+  rank: string;
+  rating: number;
+  rcCntT: number;
+  rcCntY: number;
+  sex: string;
+  trName: string;
+  trNo: string;
 }

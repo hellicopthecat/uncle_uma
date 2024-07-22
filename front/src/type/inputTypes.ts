@@ -9,3 +9,11 @@ export interface IJoinInputTypes {
   nickNm: string;
   pwCheck?: string;
 }
+
+export interface ISearchHorseTypes {
+  currentPage: number;
+  rows: number;
+  horseName?: string;
+  horseId?: string;
+  locationNum: number;
+}

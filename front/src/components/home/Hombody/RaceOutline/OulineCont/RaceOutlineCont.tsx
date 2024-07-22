@@ -1,11 +1,11 @@
 import {useRecoilValue} from "recoil";
-import {homeSlideState} from "../../../atoms/slideAtoms";
 import {LegacyRef} from "react";
-import {IOutlineRace} from "../../../type/apiTypes";
 import RaceOutlineLeft from "./RaceOutlineLeft";
 import RaceOutlineRight from "./RaceOutlineRight";
+import {IOutlineRace} from "../../../../../type/apiTypes";
+import {homeSlideState} from "../../../../../atoms/slideAtoms";
 
-export default function RaceOutline({
+export default function RaceOutlineCont({
   refName,
   item,
 }: {
@@ -16,16 +16,14 @@ export default function RaceOutline({
   return (
     <div
       ref={refName}
-      className="flex"
       style={{
         transform: `translateX(${slide}px)`,
-        transition: "1s ease-in-out",
+        transition: "transform 1s ease-in-out",
       }}
+      className="flex w-[980px] gap-10 px-5"
     >
-      <div className="flex p-4 w-full gap-5">
-        <RaceOutlineLeft item={item} />
-        <RaceOutlineRight item={item} />
-      </div>
+      <RaceOutlineLeft item={item} />
+      <RaceOutlineRight item={item} />
     </div>
   );
 }

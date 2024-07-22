@@ -15,7 +15,7 @@ export default function HeaderComp() {
   const {user} = useUser();
   return (
     <header
-      className="fixed top-0 z-50 w-full flex justify-between items-center p-5 transition ease-in-out duration-150"
+      className="fixed top-0 z-50 w-full flex justify-between items-center transition ease-in-out duration-150 p-5"
       style={{
         backgroundColor: top >= 100 ? "rgba(0,0,0,0.5)" : "transparent",
       }}

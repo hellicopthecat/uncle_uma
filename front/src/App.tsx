@@ -12,7 +12,7 @@ export default function App() {
   const homePage = location.pathname === HOME;
   const authPage = location.pathname === (JOIN || LOGIN);
   return (
-    <div className="relative flex flex-col h-full">
+    <div className="relative flex flex-col h-full overflow-x-hidden">
       <HeaderComp />
       {!authPage && <GlobalNavigation />}
       <main className="h-full">{homePage ? <MainPage /> : <Outlet />}</main>

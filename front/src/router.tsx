@@ -1,10 +1,12 @@
 import "./firebase";
 import {createBrowserRouter} from "react-router-dom";
+import App from "./App";
+import Login from "./screens/beforeLogin/Login";
+import Join from "./screens/beforeLogin/Join";
+import HorseInfo from "./screens/horseInfo/HorseInfo";
 import AboutHorse from "./components/horseInfo/AboutHorse";
-import HorseInfo from "./screens/HorseInfo";
 import RacingPlan from "./screens/RacingPlan";
 import RacingResult from "./components/racingResult/RacingResult";
-import Login from "./screens/beforeLogin/Login";
 import EditProfile from "./components/main/EditProfile";
 import ErrorPage from "./components/main/ErrorPage";
 import Board from "./screens/Board";
@@ -12,8 +14,6 @@ import WriteBoard from "./components/board/WriteBoard";
 import ReadBoard from "./components/board/ReadBoard";
 import DividendRate from "./components/dividendRate/DividendRate";
 import ChatComp from "./components/chat/ChatComp";
-import App from "./App";
-import Join from "./screens/beforeLogin/Join";
 
 const router = createBrowserRouter([
   {
@@ -23,9 +23,9 @@ const router = createBrowserRouter([
       {path: "/", element: <App />},
       {path: "login", element: <Login />},
       {path: "join", element: <Join />},
+      {path: "horseInfo", element: <HorseInfo />},
+      {path: "horseInfo/:id", element: <AboutHorse />},
       {path: "editUser/:id", element: <EditProfile />},
-      {path: "horseDetail", element: <HorseInfo />},
-      {path: "horseDetail/:id", element: <AboutHorse />},
       {path: "racingPlan", element: <RacingPlan />},
       {path: "racingPlan/:id/:id", element: <RacingResult />},
       {path: "board", element: <Board />},

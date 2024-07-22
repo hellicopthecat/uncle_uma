@@ -7,7 +7,7 @@ export default function Hamberger() {
       strokeWidth={1.5}
       stroke="currentColor"
       className="w-10 h-10"
-      color="#000"
+      color="#fff"
     >
       <path
         strokeLinecap="round"

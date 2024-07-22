@@ -28,16 +28,15 @@ function NavLinkList({href, linkText, setShow}: INavLinkListArgs) {
 export default function GlobalNavigation() {
   const {user} = useUser();
   const [show, setShow] = useState(false);
-  const [navPosition, setNavPosition] = useState<HTMLUListElement | number>(0);
+
   const navDiv = useRef<HTMLUListElement>(null);
-  useEffect(() => {
-    setNavPosition(navDiv.current?.clientHeight! / 2);
-  }, [navDiv]);
+  useEffect(() => {}, [navDiv]);
   return (
     <>
       <nav
-        className="absolute z-50 top-0 left-0 bg-gray-800/75 w-full h-full flex justify-end items-center transition-all ease-in-out duration-300"
+        className="fixed bottom-0 z-50 bg-gray-800/75 w-full h-dvh flex justify-end items-center transition-all ease-in-out duration-300"
         style={{transform: show ? `translateX(0)` : `translateX(-100%)`}}
+        onClick={() => setShow(false)}
       >
         <ul
           ref={navDiv}
@@ -74,9 +73,9 @@ export default function GlobalNavigation() {
       </nav>
       <button
         type="button"
-        className="absolute top-[40%] z-40 right-20 bg-gray-300 action:bg-gray-100/20 p-5 rounded-full transition-all ease-in-out duration-300"
+        className="fixed bottom-28 z-40 bg-black/25 hover:bg-black/50 active:bg-black/10 p-5 rounded-full transition-all ease-in-out duration-300"
+        style={{right: show ? "-100px" : "25px"}}
         onClick={() => setShow(true)}
-        style={{transform: show ? `translateX(200%)` : `translateX(0%)`}}
       >
         <Hamberger />
       </button>

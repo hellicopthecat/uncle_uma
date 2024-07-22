@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import HorseLocalNav from "../components/localNav/HorseLocalNav";
+// import HorseLocalNav from "../components/horseInfo/HorseLocalNav";
 import PlanResult from "../components/racingPlan/PlanResult";
 export default function RacingPlan() {
   const date = new Date();

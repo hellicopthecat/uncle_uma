@@ -1,6 +1,6 @@
-import {SetterOrUpdater, useRecoilState} from "recoil";
-import {localNumAtom} from "../../atoms/localNumAtom";
-import SharedTxt from "../shared/sharedTxt";
+import {useRecoilState} from "recoil";
+import {localNumAtom} from "../../../../../atoms/localNumAtom";
+import SharedTxt from "../../../../shared/sharedTxt";
 
 export default function LocalBtn() {
   const [localNum, setLocalNum] = useRecoilState(localNumAtom);

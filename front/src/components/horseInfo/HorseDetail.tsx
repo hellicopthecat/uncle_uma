@@ -1,23 +1,7 @@
-import {useEffect} from "react";
 import {Link} from "react-router-dom";
-export default function HorseDetail({data}) {
-  const horseData = data;
-  const horseList = [];
+import {IHorseInfo} from "../../type/apiTypes";
 
-  useEffect(() => {}, [data]);
-  for (let i = 0; i < horseData.length; i++) {
-    horseList.push(
-      <li
-        key={horseData[i].hrNo}
-        className=" border-2 border-blue-100 bg-white p-3 rounded-md hover:transition hover:ease-in-out hover:scale-125 hover:text-red-600 hover:bg-gray-300 hover:text-lg duration-300"
-      >
-        <Link to={`/horseDetail/${horseData[i].hrNo}`} state={horseData[i]}>
-          <h2>{horseData[i].hrName}</h2>
-        </Link>
-      </li>
-    );
-  }
-
+export default function HorseDetail({data}: {data: IHorseInfo[]}) {
   return (
     <div className="container mx-auto border-2 border-blue-200 bg-white/50 rounded-lg m-5 p-5">
       <div className="flex items-center">
@@ -25,7 +9,20 @@ export default function HorseDetail({data}) {
         <h2 className="text-xl font-bold">경주마 상세 정보</h2>
       </div>
       <ul className="grid grid-cols-10 gap-2  text-center text-sm font-semibold my-5 rounded-lg">
-        {horseList}
+        {!data ? (
+          <div>No Data</div>
+        ) : (
+          data.map((horse) => (
+            <li
+              key={horse.hrNo}
+              className=" border-2 border-blue-100 bg-white p-3 rounded-md hover:transition hover:ease-in-out hover:scale-125 hover:text-red-600 hover:bg-gray-300 hover:text-lg duration-300"
+            >
+              <Link to={`/horseInfo/${horse.hrNo}`} state={horse}>
+                <h2>{horse.hrName}</h2>
+              </Link>
+            </li>
+          ))
+        )}
       </ul>
     </div>
   );

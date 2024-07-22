@@ -1,14 +1,14 @@
-import {IOutlineRace} from "../../../type/apiTypes";
-import SharedTxt from "../../shared/sharedTxt";
-import InnerLayout from "./OutlineLayout/innerLayout";
-import OuterLayout from "./OutlineLayout/outerLayout";
+import {IOutlineRace} from "../../../../../type/apiTypes";
+import SharedTxt from "../../../../shared/sharedTxt";
+import InnerLayout from "../OutlineLayout/innerLayout";
+import OuterLayout from "../OutlineLayout/outerLayout";
 
 export default function RaceOutlineRight({item}: {item: IOutlineRace}) {
   return (
-    <div className="flex flex-col text-center text-nowrap  gap-5">
+    <div className="flex flex-col text-center text-nowrap  gap-5 -skew-x-6">
       <OuterLayout>
         <InnerLayout>
-          <SharedTxt txtType="h5" txt="단승식 매출액" />
+          <SharedTxt txtType="h5" txt="단승식" />
           <SharedTxt
             txtType="h5"
             txt={`${
@@ -17,7 +17,7 @@ export default function RaceOutlineRight({item}: {item: IOutlineRace}) {
           />
         </InnerLayout>
         <InnerLayout>
-          <SharedTxt txtType="h5" txt="연승식 매출액" />
+          <SharedTxt txtType="h5" txt="연승식" />
           <SharedTxt
             txtType="h5"
             txt={`${
@@ -29,7 +29,7 @@ export default function RaceOutlineRight({item}: {item: IOutlineRace}) {
 
       <OuterLayout>
         <InnerLayout>
-          <SharedTxt txtType="h5" txt="복승식 매출액" />
+          <SharedTxt txtType="h5" txt="복승식" />
           <SharedTxt
             txtType="h5"
             txt={`${
@@ -38,7 +38,7 @@ export default function RaceOutlineRight({item}: {item: IOutlineRace}) {
           />
         </InnerLayout>
         <InnerLayout>
-          <SharedTxt txtType="h5" txt="복연승식 매출액" />
+          <SharedTxt txtType="h5" txt="복연승식" />
           <SharedTxt
             txtType="h5"
             txt={`${
@@ -50,7 +50,7 @@ export default function RaceOutlineRight({item}: {item: IOutlineRace}) {
 
       <OuterLayout>
         <InnerLayout>
-          <SharedTxt txtType="h5" txt="쌍승식 매출액" />
+          <SharedTxt txtType="h5" txt="쌍승식" />
           <SharedTxt
             txtType="h5"
             txt={`${
@@ -59,7 +59,7 @@ export default function RaceOutlineRight({item}: {item: IOutlineRace}) {
           />
         </InnerLayout>
         <InnerLayout>
-          <SharedTxt txtType="h5" txt="삼복승식 매출액" />
+          <SharedTxt txtType="h5" txt="삼복승식" />
           <SharedTxt
             txtType="h5"
             txt={`${
@@ -71,7 +71,7 @@ export default function RaceOutlineRight({item}: {item: IOutlineRace}) {
 
       <OuterLayout>
         <InnerLayout>
-          <SharedTxt txtType="h5" txt="삼쌍승식 매출액" />
+          <SharedTxt txtType="h5" txt="삼쌍승식" />
           <SharedTxt
             txtType="h5"
             txt={`${
@@ -80,7 +80,7 @@ export default function RaceOutlineRight({item}: {item: IOutlineRace}) {
           />
         </InnerLayout>
         <InnerLayout>
-          <SharedTxt txtType="h5" txt="합계 매출액" />
+          <SharedTxt txtType="h5" txt="합계" />
           <SharedTxt
             txtType="h5"
             txt={`${
@@ -93,11 +93,17 @@ export default function RaceOutlineRight({item}: {item: IOutlineRace}) {
       <OuterLayout>
         <InnerLayout>
           <SharedTxt txtType="h5" txt="레이팅하한조건" />
-          <SharedTxt txtType="h5" txt={item.stRating + ""} />
+          <SharedTxt
+            txtType="h5"
+            txt={item.stRating ? `${item.stRating} 원` : "0 원"}
+          />
         </InnerLayout>
         <InnerLayout>
           <SharedTxt txtType="h5" txt="레이팅상한조건" />
-          <SharedTxt txtType="h5" txt={item.spRating + ""} />
+          <SharedTxt
+            txtType="h5"
+            txt={item.spRating ? `${item.spRating} 원` : "0 원"}
+          />
         </InnerLayout>
       </OuterLayout>
     </div>
