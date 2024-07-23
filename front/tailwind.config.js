@@ -34,6 +34,8 @@ module.exports = {
       animation: {
         showRight: "showRightText 0.7s ease-in-out",
         showLeft: "showLeftText 0.7s ease-in-out",
+        chaksunSlide: "chaksunSlide infinite 30s linear forwards",
+        chaksunSlideXl: "chaksunSlideXl infinite 30s linear forwards",
       },
       keyframes: {
         showRightText: {
@@ -43,6 +45,38 @@ module.exports = {
         showLeftText: {
           "0%": {transform: "translateX(1000%)"},
           "100%": {transform: "translateX(0)"},
+        },
+        chaksunSlide: {
+          "0%": {
+            transform: "translateX(110%)",
+            opacity: 0,
+          },
+          "5%": {
+            opacity: 1,
+          },
+          "95%": {
+            opacity: 1,
+          },
+          "100% ": {
+            transform: "translateX(-110%)",
+            opacity: 0,
+          },
+        },
+        chaksunSlideXl: {
+          "0%": {
+            transform: "translateX(130%)",
+            opacity: 0,
+          },
+          "5%": {
+            opacity: 1,
+          },
+          "95%": {
+            opacity: 1,
+          },
+          "100% ": {
+            transform: "translateX(-110%)",
+            opacity: 0,
+          },
         },
       },
     },

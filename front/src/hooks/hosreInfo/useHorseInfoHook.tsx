@@ -4,7 +4,7 @@ import {ISearchHorseTypes} from "../../type/inputTypes";
 import {IDefaultResponse} from "../../type/apiTypes";
 
 export default function useHorseInfoHook() {
-  const {data, isPending, mutate} = useMutation<
+  const {data, isPending, mutate, error} = useMutation<
     IDefaultResponse,
     Error,
     ISearchHorseTypes,
