@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import HorseDetail from "../../components/horseInfo/HorseDetail";
 import {IHorseInfo} from "../../type/apiTypes";
 import SharedSection from "../../components/shared/sharedSection";

@@ -6,7 +6,6 @@ import {
   searchHorsePaginationAtom,
   searchHorseTotalPageAtom,
 } from "../../../atoms/searchHorse/searchHorse";
-import {useEffect, useState} from "react";
 
 export default function HorseInfoPageBtn() {
   const [currentPage, setCurrentPage] = useRecoilState(
@@ -24,7 +23,7 @@ export default function HorseInfoPageBtn() {
       paginationArray.push(page);
     }
   }
-  const pagination = paginationArray.slice(minPage, maxPage);
+  const pagination = paginationArray.slice(minPage - 1, maxPage);
   const handleClickPrev = () => {
     if (minPage <= 0) {
       setMinPage(0);

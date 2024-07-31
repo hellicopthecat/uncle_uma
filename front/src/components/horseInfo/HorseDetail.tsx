@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import {IHorseInfo} from "../../type/apiTypes";
 import SharedTxt from "../shared/sharedTxt";
-import {useRecoilState, useSetRecoilState} from "recoil";
+import {useSetRecoilState} from "recoil";
 import {chaksunSlideAtom} from "../../atoms/chaksunSlideAtom";
 import ChaksunInfo from "./HorseInfoPageBtn/ChaksunInfo";
 

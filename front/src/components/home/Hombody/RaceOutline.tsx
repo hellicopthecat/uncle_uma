@@ -22,6 +22,8 @@ export default function RaceOutline() {
   useEffect(() => {
     refetch();
   }, [localNum]);
+
+  const raceOutline = data?.response.body.items.item as IOutlineRace[];
   return (
     <div>
       <div className="flex items-center p-10 -skew-x-[20deg]">
@@ -53,13 +55,13 @@ export default function RaceOutline() {
             <div className="flex justify-center items-center">
               <RaceSumSlideBtn
                 raceSum={raceSum}
-                dataLength={data.response.body.items.item.length}
+                dataLength={raceOutline.length}
               />
 
               <div className="relative flex w-[980px] overflow-x-hidden">
-                {data.response.body.items.item.map((item, i) => (
+                {raceOutline.map((item, i) => (
                   <RaceOutlineCont
-                    key={i}
+                    key={item.rcNo}
                     refName={raceSum}
                     item={item as IOutlineRace}
                   />

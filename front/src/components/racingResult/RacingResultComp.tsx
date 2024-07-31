@@ -1,102 +1,36 @@
-import {useEffect, useRef, useState} from "react";
-import {useLocation} from "react-router-dom";
 import {BarChart, CartesianGrid, XAxis, Tooltip, Legend, Bar} from "recharts";
-export default function RacingResult() {
-  const location = useLocation();
-  const rcCnum = location.state[0];
-  const dateNum = location.state[1];
-  const lcNum = location.state[2];
-  const [slide, set_slide] = useState(0);
-  const raceSum = useRef(null);
-  const [isLoading, setLoading] = useState(false);
-  const [result, setResult] = useState();
-  const [dLeng, setDleng] = useState();
-  const RESULT_END_POINT =
-    "https://apis.data.go.kr/B551015/API214_1/RaceDetailResult_1?serviceKey=";
-  // const RECORD_END_POINT =
-  //   "https://apis.data.go.kr/B551015/API4_2/raceResult_2?serviceKey=";
-  const API_KEY = process.env.REACT_APP_OPEN_API_ENCODING_KEY;
-  const query = `&pageNo=1&numOfRows=50&meet=${lcNum}&rc_date=${dateNum}&rc_no=${rcCnum}&_type=json`;
-  const URL = RESULT_END_POINT + API_KEY + query;
+import {IDefaultResponse} from "../../type/apiTypes";
+import RacingResultBtn from "./racingResultBtn/RacingResultBtn";
+import RacingResultData from "./racingResultData/racingResultData";
+import {IRacingResultResultTypes} from "../../type/apisTypes/racingResult/racingResultTypes";
 
-  const handleLeft = () => {
-    if (slide < 0) {
-      set_slide(slide + raceSum.current.clientWidth);
-    } else {
-      set_slide(-(raceSum.current.clientWidth * (result.length - 1)));
-    }
-  };
-  const handleRight = () => {
-    if (slide > -raceSum.current.clientWidth * (result.length - 1)) {
-      set_slide(slide - raceSum.current.clientWidth);
-    } else {
-      set_slide(0);
-    }
-  };
-
-  useEffect(() => {
-    const fetchRCResult = async () => {
-      setLoading(false);
-      try {
-        const response = await (await fetch(URL)).json();
-        const data = response.response.body.items.item;
-        setResult(data);
-        setDleng(data.length);
-
-        setLoading(true);
-      } catch (error) {
-        setResult(null);
-      } finally {
-        setLoading(true);
-      }
-    };
-    fetchRCResult();
-  }, [URL, location]);
-
+export default function RacingResultComp(data: IDefaultResponse) {
   const dataChacksun = [];
   const dataBuga = [];
-  for (let i = 0; i < dLeng / dLeng; i++) {
-    dataChacksun.push(
-      {상금: result[i].chaksun1, name: "1착상금", fill: "#cf6a87"},
-      {상금: result[i].chaksun2, name: "2착상금", fill: "#e77f67"},
-      {상금: result[i].chaksun3, name: "3착상금", fill: "#778beb"},
-      {상금: result[i].chaksun4, name: "4착상금", fill: "#f7d794"},
-      {상금: result[i].chaksun5, name: "5착상금", fill: "#f3a683"}
-    );
-  }
-  for (let i = 0; i < dLeng / dLeng; i++) {
-    dataBuga.push(
-      {부가상금: result[i].buga1, name: "부가상금1", fill: "#ea8685"},
-      {부가상금: result[i].buga2, name: "부가상금2", fill: "#63cdda"},
-      {부가상금: result[i].buga3, name: "부가상금3", fill: "#f8a5c2"}
-    );
-  }
+  // for (let i = 0; i < dLeng / dLeng; i++) {
+  //   dataChacksun.push(
+  //     {상금: result[i].chaksun1, name: "1착상금", fill: "#cf6a87"},
+  //     {상금: result[i].chaksun2, name: "2착상금", fill: "#e77f67"},
+  //     {상금: result[i].chaksun3, name: "3착상금", fill: "#778beb"},
+  //     {상금: result[i].chaksun4, name: "4착상금", fill: "#f7d794"},
+  //     {상금: result[i].chaksun5, name: "5착상금", fill: "#f3a683"}
+  //   );
+  // }
+  // for (let i = 0; i < dLeng / dLeng; i++) {
+  //   dataBuga.push(
+  //     {부가상금: result[i].buga1, name: "부가상금1", fill: "#ea8685"},
+  //     {부가상금: result[i].buga2, name: "부가상금2", fill: "#63cdda"},
+  //     {부가상금: result[i].buga3, name: "부가상금3", fill: "#f8a5c2"}
+  //   );
+  // }
 
   return (
-    <div className="relative container mx-auto bg-white p-20 my-20 rounded-md">
-      <div className="flex items-center my-5">
-        <span className="block bg-blue-300 w-2 h-6 mr-2 "></span>
-        <h2 className="text-2xl font-bold">경기 결과</h2>
-      </div>
-      <div className="absolute top-1/2 flex justify-between w-full">
-        <button
-          type="click"
-          onClick={handleLeft}
-          className="relative -left-20 z-20 bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-l-lg"
-        >
-          <img src="/img/icon/left-arrow.png" alt="left-arrow" />
-        </button>
-        <button
-          type="click"
-          onClick={handleRight}
-          className="relative right-20 z-20 bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-r-lg"
-        >
-          <img src="/img/icon/right-arrow.png" alt="right-arrow" />
-        </button>
-      </div>
-      {!isLoading ? (
-        <p>데이터를 불러오고 있습니다.</p>
-      ) : result ? (
+    <div className="relative">
+      <RacingResultBtn />
+      <RacingResultData
+        data={data.response.body.items.item as IRacingResultResultTypes[]}
+      />
+      {/* {result ? (
         <div className=" grid grid-rows-1 grid-flow-col gap-5 overflow-hidden">
           {result.map((item, i) => (
             <div
@@ -519,7 +453,7 @@ export default function RacingResult() {
           아직 진행되지 않는 경기이거나 데이터를 불러오는데 실패하였습니다.
           새로고침 해 주세요.
         </p>
-      )}
+      )} */}
     </div>
   );
 }
