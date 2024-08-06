@@ -61,7 +61,7 @@ export default function GlobalNavigation() {
             setShow={setShow}
           />
           <NavLinkList
-            href="/divideRate"
+            href="/dividendRate"
             linkText="배당률검색"
             setShow={setShow}
           />

@@ -1,3 +1,4 @@
+import {IDividendRateSearchType} from "../type/apisTypes/dividendRate/dividendRateTypes";
 import {IRacingPlanSearchTypes} from "../type/apisTypes/racingPlan/racingPlanTypes";
 import {IRacingResultSearchTypes} from "../type/apisTypes/racingResult/racingResultTypes";
 import {ISearchHorseTypes} from "../type/inputTypes";
@@ -17,8 +18,6 @@ const horseRateInfo = "https://apis.data.go.kr/B551015/API15_2";
 const racingPlan = "https://apis.data.go.kr/B551015/API72_2";
 // 경주성적정보
 const racingRateInfo = "https://apis.data.go.kr/B551015/API214_1";
-// 경주기록 정보
-const recordInfo = "https://apis.data.go.kr/B551015/API4_3";
 // 확정배당률 통합정보
 const certainDividedInfo = "https://apis.data.go.kr/B551015/API160_1";
 
@@ -64,6 +63,20 @@ export const apis = {
     await (
       await fetch(
         `${racingRateInfo}/RaceDetailResult_1?serviceKey=${API_KEY}&pageNo=1&numOfRows=50&meet=${localNum}&rc_date=${rcDate}&rc_no=${rcNo}&_type=json`
+      )
+    ).json(),
+  getCertainDivdedInfo: async ({
+    pageNum,
+    rows,
+    pool,
+    rcDate,
+    rcMonth,
+    rcNo,
+    meet,
+  }: IDividendRateSearchType) =>
+    await (
+      await fetch(
+        `${certainDividedInfo}/integratedInfo_1?serviceKey=${API_KEY}&pageNo=${pageNum}&numOfRows=${rows}&pool=${pool}&rc_date=${rcDate}&rc_month=${rcMonth}&rc_no=${rcNo}&meet=${meet}&_type=json`
       )
     ).json(),
 };

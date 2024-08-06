@@ -1,3 +1,4 @@
+import {IDividendResultType} from "./apisTypes/dividendRate/dividendRateTypes";
 import {IRacingPlanResultTypes} from "./apisTypes/racingPlan/racingPlanTypes";
 import {IRacingResultResultTypes} from "./apisTypes/racingResult/racingResultTypes";
 
@@ -13,6 +14,7 @@ interface IBodyObj {
           | IHorseInfo
           | IRacingPlanResultTypes
           | IRacingResultResultTypes
+          | IDividendResultType
         >
       | IHorseDetail;
   };

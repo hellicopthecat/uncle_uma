@@ -53,10 +53,8 @@ export interface IRacingResultResultTypes {
   rcName: string;
   /** 경주기록 */
   rcTime: number;
-
   /** 장구내역 */
   hrTool: string;
-
   /** 부담중량 */
   wgBudam: number;
   /** 부담중량 증량신청표기 */
@@ -118,11 +116,17 @@ export interface IRacingResultResultTypes {
   buga3: number;
 
   //서울제주
-  /** 서울,제주G1F구간통관순위 (서울,제주공통) */
+  /** 서울,제주G1F구간통관순위 (서울,제주공통)
+   * - 결승선 전방200m 지점의 기록
+   */
   sjG1fOrd: number;
-  /** 서울,제주G3F구간통관순위 (서울,제주공통) */
+  /** 서울,제주G3F구간통관순위 (서울,제주공통)
+   * - 결승선 전방600m 지점의 기록
+   */
   sjG3fOrd: number;
-  /** 서울,제주S1F구간통관순위 (서울,제주공통) */
+  /** 서울,제주S1F구간통관순위 (서울,제주공통)
+   * - 발주후 200m 거리까지의 기록
+   */
   sjS1fOrd: number;
 
   /** 서울,제주1코너구간통과순위(서울,제주공통)  */
@@ -133,6 +137,7 @@ export interface IRacingResultResultTypes {
   sj_3cOrd: number;
   /** 서울,제주4코너구간통과순위(서울,제주공통) */
   sj_4cOrd: number;
+
   //서울
   /** 서울G1F통과누적기록 */
   seG1fAccTime: number;
@@ -148,6 +153,7 @@ export interface IRacingResultResultTypes {
   se_3cAccTime: number;
   /** 서울4코너통과누적기록 */
   se_4cAccTime: number;
+
   //제주
   /** 제주G-1F통과기록 */
   jeG1fTime: number;
@@ -163,35 +169,50 @@ export interface IRacingResultResultTypes {
   je_3cTime: number;
   /** 제주4코너통과기록 */
   je_4cTime: number;
+
   //부산
+  /** 부경G1F통과순위
+   * -결승선 전방200m 지점의 기록
+   */
+  buG1fOrd: number;
+  /** 부경G2F통과순위
+   * -결승선 전방400m 지점의 기록
+   */
+  buG2fOrd: number;
+  /** 부경G3F통과순위
+   * -결승선 전방600m 지점의 기록
+   */
+  buG3fOrd: number;
+  /** 부경G4F통과순위
+   * -결승선 전방800m 지점의 기록
+   */
+  buG4fOrd: number;
+  /** 부경G6F통과순위
+   * - 결승선 전방 1200m 지점의 기록
+   */
+  buG6fOrd: number;
+  /** 부경G8F통과순위
+   * -결승선 전방1600m 지점의 기록
+   */
+  buG8fOrd: number;
+  /** 부경S1F통과순위
+   * - 발주후 200m 거리까지의 기록
+   */
+  buS1fOrd: number;
   /** 부경G1F통과누적기록 */
   buG1fAccTime: number;
-  /** 부경G1F통과순위 */
-  buG1fOrd: number;
   /** 부경G2F통과누적기록 */
   buG2fAccTime: number;
-  /** 부경G2F통과순위 */
-  buG2fOrd: number;
   /** 부경G3F통과누적기록 */
   buG3fAccTime: number;
-  /** 부경G3F통과순위 */
-  buG3fOrd: number;
   /** 부경G4F통과누적기록 */
   buG4fAccTime: number;
-  /** 부경G4F통과순위 */
-  buG4fOrd: number;
   /** 부경G6F통과누적기록 */
   buG6fAccTime: number;
-  /** 부경G6F통과순위 */
-  buG6fOrd: number;
   /** 부경G8F통과누적기록 */
   buG8fAccTime: number;
-  /** 부경G8F통과순위 */
-  buG8fOrd: number;
   /** 부경S1F통과누적기록 */
   buS1fAccTime: number;
-  /** 부경S1F통과순위 */
-  buS1fOrd: number;
   /** 부경S1F통과기록 */
   buS1fTime: number;
   /** 부경1F-G통과기록 */

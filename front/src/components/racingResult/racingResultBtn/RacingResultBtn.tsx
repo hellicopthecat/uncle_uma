@@ -1,33 +1,44 @@
+import {useRecoilState, useRecoilValue} from "recoil";
 import {ChevLeft, ChevRight} from "../../svg/Chevron";
+import {
+  racingSlideRef,
+  slideWidth,
+} from "../../../atoms/racingResultData/racingResultData";
 
-export default function RacingResultBtn() {
-  // const handleLeft = () => {
-  //   if (slide < 0) {
-  //     set_slide(slide + raceSum.current.clientWidth);
-  //   } else {
-  //     set_slide(-(raceSum.current.clientWidth * (result.length - 1)));
-  //   }
-  // };
-  // const handleRight = () => {
-  //   if (slide > -raceSum.current.clientWidth * (result.length - 1)) {
-  //     set_slide(slide - raceSum.current.clientWidth);
-  //   } else {
-  //     set_slide(0);
-  //   }
-  // };
+export default function RacingResultBtn({length}: {length: number}) {
+  const [slide, setSlide] = useRecoilState(slideWidth);
+  const slideRef = useRecoilValue(racingSlideRef);
+  const handleLeft = () => {
+    if (slideRef?.current) {
+      if (slide < 0) {
+        setSlide(slide + slideRef.current.clientWidth);
+      } else {
+        setSlide(-(slideRef.current.clientWidth * (length - 1)));
+      }
+    }
+  };
+  const handleRight = () => {
+    if (slideRef?.current) {
+      if (slide > -slideRef.current.clientWidth * (length - 1)) {
+        setSlide(slide - slideRef.current.clientWidth);
+      } else {
+        setSlide(0);
+      }
+    }
+  };
   return (
-    <div className="relative flex justify-between w-full">
+    <div className="absolute z-40 flex justify-between w-full">
       <button
         type="button"
-        // onClick={handleLeft}
-        className="bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-l-lg"
+        onClick={handleLeft}
+        className="flex justify-center items-center bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-l-lg"
       >
         <ChevLeft color="black" width={40} height={40} />
       </button>
       <button
         type="button"
-        // onClick={handleRight}
-        className="bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-r-lg"
+        onClick={handleRight}
+        className="flex justify-center items-center bg-gray-300/75 hover:bg-gray-400/75 w-16 h-[6rem] rounded-r-lg"
       >
         <ChevRight color="black" width={40} height={40} />
       </button>

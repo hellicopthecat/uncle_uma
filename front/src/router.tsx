@@ -7,14 +7,15 @@ import HorseInfo from "./screens/horseInfo/HorseInfo";
 import AboutHorse from "./screens/horseDetail/AboutHorse";
 import RacingPlan from "./screens/racingPlan/RacingPlan";
 import RacingResult from "./screens/racingResult/RacingResult";
-
-import EditProfile from "./components/main/EditProfile";
-import ErrorPage from "./components/main/ErrorPage";
-import Board from "./screens/Board";
-import WriteBoard from "./components/board/WriteBoard";
+import DividendRate from "./screens/dividendRate/DividendRate";
+import Board from "./screens/board/Board";
 import ReadBoard from "./components/board/ReadBoard";
-import DividendRate from "./components/dividendRate/DividendRate";
+import WriteBoard from "./components/board/WriteBoard";
+
+import ErrorPage from "./components/main/ErrorPage";
+
 import ChatComp from "./components/chat/ChatComp";
+import EditProfile from "./screens/editProfile/EditProfile";
 
 const router = createBrowserRouter([
   {
@@ -28,11 +29,12 @@ const router = createBrowserRouter([
       {path: "horseInfo/:id", element: <AboutHorse />},
       {path: "racingPlan", element: <RacingPlan />},
       {path: "racingPlan/:rcDate/:rcNo", element: <RacingResult />},
-      {path: "editUser/:id", element: <EditProfile />},
-      {path: "board", element: <Board />},
-      {path: "board/:id", element: <ReadBoard />},
-      {path: "board/write", element: <WriteBoard />},
       {path: "dividendRate", element: <DividendRate />},
+      {path: "board", element: <Board />},
+      {path: "board/:boardId", element: <ReadBoard />},
+      {path: "board/write", element: <WriteBoard />},
+      {path: "editUser/:uid", element: <EditProfile />},
+
       {path: "chat", element: <ChatComp />},
       {path: "*", element: <ErrorPage />},
     ],

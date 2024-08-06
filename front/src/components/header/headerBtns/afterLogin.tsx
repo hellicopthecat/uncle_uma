@@ -6,10 +6,10 @@ import SharedTxt from "../../shared/sharedTxt";
 
 export default function AfterLogin() {
   const {user} = useUser();
+  const auth = getAuth();
   const pathName = useLocation().pathname;
   //fn
   const handleLogOut = async () => {
-    const auth = getAuth();
     try {
       await signOut(auth);
       if (pathName !== "/") {
@@ -28,21 +28,20 @@ export default function AfterLogin() {
           <Usersvg />
         </li>
       ) : (
-        <li>
-          <Link to={"editUser/" + user.uid}>
+        <li className="flex justify-center items-center size-10 rounded-full border-2 border-blue-300 overflow-hidden">
+          <Link to={`editUser/${user.uid}`}>
             <img
               src={user.photoURL}
               alt="프로필이미지"
               width={30}
               height={30}
-              className="border-2 border-indigo-300 rounded-full"
             />
           </Link>
         </li>
       )}
       <li>
         {user?.displayName ? (
-          <Link to={"editUser/" + user.uid}>
+          <Link to={`editUser/${user.uid}`}>
             <SharedTxt
               txtType="span"
               txt={user.displayName}
@@ -50,7 +49,7 @@ export default function AfterLogin() {
             />
           </Link>
         ) : (
-          <Link to={"editUser/" + user?.uid}>
+          <Link to={`editUser/${user?.uid}`}>
             <SharedTxt
               txtType="span"
               txt={user?.uid + ""}

@@ -1,11 +1,11 @@
-export default function Usersvg() {
+export default function Usersvg({color = "white"}: {color?: string}) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
-      stroke="currentColor"
+      stroke={color}
       className="w-10 h-10"
       color="white"
     >

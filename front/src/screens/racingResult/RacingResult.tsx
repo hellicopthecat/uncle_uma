@@ -20,15 +20,14 @@ export default function RacingResult() {
         localNum: String(localNum),
       }),
   });
-  console.log(data);
   return (
-    <SharedSection className="py-32 px-10 h-dvh">
+    <SharedSection className="py-32 px-10">
       <div className="flex flex-col bg-white p-5 gap-10">
         <div className="flex items-center gap-3">
           <SharedTxt txtType="span" txt="" className="bg-blue-400 w-3 h-6" />
           <SharedTxt txtType="h2" txt="경기 결과" />
         </div>
-        <div className=" border-y-2 border-blue-500 py-5">
+        <div className=" border-y-2 border-blue-500 py-5 h-full">
           {isLoading && (
             <div className="flex justify-center items-center gap-5">
               <SharedTxt
