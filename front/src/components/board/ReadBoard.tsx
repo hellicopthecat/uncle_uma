@@ -16,6 +16,7 @@ import {useDateMakerByNumber} from "../../hooks/\butilHook/useDateMakerByNumber"
 export default function ReadBoard() {
   const [isLoading, setIsLoading] = useState(false);
   const [items, setItem] = useState<IBoardDataType | undefined>();
+  const [notFound, setNotFound] = useState(false);
   const [editCont, setEditCont] = useState(false);
   const [editDesc, setEditDesc] = useState("");
   const {boardId} = useParams<{boardId: string}>();
@@ -26,12 +27,22 @@ export default function ReadBoard() {
   useEffect(() => {
     const readDoc = async () => {
       setIsLoading(true);
-      const targetDoc = await getDoc(boardRef);
-      setItem(targetDoc.data() as IBoardDataType);
-      setIsLoading(false);
+      try {
+        const targetDoc = await getDoc(boardRef);
+        if (!targetDoc.exists()) {
+          setIsLoading(false);
+          setNotFound(true);
+        } else {
+          setItem(targetDoc.data() as IBoardDataType);
+          setIsLoading(false);
+        }
+      } catch (e) {
+        console.log(e);
+      }
     };
     readDoc();
   }, []);
+
   //fn
   const deleteContents = async () => {
     const ok = confirm("삭제하시겠습니까?");
@@ -66,12 +77,13 @@ export default function ReadBoard() {
   return (
     <SharedSection className="px-10 py-36 h-dvh">
       <div className="flex flex-col gap-10 bg-white p-16 rounded-lg h-full relative">
-        {isLoading ? (
+        {isLoading && (
           <div className="flex items-center gap-5 ">
             <SharedTxt txtType="span" txt="" className="w-2 h-6 bg-blue-500" />
             <SharedTxt txtType="h3" txt="로딩중..." />
           </div>
-        ) : (
+        )}
+        {items && (
           <>
             <div className="flex items-center gap-5 ">
               <SharedTxt
@@ -174,7 +186,13 @@ export default function ReadBoard() {
               </div>
             )}
           </>
-        )}{" "}
+        )}
+        {notFound && (
+          <div className="flex items-center gap-5 ">
+            <SharedTxt txtType="span" txt="" className="w-2 h-6 bg-blue-500" />
+            <SharedTxt txtType="h3" txt="해당 게시물은 존재하지 않아요." />
+          </div>
+        )}
       </div>
     </SharedSection>
   );

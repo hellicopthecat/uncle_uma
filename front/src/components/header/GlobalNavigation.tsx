@@ -66,9 +66,9 @@ export default function GlobalNavigation() {
             setShow={setShow}
           />
           <NavLinkList href="/board" linkText="게시판" setShow={setShow} />
-          {user && (
+          {/* {user && (
             <NavLinkList href="/chat" linkText="채팅" setShow={setShow} />
-          )}
+          )} */}
         </ul>
       </nav>
       <button

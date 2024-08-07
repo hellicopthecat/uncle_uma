@@ -61,7 +61,7 @@ export default function RacingPlanForm({
       localNum,
       year,
       month: month?.replace("-", ""),
-      date: date?.replace("-", ""),
+      date: date?.replaceAll("-", ""),
     });
     resetMinPage();
     resetMaxPage();
@@ -69,7 +69,6 @@ export default function RacingPlanForm({
   };
 
   const {year, month, date} = watch();
-
   useEffect(() => {
     mutate({
       currentPage: currentPageState + "",
@@ -77,7 +76,7 @@ export default function RacingPlanForm({
       localNum: localNumState + "",
       year,
       month: month?.replace("-", ""),
-      date: date?.replace("-", ""),
+      date: date?.replaceAll("-", ""),
     });
   }, [currentPageState, localNumState, rowsState, year, month, date]);
 

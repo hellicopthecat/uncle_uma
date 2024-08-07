@@ -5,7 +5,7 @@ import useRacingPlanHook from "../../hooks/racingPlan/useRacingPlanHook";
 import PlanResult from "../../components/racingPlan/planResult/PlanResult";
 
 export default function RacingPlan() {
-  const {data, isPending, mutate, isError, isSuccess} = useRacingPlanHook();
+  const {data, isPending, mutate, isError} = useRacingPlanHook();
 
   return (
     <SharedSection className="flex flex-col gap-10 bg-horse bg-no-repeat bg-cover py-32 px-10">
@@ -31,7 +31,7 @@ export default function RacingPlan() {
           {isError && (
             <SharedTxt
               txtType="h5"
-              txt="경기를 불러오는데 오류가 일어났습니다."
+              txt="경기를 불러오는데 데이터가 존재하지 않습니다. 다른 날짜를 조회해보세요."
               className="text-white"
             />
           )}

@@ -31,7 +31,7 @@ export default function PlanResult(data: IDefaultResponse) {
       <h2 className="text-xl font-bold my-4 text-white">
         {localString(localNum)} 계획표 결과
       </h2>
-      <table className="table-auto text-center border-collapse">
+      <table className="table-auto text-center border-collapse ">
         <PlanTHeader />
         <PlanTBody {...data} />
       </table>

@@ -44,7 +44,6 @@ export default function TableNav({totalpage}: {totalpage: number}) {
   };
 
   const handleRight = () => {
-    console.log("lengt", pagination.length);
     setCurrentPage((prev) => prev + 1);
     setMinPage((prev) => prev + 1);
     setMaxPage((prev) => prev + 1);

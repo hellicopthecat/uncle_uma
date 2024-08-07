@@ -56,8 +56,8 @@ export default function LoginComp() {
           ref={videoRef}
           src={videoSrc}
           autoPlay
-          width={1000}
-          className="relative -top-36"
+          width={1300}
+          className="relative -top-60"
         ></video>
       </div>
       <form

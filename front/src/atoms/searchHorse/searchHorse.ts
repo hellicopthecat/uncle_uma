@@ -12,7 +12,7 @@ export const searchHorseRowAtom = atom({
 
 export const searchHorseMinPageAtom = atom({
   key: "searchHorseMinPage",
-  default: 1,
+  default: 0,
 });
 export const searchHorseMaxPageAtom = atom({
   key: "searchHorseMaxPage",

@@ -7,7 +7,7 @@ import {
 import {IDefaultResponse} from "../../type/apiTypes";
 
 export default function useRacingPlanHook() {
-  const {data, mutate, isPending, isError, isSuccess} = useMutation<
+  const {data, mutate, isPending, isError, isSuccess, error} = useMutation<
     IDefaultResponse,
     Error,
     IRacingPlanSearchTypes,
@@ -24,5 +24,5 @@ export default function useRacingPlanHook() {
     }: IRacingPlanSearchTypes) =>
       apis.getHorseRacingPlan({currentPage, rows, localNum, date, month, year}),
   });
-  return {data, mutate, isPending, isError, isSuccess};
+  return {data, mutate, isPending, isError, isSuccess, error};
 }

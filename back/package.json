@@ -1,0 +1,29 @@
+{
+  "name": "horse_racing_back",
+  "version": "1.0.0",
+  "description": "Horse Racing Backend",
+  "main": "app.ts",
+  "scripts": {
+    "dev": "nodemon app.ts",
+    "build": "npx tsc"
+  },
+  "keywords": [
+    "horse",
+    "racing",
+    "backend"
+  ],
+  "author": "Hellicat",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "socket.io": "^4.7.5",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.1.0",
+    "nodemon": "^3.1.4",
+    "typescript": "^5.5.4"
+  }
+}

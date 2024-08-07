@@ -18,12 +18,12 @@ export default function HorseInfoPageBtn() {
   const [maxPage, setMaxPage] = useRecoilState(searchHorseMaxPageAtom);
 
   const paginationArray: number[] = [];
-  if (totalPage) {
-    for (let page = 1; page <= endPages; page++) {
-      paginationArray.push(page);
-    }
+  for (let page = 1; page <= endPages; page++) {
+    paginationArray.push(page);
   }
-  const pagination = paginationArray.slice(minPage - 1, maxPage);
+
+  const pagination = paginationArray.slice(minPage, maxPage);
+
   const handleClickPrev = () => {
     if (minPage <= 0) {
       setMinPage(0);

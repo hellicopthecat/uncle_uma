@@ -11,11 +11,10 @@ import DividendRate from "./screens/dividendRate/DividendRate";
 import Board from "./screens/board/Board";
 import ReadBoard from "./components/board/ReadBoard";
 import WriteBoard from "./components/board/WriteBoard";
-
-import ErrorPage from "./components/main/ErrorPage";
+import EditProfile from "./screens/editProfile/EditProfile";
 
 import ChatComp from "./components/chat/ChatComp";
-import EditProfile from "./screens/editProfile/EditProfile";
+import ErrorPage from "./components/main/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -34,8 +33,7 @@ const router = createBrowserRouter([
       {path: "board/:boardId", element: <ReadBoard />},
       {path: "board/write", element: <WriteBoard />},
       {path: "editUser/:uid", element: <EditProfile />},
-
-      {path: "chat", element: <ChatComp />},
+      // {path: "chat", element: <ChatComp />},
       {path: "*", element: <ErrorPage />},
     ],
   },
